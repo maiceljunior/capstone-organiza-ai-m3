@@ -1,8 +1,8 @@
-import ButtonComponent from "./style";
+import { ButtonComponent } from "./style";
 
-const Button = ({ children, className, onClick, id }) => {
+const Button = ({ children, redSchema, id, ...rest }) => {
   return (
-    <ButtonComponent id={id} className={className} onClick={onClick}>
+    <ButtonComponent id={id} {...rest}>
       {children}
     </ButtonComponent>
   );
