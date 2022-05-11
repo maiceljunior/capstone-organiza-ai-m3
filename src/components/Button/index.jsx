@@ -1,8 +1,8 @@
 import { ButtonComponent } from "./style";
 
-const Button = ({ children, className, onClick, id, ...rest }) => {
+const Button = ({ children, redSchema, id, ...rest }) => {
   return (
-    <ButtonComponent id={id} className={className} onClick={onClick} {...rest}>
+    <ButtonComponent id={id} redSchema={redSchema} {...rest}>
       {children}
     </ButtonComponent>
   );
