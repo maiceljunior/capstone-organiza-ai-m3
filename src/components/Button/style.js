@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonComponent = styled.button`
-  background: var(--red-dark);
+  background: ${(props) => (props.redSchema ? "#6A040F" : "#F48C06")};
   color: var(--white);
   height: 45px;
   border-radius: 8px;
