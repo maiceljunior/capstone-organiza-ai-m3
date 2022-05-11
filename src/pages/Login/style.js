@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MainWrapper = styled.div`
   max-width: 420px;
   width: 90%;
-  margin: 10px auto;
+  margin: 0 auto;
   h1 {
     display: none;
   }
@@ -15,9 +15,14 @@ export const MainWrapper = styled.div`
     display: flex;
     max-width: 1024px;
     main {
-      width: 50%;
+      width: 100%;
+      height: 77%;
+      justify-content: space-evenly;
     }
     figure {
+      width: 50%;
+    }
+    section {
       width: 50%;
     }
   }
