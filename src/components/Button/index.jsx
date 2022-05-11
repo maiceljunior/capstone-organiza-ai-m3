@@ -1,11 +1,10 @@
-import ButtonComponent from "./style";
+import { ButtonComponent } from "./style";
 
-const Button = ({ children, className, onClick, id }) => {
+const Button = ({ children, className, onClick, id, ...rest }) => {
   return (
-    <ButtonComponent id={id} className={className} onClick={onClick}>
+    <ButtonComponent id={id} className={className} onClick={onClick} {...rest}>
       {children}
     </ButtonComponent>
   );
 };
-
 export default Button;
