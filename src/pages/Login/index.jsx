@@ -7,6 +7,7 @@ import { MainWrapper, DivRegister, FigureLogin, DivImgs } from "./style";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Header from "../../components/Header";
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -27,34 +28,32 @@ const Login = () => {
   return (
     <>
       <MainWrapper>
-        <header>Logo</header>
-      </MainWrapper>
-
-      <MainWrapper>
-        <main>
-          <form onSubmit={handleSubmit(onSubmitFunction)}>
-            <Input
-              label={"Email"}
-              placeholder={"Digite seu email"}
-              name="email"
-              register={register}
-            />
-            <Input
-              label={"Senha"}
-              placeholder={"Digite sua senha"}
-              name="password"
-              register={register}
-            />
-            <Button type="submit">ENTRAR</Button>
-          </form>
-          <DivRegister>
-            <p>Não possui uma conta?</p>
-            <p>
-              Faça seu <Link to="/register">cadastro</Link>
-            </p>
-          </DivRegister>
-        </main>
-
+        <section>
+          <Header />
+          <main>
+            <form onSubmit={handleSubmit(onSubmitFunction)}>
+              <Input
+                label={"Email"}
+                placeholder={"Digite seu email"}
+                name="email"
+                register={register}
+              />
+              <Input
+                label={"Senha"}
+                placeholder={"Digite sua senha"}
+                name="password"
+                register={register}
+              />
+              <Button type="submit">ENTRAR</Button>
+            </form>
+            <DivRegister>
+              <p>Não possui uma conta?</p>
+              <p>
+                Faça seu <Link to="/register">cadastro</Link>
+              </p>
+            </DivRegister>
+          </main>
+        </section>
         <DivImgs>
           <FigureLogin>
             <img src={ImageLoginMobile} alt="ImageLoginMobile" />
