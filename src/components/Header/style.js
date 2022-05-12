@@ -12,10 +12,6 @@ export const StyledHeaderOrange = styled.header`
     width: 235px;
     height: 80px;
   }
-
-  button {
-    width: 10vw;
-  }
 `;
 
 export const StyledHeaderWhite = styled.header`

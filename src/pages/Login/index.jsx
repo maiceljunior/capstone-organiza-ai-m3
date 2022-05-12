@@ -18,11 +18,10 @@ const Login = () => {
 
   const schema = yup.object().shape({
     email: yup.string().email("Email Invalido").required("Campo obrigatório"),
-    password: yup.string().required("Campo obrigatório")
+    password: yup.string().required("Campo obrigatório"),
   });
 
-  const { setUser } = useUser()
-
+  const { setUser } = useUser();
 
   const {
     register,
@@ -31,19 +30,16 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   function onSubmitFunction(data) {
-
-
-
     Api.post("/login", data)
       .then((res) => {
-        localStorage.setItem("TokenOrganizaAi", res.data.accessToken)
-        localStorage.setItem("UserID", res.data.user.id)
+        localStorage.setItem("TokenOrganizaAi", res.data.accessToken);
+        localStorage.setItem("UserID", res.data.user.id);
 
-        setUser(res.data)
-        history.push("/dashboard")
+        setUser(res.data);
+        history.push("/dashboard");
 
         toast.success(`Olá, ${res.data.user.name}`, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -53,15 +49,17 @@ const Login = () => {
         });
       })
 
-      .catch(() => toast.error('Dados Incorretos!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }))
+      .catch(() =>
+        toast.error("Dados Incorretos!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      );
   }
 
   return (
@@ -77,7 +75,9 @@ const Login = () => {
                 name="email"
                 register={register}
               />
-              {errors.email && (<span className="error">{errors.email.message}</span>)}
+              {errors.email && (
+                <span className="error">{errors.email.message}</span>
+              )}
               <Input
                 label={"Senha"}
                 placeholder={"Digite sua senha"}
@@ -85,7 +85,9 @@ const Login = () => {
                 type="password"
                 register={register}
               />
-              {errors.password && (<span className="error">{errors.password.message}</span>)}
+              {errors.password && (
+                <span className="error">{errors.password.message}</span>
+              )}
               <Button type="submit">ENTRAR</Button>
             </form>
             <DivRegister>
