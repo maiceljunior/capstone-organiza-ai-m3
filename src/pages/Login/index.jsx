@@ -37,6 +37,7 @@ const Login = () => {
     Api.post("/login", data)
       .then((res) => {
         localStorage.setItem("TokenOrganizaAi", res.data.accessToken)
+        localStorage.setItem("UserID", res.data.user.id)
 
         setUser(res.data)
         history.push("/dashboard")

@@ -17,6 +17,9 @@ export const Home = styled.div`
   #btnLogin {
     width: 20vw;
     height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @media (min-width: 760px) {

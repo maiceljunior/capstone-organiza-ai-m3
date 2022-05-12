@@ -1,12 +1,24 @@
 import { Avatar } from '@mui/material';
+import { useEffect } from 'react';
 import Header from '../../components/Header'
 import Navbar from '../../components/NavBar';
 import { useUser } from '../../providers/user'
+import { Api } from '../../services/api';
 import { Main } from './style';
 
 const Dashboard = () => {
 
-  //const { user } = useUser()
+
+  const { user, setUser } = useUser()
+  const UserID = localStorage.getItem("UserID");
+
+  useEffect(() => {
+    Api.get(`users/${UserID}`)
+      .then(res => setUser(res.data))
+
+  }, [])
+
+  console.log(user)
 
   const handleClick = () => {
   }
