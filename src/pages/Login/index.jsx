@@ -11,6 +11,7 @@ import Header from "../../components/Header";
 import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
 import { toast } from "react-toastify";
+import { useUser } from "../../providers/user";
 
 const Login = () => {
   const history = useHistory();
@@ -19,6 +20,9 @@ const Login = () => {
     email: yup.string().email("Email Invalido").required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório")
   });
+
+  const { setUser } = useUser()
+
 
   const {
     register,
@@ -32,7 +36,9 @@ const Login = () => {
 
     Api.post("/login", data)
       .then((res) => {
-        localStorage.setItem("Token", res.data.accessToken)
+        localStorage.setItem("TokenOrganizaAi", res.data.accessToken)
+
+        setUser(res.data)
         history.push("/dashboard")
 
         toast.success(`Olá, ${res.data.user.name}`, {
