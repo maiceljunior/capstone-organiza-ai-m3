@@ -1,12 +1,13 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header";
+import HomePage from "./pages/Home";
 import GlobalStyle from "./styles/global";
 
 function App() {
   return (
     <>
       <GlobalStyle />
+      <HomePage />
       <ToastContainer
         position="top-right"
         autoClose={5000}

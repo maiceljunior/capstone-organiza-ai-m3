@@ -6,7 +6,6 @@ export const ButtonComponent = styled.button`
   height: 45px;
   border-radius: 8px;
   border: none;
-  margin-top: 16px;
   width: 100%;
 
   :hover {

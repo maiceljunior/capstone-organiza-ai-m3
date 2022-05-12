@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyledHeaderOrange = styled.header`
   width: 100%;
@@ -8,18 +8,17 @@ export const StyledHeaderOrange = styled.header`
   justify-content: space-around;
   align-items: center;
 
-  div{
+  div {
     width: 90%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  img{
-      height: 54px;
-    }
+  button {
+    width: 10vw;
   }
-`
+`;
 
 export const StyledHeaderWhite = styled.header`
   width: 100%;
@@ -29,8 +28,8 @@ export const StyledHeaderWhite = styled.header`
   align-items: center;
   justify-content: center;
 
-  img{
-      width: 290px;
+  img {
+    width: 290px;
     height: 80px;
   }
-`
+`;
