@@ -8,11 +8,9 @@ export const StyledHeaderOrange = styled.header`
   justify-content: space-around;
   align-items: center;
 
-  div {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  img {
+    width: 235px;
+    height: 80px;
   }
 
   button {
@@ -32,4 +30,11 @@ export const StyledHeaderWhite = styled.header`
     width: 290px;
     height: 80px;
   }
+`;
+
+export const DivHeader = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
