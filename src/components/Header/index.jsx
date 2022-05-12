@@ -1,4 +1,4 @@
-import { StyledHeaderOrange, StyledHeaderWhite } from "./style";
+import { StyledHeaderOrange, StyledHeaderWhite, DivHeader } from "./style";
 import logoOrange from "../../assets/images/logoOrange.png";
 import logoWhite from "../../assets/images/logoWhite.png";
 
@@ -7,10 +7,10 @@ const Header = ({ children, onClick }) => {
     <>
       {children ? (
         <StyledHeaderOrange onClick={onClick}>
-          <div>
+          <DivHeader>
             <img src={logoWhite} alt="ORGANIZA AI" />
             {children}
-          </div>
+          </DivHeader>
         </StyledHeaderOrange>
       ) : (
         <StyledHeaderWhite onClick={onClick}>
