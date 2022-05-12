@@ -8,8 +8,11 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Header from "../../components/Header";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const history = useHistory();
+
   const schema = yup.object().shape({
     email: yup.string().email().required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
@@ -29,7 +32,7 @@ const Login = () => {
     <>
       <MainWrapper>
         <section>
-          <Header />
+          <Header onClick={() => history.push("/")} />
           <main>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
               <Input
