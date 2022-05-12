@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
+  .error {
+    color: var(--red);
+    max-width: 80%;
+    text-align: justify;
+  }
+
+  header > img {
+    cursor: pointer;
+  }
+
   max-width: 420px;
   width: 90%;
   margin: 0 auto;
