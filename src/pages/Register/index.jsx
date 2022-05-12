@@ -12,7 +12,9 @@ import {
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import logo from "./Organizaaí (4).png";
+import imgRegister from "./img-register.png";
 import Checkbox from "../../components/Checkbox";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const schema = yup.object().shape({
@@ -26,6 +28,7 @@ const Register = () => {
       .string()
       .oneOf([yup.ref("password")], "Senhas diferentes")
       .required("Campo Obrigatório!"),
+    preferencias: yup.array().required("Campo Obrigatório"),
   });
 
   const {
@@ -34,49 +37,57 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  function onSubmitRegister({ name, email, password }) {
-    const user = { name, email, password };
-    console.log(user);
-  }
+  const onSubmitFunction = () => {
+    console.log("oi");
+    // api
+    //   .post()
+    //   .then((response) => {
+    // toast.success("Conta criada com sucesso!");
+    //     return history.push("/login");
+    //   })
+    //   .catch((err) => toast.error("Ops!Algo deu errado."));
+  };
 
   return (
     <Container>
-      <img src={logo} alt="Logo da Organizaai" />
+      <img className="register" src={imgRegister} alt="Cadastro" />
       <Content>
+        <img className="logo" src={logo} alt="Logo da Organizaai" />
         <h1>Crie sua conta</h1>
 
         <AnimationContainer>
-          <form onSubmit={handleSubmit(onSubmitRegister)}>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
-              //   register={register}
               type="text"
               name="name"
               label="Nome"
               placeholder="Digite aqui seu nome"
-              error={errors.name?.message}
             />
+            <span>{errors.name?.message}</span>
             <Input
-              //   register={register}
+              register={register}
               type="email"
               name="email"
-              label="Email"
-              placeholder="DIgite aqui seu email"
+              label={"Email"}
+              placeholder={"Digite aqui seu email"}
               error={errors.email?.message}
             />
             <label>Preferências:</label>
 
             <CheckBoxContainer>
-              <Checkbox label="Futebol" value="Futebol" />
-              <Checkbox label="Volei" value="Futebol" />
-              <Checkbox label="Basquete" value="Futebol" />
-              <Checkbox label="Tabuleiro" value="Futebol" />
-              <Checkbox label="RPG" value="Futebol" />
-              <Checkbox label="Online" value="Futebol" />
-              <Checkbox label="Xadrez" value="Futebol" />
-              <Checkbox label="Outros" value="Futebol" />
+              <Checkbox name="preferencias" label="Futebol" value="Futebol" />
+              <Checkbox
+                name="preferencias"
+                label="Tabuleiro"
+                value="Tabuleiro"
+              />
+              <Checkbox name="preferencias" label="RPG" value="RPG" />
+              <Checkbox name="preferencias" label="Online" value="Online" />
+              <Checkbox name="preferencias" label="Xadrez" value="Xadrez" />
+              <Checkbox name="preferencias" label="Outros" value="Outros" />
             </CheckBoxContainer>
             <Input
-              //   register={register}
+              register={register}
               name="password"
               type="password"
               label="Senha"
@@ -84,7 +95,7 @@ const Register = () => {
               error={errors.password?.message}
             />
             <Input
-              //   register={register}
+              register={register}
               type="password"
               name="passwordConfirm"
               label="Confirmar senha"
@@ -94,8 +105,10 @@ const Register = () => {
 
             <Button type="submit">Cadastrar</Button>
             <DivLogin>
-              <p>Não possui uma conta?</p>
-              <p>Faça seu</p>
+              <p>Já possui uma conta?</p>
+              <p>
+                Faça seu <Link to="/login">login</Link>{" "}
+              </p>
             </DivLogin>
           </form>
         </AnimationContainer>

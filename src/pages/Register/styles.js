@@ -3,18 +3,24 @@ import styled, { keyframes } from "styled-components";
 export const Container = styled.div`
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 270px;
+  .logo {
+    width: 80%;
+  }
+  .register {
+    display: none;
   }
 
   @media (min-width: 900px) {
     height: 100%;
-    img {
+    .logo {
       width: 600px;
+    }
+    .register {
+      display: inline;
+      width: 500px;
     }
   }
 `;
@@ -73,7 +79,7 @@ export const AnimationContainer = styled.div`
       margin-top: 16px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: right;
     }
     label {
       margin: 10px;
@@ -87,6 +93,9 @@ export const AnimationContainer = styled.div`
       width: 80%;
     }
     @media (min-width: 900px) {
+      form {
+        width: 380px;
+      }
       width: 400px;
     }
   }
@@ -100,6 +109,10 @@ export const CheckBoxContainer = styled.div`
   flex-wrap: wrap;
   margin: 0px;
   margin-left: 8%;
+  > div {
+    width: 100px;
+    height: 30px;
+  }
 
   @media (min-width: 900px) {
   }
@@ -107,6 +120,8 @@ export const CheckBoxContainer = styled.div`
 
 export const DivLogin = styled.div`
   margin: 20px auto;
+  align-items: center;
+
   p {
     line-height: 25px;
   }
