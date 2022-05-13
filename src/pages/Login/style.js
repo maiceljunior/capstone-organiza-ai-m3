@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { appearFromRight } from "../Register/styles";
 
 export const MainWrapper = styled.div`
   .error {
@@ -27,6 +28,8 @@ export const MainWrapper = styled.div`
     align-items: center;
     height: 100vh;
     max-width: 1024px;
+    animation: ${appearFromRight} 1s;
+
     main {
       width: 100%;
       height: 77%;
