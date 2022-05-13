@@ -50,7 +50,7 @@ export const Content = styled.div`
   }
 `;
 
-const appearFromRight = keyframes`
+export const appearFromRight = keyframes`
 from{
     opacity:0;
     transform: translateX(50px);
@@ -90,13 +90,16 @@ export const AnimationContainer = styled.div`
     }
     button {
       margin-left: 10%;
-      margin-bottom: 10%;
+      margin-bottom: 5%;
+      margin-top: 5%;
       width: 80%;
     }
     .error {
       color: var(--red);
-      max-width: 80%;
+      max-width: 90%;
+      margin-bottom: 10px;
       text-align: justify;
+      display: block;
     }
     @media (min-width: 900px) {
       form {

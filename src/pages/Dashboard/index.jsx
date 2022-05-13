@@ -36,7 +36,7 @@ const Dashboard = () => {
         )}
       </Header>
       <Main>
-
+        <Navbar />
       </Main>
     </>
   );

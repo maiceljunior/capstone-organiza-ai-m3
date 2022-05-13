@@ -17,6 +17,10 @@ import Checkbox from "../../components/Checkbox";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
+import { useUser } from "../../providers/user";
+
+
+
 
 const Register = () => {
   const history = useHistory();
@@ -26,13 +30,14 @@ const Register = () => {
     password: yup
       .string()
       .min(6, "Mínimo de 6 digitos")
-      .required("Campo Obrigatório!"),
+      .required("Campo Obrigatório!").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/, "Senha deve conter no minimo uma letra maiúscula, uma letra minúscula, números e ao menos um símbolo!"),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password")], "Senhas diferentes.")
       .required("Campo Obrigatório!"),
-    preferencias: yup.array().required("Campo Obrigatório"),
   });
+
+  const { setUser } = useUser()
 
   const {
     register,
@@ -41,9 +46,20 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   function onSubmitFunction(data) {
-    Api.post("/register", data)
+    const { name, email, Futebol, Tabuleiro, RPG, Xadrez, Online, Outros, password } = data
+
+    const newData = { name: name, email: email, Preferencias: { futebol: Futebol, Tabuleiro: Tabuleiro, RPG: RPG, Xadrez: Xadrez, Online: Online, Outros: Outros }, password: password, events: [], friends: [] }
+
+    postRegister(newData)
+  }
+
+  function postRegister(user) {
+    Api.post("/register", user)
       .then((res) => {
-        localStorage.getItem("Token", data);
+        localStorage.setItem("TokenOrganizaAi", res.data.accessToken);
+        localStorage.setItem("UserID", res.data.user.id);
+
+        setUser(res.data);
         history.push("/dashboard");
 
         toast.success(`Cadastro concluído com sucesso.`, {
@@ -68,6 +84,8 @@ const Register = () => {
         })
       );
   }
+
+
 
   return (
     <Container>
@@ -108,48 +126,51 @@ const Register = () => {
             <label>Preferências:</label>
 
             <CheckBoxContainer>
-              <Checkbox name="preferencias" label="Futebol" value="Futebol" />
+              <Checkbox register={register} name="Futebol" label="Futebol" value="Futebol" />
               <Checkbox
-                name="preferencias"
+                register={register}
+                name="Tabuleiro"
                 label="Tabuleiro"
                 value="Tabuleiro"
               />
-              <Checkbox name="preferencias" label="RPG" value="RPG" />
-              <Checkbox name="preferencias" label="Online" value="Online" />
-              <Checkbox name="preferencias" label="Xadrez" value="Xadrez" />
-              <Checkbox name="preferencias" label="Outros" value="Outros" />
+              <Checkbox register={register} name="RPG" label="RPG" value="RPG" />
+              <Checkbox register={register} name="Online" label="Online" value="Online" />
+              <Checkbox register={register} name="Xadrez" label="Xadrez" value="Xadrez" />
+              <Checkbox register={register} name="Outros" label="Outros" value="Outros" />
             </CheckBoxContainer>
             <Input
-              register={register}
-              name="password"
-              type="password"
               label="Senha"
               placeholder="Crie uma senha forte"
+              name="password"
+              type="password"
+              register={register}
             />
             {errors.password && (
               <span className="error">{errors.password.message}</span>
             )}
 
             <Input
-              register={register}
-              type="password"
-              name="passwordConfirm"
               label="Confirmar senha"
               placeholder="Confirme a senha"
+              name="passwordConfirm"
+              type="password"
+              register={register}
             />
             {errors.passwordConfirm && (
               <span className="error">{errors.passwordConfirm.message}</span>
             )}
 
-            <Button type="submit" onClick={onSubmitFunction}>
+            <Button type="submit">
               Cadastrar
             </Button>
+
             <DivLogin>
               <p>Já possui uma conta?</p>
               <p>
                 Faça seu <Link to="/login">login</Link>{" "}
               </p>
             </DivLogin>
+
           </form>
         </AnimationContainer>
       </Content>
