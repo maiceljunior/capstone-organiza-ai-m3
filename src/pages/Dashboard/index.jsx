@@ -6,6 +6,7 @@ import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
 import { Main } from "./style";
 import { Loading } from "./loading";
+import RenderList from "../../components/RenderList";
 
 const Dashboard = () => {
   const { user, setUser } = useUser();
