@@ -22,6 +22,10 @@ export const Home = styled.div`
     align-items: center;
   }
 
+  #btnLogin > span {
+    margin-left: 0;
+  }
+
   @media (min-width: 760px) {
     #btnLogin {
       position: relative;
@@ -184,6 +188,7 @@ export const SectionOne = styled.section`
 
     div > button {
       width: 300px;
+      height: 30px;
     }
 
     button {

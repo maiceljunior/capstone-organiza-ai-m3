@@ -9,8 +9,15 @@ export const StyledHeaderOrange = styled.header`
   align-items: center;
 
   img {
-    width: 235px;
-    height: 80px;
+    width: auto;
+    height: 70px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: auto;
+      height: 60px;
+    }
   }
 `;
 
@@ -23,7 +30,7 @@ export const StyledHeaderWhite = styled.header`
   justify-content: center;
 
   img {
-    width: 290px;
+    width: 280px;
     height: 80px;
   }
 `;

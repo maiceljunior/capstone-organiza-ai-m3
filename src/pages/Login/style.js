@@ -23,6 +23,9 @@ export const MainWrapper = styled.div`
       display: flex;
     }
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     max-width: 1024px;
     main {
       width: 100%;
