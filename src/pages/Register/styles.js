@@ -8,6 +8,7 @@ export const Container = styled.div`
 
   .logo {
     width: 80%;
+    cursor: pointer;
   }
   .register {
     display: none;
@@ -91,6 +92,11 @@ export const AnimationContainer = styled.div`
       margin-left: 10%;
       margin-bottom: 10%;
       width: 80%;
+    }
+    .error {
+      color: var(--red);
+      max-width: 80%;
+      text-align: justify;
     }
     @media (min-width: 900px) {
       form {
