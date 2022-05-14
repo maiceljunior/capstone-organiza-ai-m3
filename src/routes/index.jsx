@@ -1,4 +1,5 @@
 import { Switch } from "react-router-dom";
+import CreateEvents from "../pages/CreateEvents";
 import Dashboard from "../pages/Dashboard";
 import HomePage from "../pages/Home";
 import Login from "../pages/Login";
@@ -12,6 +13,7 @@ function Routes() {
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/createEvents" component={CreateEvents} isPrivate />
     </Switch>
   );
 }

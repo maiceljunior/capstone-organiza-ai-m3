@@ -1,5 +1,51 @@
 import styled from "styled-components";
 
+export const Main = styled.main`
+  display: flex;
+
+  .nav-menu {
+    height: 50vh;
+    margin-left: 2vw;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    background-color: var(--orange);
+    z-index: 3000;
+  }
+
+  .navbar-toggle {
+    background-color: var(--orange);
+  }
+
+  .navbar {
+    background-color: var(--black);
+    margin-top: 30vh;
+  }
+
+  .nav-text > a:hover {
+    background-color: #6a040f;
+  }
+
+  .nav-text > a > span {
+    color: var(--white);
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+  }
+
+  #Search {
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    align-self: center;
+    margin: 0;
+  }
+
+  p {
+    display: none;
+  }
+`;
+
 export const MainRenderList = styled.main`
   display: flex;
   flex-direction: column;
@@ -21,11 +67,6 @@ export const MainRenderListCreateEvent = styled(MainRenderList)`
     margin: 30px auto;
     max-width: 800px;
   }
-`;
-
-export const MainRenderListFriends = styled(MainRenderList)`
-  justify-content: flex-start;
-  margin-top: 30px;
 `;
 
 export const ContentRenderList = styled.div`
@@ -115,25 +156,6 @@ export const ContentRenderListCreateEvent = styled(ContentRenderList)`
   }
 `;
 
-export const ContentRenderFriends = styled(ContentRenderList)`
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  ul {
-    justify-content: center;
-    min-height: 10%;
-  }
-`;
-
-export const DivInputNFriends = styled.div`
-  width: 90%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-`;
-
 export const SearchPeople = styled.div`
   width: 90%;
   display: flex;
@@ -166,119 +188,8 @@ export const Guests = styled.div`
   }
 `;
 
-export const DivSearch = styled.div`
-  width: 100%;
-  height: 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 20px;
-  margin-top: 10px;
-
-  input {
-    width: 85%;
-    height: 20px;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 21px;
-    font-family: "Nunito", sans-serif;
-    box-shadow: 0px 1px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-  }
-
-  button {
-    width: 15%;
-    font-weight: bold;
-  }
-
-  button:hover {
-    background-color: var(--yellow);
-  }
-
-  @media (min-width: 425px) {
-    justify-content: flex-start;
-
-    button {
-      margin-left: 30px;
-    }
-  }
-`;
-export const FiltButtons = styled.div`
-  height: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-
-  button {
-    width: 25%;
-    height: 75%;
-  }
-`;
-
-export const PositionContent = styled.div`
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const DivPref = styled.div`
-  display: flex;
-  width: 100%;
-  margin-right: 30px;
-  align-items: center;
-  justify-content: space-between;
-
-  button {
-    font-size: 18px;
-    width: 30%;
-    color: grey;
-    font-family: inherit;
-    font-weight: 800;
-    cursor: pointer;
-    position: relative;
-    border: none;
-    background: none;
-    text-transform: uppercase;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: color;
-  }
-
-  button:focus,
-  button:hover {
-    color: black;
-  }
-
-  button:focus:after,
-  button:hover:after {
-    width: 100%;
-    left: 0%;
-  }
-
-  button:after {
-    content: "";
-    pointer-events: none;
-    bottom: -2px;
-    left: 50%;
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background-color: #000;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: width, left;
-  }
-`;
-
-export const DivNotEvents = styled.div`
-  display: flex;
-  color: black;
-  font-family: "Nunito", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  height: 100%;
-  align-items: center;
+export const FakeButton = styled.div`
+  width: 50px;
+  background-color: var(--yellow);
+  cursor: pointer;
 `;
