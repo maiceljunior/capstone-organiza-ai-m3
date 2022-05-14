@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainWrapper = styled.div`
   margin: 10px auto;
-  width: 90%;
+  width: 95%;
   height: 100px;
   display: flex;
   border-radius: 5px;
@@ -18,6 +18,17 @@ export const ImgEventWrapper = styled.div`
   figure {
     width: 90%;
     height: 90%;
+  }
+
+  img {
+    object-fit: cover;
+    width: 220px;
+    height: 90px;
+    border-radius: 60px;
+  }
+
+  .Outros {
+    background-color: var(--black);
   }
 `;
 
