@@ -63,7 +63,7 @@ const Register = () => {
         history.push("/dashboard");
 
         toast.success(`Cadastro concluído com sucesso.`, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
