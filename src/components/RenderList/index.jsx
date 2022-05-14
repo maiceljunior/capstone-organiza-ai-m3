@@ -18,7 +18,7 @@ import Button from "../Button";
 import Input from "../Input";
 import { ListPref } from "../../pages/Dashboard/loading";
 import { useUser } from "../../providers/user";
-import EventoIcon from "../../assets/imgs/EventoIcon.png";
+import CardEvent from "../CardEvent";
 
 const RenderList = ({
   type,
@@ -69,23 +69,9 @@ const RenderList = ({
               <ul>
                 {array.length > 0 ? (
                   array.map((event, index) => {
-                    const { name, type, convidados } = event;
 
                     return (
-                      <li
-                        key={index}
-                        id="CardsTeste"
-                        onClick={() => console.log("teste")}
-                      >
-                        {
-                          <>
-                            <img src={EventoIcon} alt="Futebol" />
-                            <span>{name}</span>
-                            <span>{type}</span>
-                            <span>{convidados.length}/10</span>
-                          </>
-                        }
-                      </li>
+                      <CardEvent event={event} key={index} />
                     );
                   })
                 ) : (
