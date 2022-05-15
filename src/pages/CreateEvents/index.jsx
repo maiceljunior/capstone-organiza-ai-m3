@@ -16,11 +16,13 @@ import {
 } from "./style";
 import Navbar from "../../components/NavBar";
 import { useForm } from "react-hook-form";
+import SearchPeopleModal from "../../components/SearchPeopleModal";
 
 const CreateEvents = () => {
   const { user, setUser } = useUser();
   const UserID = localStorage.getItem("UserID");
   const [removeLoading, setRemoveLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,6 +37,10 @@ const CreateEvents = () => {
   function onSubmitFunction(data) {
     console.log(data);
   }
+  function searchPeople() {
+    setModalOpen(true);
+  }
+
   const { register, handleSubmit } = useForm();
 
   return (
@@ -69,9 +75,7 @@ const CreateEvents = () => {
               />
               <SearchPeople>
                 <h3>Buscar pessoas</h3>
-                <FakeButton onClick={() => console.log("Fake Button")}>
-                  +
-                </FakeButton>
+                <FakeButton onClick={searchPeople}>+</FakeButton>
               </SearchPeople>
               <Guests>
                 <h4>Pessoas adicionadas</h4>
@@ -82,6 +86,7 @@ const CreateEvents = () => {
           </ContentRenderListCreateEvent>
         </MainRenderListCreateEvent>
       </Main>
+      {modalOpen && <SearchPeopleModal setModalOpen={setModalOpen} />}
     </>
   );
 };
