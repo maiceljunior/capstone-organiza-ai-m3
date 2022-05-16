@@ -9,14 +9,14 @@ export const StyledHeaderOrange = styled.header`
   align-items: center;
 
   img {
-    width: auto;
-    height: 70px;
+    width: 300px;
+    height: 50px;
   }
 
   @media (max-width: 768px) {
     img {
-      width: auto;
-      height: 60px;
+      width: 300px;
+      height: 50px;
     }
   }
 `;
@@ -29,8 +29,8 @@ export const StyledHeaderWhite = styled.header`
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 280px;
+  div > img {
+    width: 200px;
     height: 80px;
   }
 `;

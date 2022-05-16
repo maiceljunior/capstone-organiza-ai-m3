@@ -7,7 +7,7 @@ export const Home = styled.div`
   }
 
   header > div > img {
-    width: 60%;
+    width: 50vw;
   }
 
   img {
@@ -96,7 +96,7 @@ export const Home = styled.div`
     }
 
     header > div > img {
-      width: auto;
+      width: 30%;
     }
   }
 `;
@@ -457,4 +457,9 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .team {
+    text-decoration: none;
+    font-weight: bold;
+  }
 `;

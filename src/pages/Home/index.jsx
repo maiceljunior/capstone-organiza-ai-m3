@@ -52,14 +52,15 @@ const HomePage = () => {
       </SectionTwo>
 
       <SectionThree>
-        <h2>RÁPIDO, PRÁTICO E DIVERTIDO</h2>
+        <h2>Rápido, Prático e Divertido</h2>
 
         <img src={JogoSectionThree} alt="Pessoas Jogando tabuleiro" />
       </SectionThree>
 
       <Footer>
         <span>
-          Planejado por: <a href="#top">Equipe 3</a>
+          Elaborado e desenvolvido por:
+          <a className="team" href="/developers"> Equipe 3</a>
         </span>
       </Footer>
     </Home>

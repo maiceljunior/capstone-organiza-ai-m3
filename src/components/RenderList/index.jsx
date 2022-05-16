@@ -52,15 +52,14 @@ const RenderList = ({
                 Buscar
               </Button>
             </DivSearch>
-
             {user.name && (
               <DivPref>
                 <Button id="All" redSchema onClick={() => AllEvents()}>
-                  Todos
+                  Listar Todos
                 </Button>
                 {!removePrefs && <ListPref />}
                 <Button id="Pref" redSchema onClick={() => getPreferences()}>
-                  Preferências
+                  Minhas Preferências
                 </Button>
               </DivPref>
             )}

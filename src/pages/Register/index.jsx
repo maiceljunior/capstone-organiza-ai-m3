@@ -123,7 +123,7 @@ const Register = () => {
               <span className="error">{errors.email.message}</span>
             )}
 
-            <label>Preferências:</label>
+            <label>Suas categorias favoritas:</label>
 
             <CheckBoxContainer>
               <Checkbox register={register} name="Futebol" label="Futebol" value="Futebol" />
