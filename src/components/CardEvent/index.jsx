@@ -13,7 +13,7 @@ import TabuleiroIcon from "../../assets/imgs/Tabuleiro.png"
 import OnlineIcon from "../../assets/imgs/Online.png"
 
 const CardEvent = ({ event }) => {
-  const { name, description, type, userId } = event;
+  const { nameEvent, description, type, userId } = event;
   const userLogged = localStorage.getItem("UserID");
 
   return (
@@ -56,7 +56,7 @@ const CardEvent = ({ event }) => {
         }
       </ImgEventWrapper>
       <InfoEventWrapper>
-        <h2>{name}</h2>
+        <h2>{nameEvent}</h2>
         <h3>{type}</h3>
         <p>{description}</p>
       </InfoEventWrapper>

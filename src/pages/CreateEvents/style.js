@@ -192,4 +192,5 @@ export const FakeButton = styled.div`
   width: 50px;
   background-color: var(--yellow);
   cursor: pointer;
+  text-align: center;
 `;
