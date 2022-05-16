@@ -1,9 +1,9 @@
-import Header from "../../components/Header";
-import Button from "../../components/Button";
 import { Footer, Home, SectionOne, SectionThree, SectionTwo } from "./style";
 import JogoHome from "../../assets/imgs/jogoHome.png";
 import JogoSectionTwo from "../../assets/imgs/JogoSectionTwo.png";
 import JogoSectionThree from "../../assets/imgs/JogoSectionThree.png";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <Home>
       <Header>
-        <Button id="btnLogin" onClick={() => history.push("/login")}>
+        <Button redSchema id="btnLogin" onClick={() => history.push("/login")}>
           <span>Login</span>
         </Button>
       </Header>
@@ -60,7 +60,10 @@ const HomePage = () => {
       <Footer>
         <span>
           Elaborado e desenvolvido por:
-          <a className="team" href="/developers"> Equipe 3</a>
+          <a className="team" href="/developers">
+            {" "}
+            Equipe 3
+          </a>
         </span>
       </Footer>
     </Home>

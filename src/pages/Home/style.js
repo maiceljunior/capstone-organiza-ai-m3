@@ -33,9 +33,7 @@ export const Home = styled.div`
       width: auto;
       justify-content: center;
       align-items: center;
-      background-color: var(--red);
       border-radius: 5px;
-      font-family: "Nunito", sans-serif;
       box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       border: none;
@@ -124,7 +122,6 @@ export const SectionOne = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -166,7 +163,6 @@ export const SectionOne = styled.section`
     }
 
     div > h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;
@@ -206,7 +202,6 @@ export const SectionOne = styled.section`
       background-color: var(--red);
       border-radius: 12px;
       overflow: hidden;
-      font-family: "Nunito";
       font-style: normal;
       font-weight: 500;
       font-size: 23px;
@@ -345,7 +340,6 @@ export const SectionTwo = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -372,7 +366,6 @@ export const SectionTwo = styled.section`
     justify-content: space-evenly;
 
     h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;
@@ -409,7 +402,6 @@ export const SectionThree = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -439,7 +431,6 @@ export const SectionThree = styled.section`
     justify-content: space-evenly;
 
     h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;

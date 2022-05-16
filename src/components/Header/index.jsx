@@ -1,5 +1,5 @@
 import { StyledHeaderOrange, StyledHeaderWhite, DivHeader } from "./style";
-import logoOrange from "../../assets/images/logoOrange.png";
+import logoOrange from "../../assets/imgs/logoOrange.png";
 import logoWhite from "../../assets/imgs/OrganizaAi.png";
 
 const Header = ({ children, onClick }) => {

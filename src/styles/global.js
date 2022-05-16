@@ -11,7 +11,7 @@ export default createGlobalStyle`
     }
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Nunito', sans-serif;
     }
 
     button {
@@ -37,5 +37,25 @@ export default createGlobalStyle`
         --orange: #E85D04;
         --gold: #F48C06;
         --yellow: #FAA307;
+    }
+
+    h1{
+        font-size: 22px;
+        font-weight: 700;
+    }
+    h2{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    h3{
+        font-size: 18px;
+        font-weight:400;
+    }
+    h4{
+        font-size: 16px;
+        font-weight:400;
+    }
+    p{
+        font-size: 16px;
     }
 `;

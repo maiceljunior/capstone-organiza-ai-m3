@@ -1,5 +1,3 @@
-import { useHistory } from "react-router-dom";
-import logo from "../Register/Organizaaí (4).png";
 import {
   Container,
   ContentUl,
@@ -11,6 +9,8 @@ import {
   AnimationContainerRight,
   ContainerIcons,
 } from "./style";
+import logo from "../../assets/imgs/logoOrange.png";
+import { useHistory } from "react-router-dom";
 import { BsLinkedin, BsGithub, BsFillPersonLinesFill } from "react-icons/bs";
 
 const Developers = () => {
