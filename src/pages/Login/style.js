@@ -10,6 +10,8 @@ export const MainWrapper = styled.div`
 
   header > img {
     cursor: pointer;
+    width: 95%;
+    height: 90px;
   }
 
   max-width: 420px;

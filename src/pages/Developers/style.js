@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const Body = styled.body`
+export const Body = styled.div`
   background-image: linear-gradient(to bottom right, #faf8f5, #a59e9a);
 `;
 export const ContainerImg = styled.div`
