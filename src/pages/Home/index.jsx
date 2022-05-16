@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <Home>
       <Header>
-        <Button id="btnLogin" onClick={() => history.push("/login")}>
+        <Button redSchema id="btnLogin" onClick={() => history.push("/login")}>
           <span>Login</span>
         </Button>
       </Header>

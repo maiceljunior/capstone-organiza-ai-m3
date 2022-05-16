@@ -29,7 +29,6 @@ export const Main = styled.main`
 
   .nav-text > a > span {
     color: var(--white);
-    font-family: "Nunito", sans-serif;
     font-weight: bold;
   }
 
