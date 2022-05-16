@@ -22,7 +22,13 @@ import { useUser } from "../../providers/user";
 const Register = () => {
   const history = useHistory();
   const schema = yup.object().shape({
-    name: yup.string().required("Campo Obrigatório!"),
+    name: yup
+      .string()
+      .required("Campo Obrigatório!")
+      .matches(
+        /^[a-z ,.'-]+$/i,
+        "O nome deve conter apenas letras"
+      ),
     email: yup.string().email("Email inválido").required("Campo Obrigatório!"),
     password: yup
       .string()
