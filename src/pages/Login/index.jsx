@@ -12,8 +12,10 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
 import { useUser } from "../../providers/user";
+import { useRef } from "react";
 
 const Login = () => {
+  const toastId = useRef(null);
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -49,17 +51,19 @@ const Login = () => {
         });
       })
 
-      .catch(() =>
-        toast.error("Dados Incorretos!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-      );
+      .catch(() => {
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.error("Dados Incorretos!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      });
   }
 
   return (
