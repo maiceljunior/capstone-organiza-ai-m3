@@ -1,13 +1,13 @@
+import { Main } from "./style";
 import AvatarComponent from "../../components/Avatar";
-import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Navbar from "../../components/NavBar";
+import RenderList from "../../components/RenderList";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
-import { Main } from "./style";
 import { Loading } from "./loading";
-import RenderList from "../../components/RenderList";
-import { useForm } from "react-hook-form";
 
 const Dashboard = () => {
   const { user, setUser } = useUser();
@@ -19,25 +19,25 @@ const Dashboard = () => {
   const { register } = useForm();
 
   function Search() {
-    requisitionSearch(input)
-    setInput("")
+    requisitionSearch(input);
+    setInput("");
   }
 
   function requisitionSearch(Data) {
-    setRemovePrefs(false)
+    setRemovePrefs(false);
     setTimeout(() => {
       Api.get(`/eventsPublics?q=${Data}`).then((res) => {
-        setRemovePrefs(true)
-        setEvents(res.data)
-      })
-    }, 2000)
+        setRemovePrefs(true);
+        setEvents(res.data);
+      });
+    }, 2000);
   }
 
   useEffect(() => {
     Api.get(`/eventsPublics`).then((res) => {
-      setEvents(res.data)
-    })
-  }, [])
+      setEvents(res.data);
+    });
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -49,41 +49,38 @@ const Dashboard = () => {
   }, []);
 
   function getPreferences() {
-    setRemovePrefs(false)
+    setRemovePrefs(false);
     setTimeout(() => {
-      const futebol = !!user.Preferencias.futebol && "Futebol"
-      const RPG = !!user.Preferencias.RPG && "RPG"
-      const Tabuleiro = !!user.Preferencias.Tabuleiro && "Tabuleiro"
-      const Xadrez = !!user.Preferencias.Xadrez && "Xadrez"
-      const Online = !!user.Preferencias.Online && "Online"
-      const Outros = !!user.Preferencias.Outros && "Outros"
-      const Data = `/eventsPublics?type=${futebol}&type=${RPG}&type=${Xadrez}&type=${Online}&type=${Tabuleiro}&type=${Outros}`
+      const futebol = !!user.Preferencias.futebol && "Futebol";
+      const RPG = !!user.Preferencias.RPG && "RPG";
+      const Tabuleiro = !!user.Preferencias.Tabuleiro && "Tabuleiro";
+      const Xadrez = !!user.Preferencias.Xadrez && "Xadrez";
+      const Online = !!user.Preferencias.Online && "Online";
+      const Outros = !!user.Preferencias.Outros && "Outros";
+      const Data = `/eventsPublics?type=${futebol}&type=${RPG}&type=${Xadrez}&type=${Online}&type=${Tabuleiro}&type=${Outros}`;
 
-      FilterPref(Data)
-    }, 2000)
-
+      FilterPref(Data);
+    }, 2000);
   }
 
   function FilterPref(Data) {
     Api.get(Data).then((res) => {
-      setRemovePrefs(true)
-      setEvents(res.data)
-    })
+      setRemovePrefs(true);
+      setEvents(res.data);
+    });
   }
 
   function AllEvents() {
-    setRemovePrefs(false)
+    setRemovePrefs(false);
     setTimeout(() => {
       Api.get("eventsPublics").then((res) => {
-        setRemovePrefs(true)
-        setEvents(res.data)
-      })
-    }, 2000)
+        setRemovePrefs(true);
+        setEvents(res.data);
+      });
+    }, 2000);
   }
 
-
-  const handleClick = () => { };
-
+  const handleClick = () => {};
 
   return (
     <>
@@ -96,11 +93,20 @@ const Dashboard = () => {
             userAvatar
           />
         )}
-
       </Header>
       <Main>
         <Navbar />
-        <RenderList type="Dashboard" array={events} getPreferences={getPreferences} AllEvents={AllEvents} removePrefs={removePrefs} input={input} setInput={setInput} register={register} Search={Search} />
+        <RenderList
+          type="Dashboard"
+          array={events}
+          getPreferences={getPreferences}
+          AllEvents={AllEvents}
+          removePrefs={removePrefs}
+          input={input}
+          setInput={setInput}
+          register={register}
+          Search={Search}
+        />
       </Main>
     </>
   );

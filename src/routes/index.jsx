@@ -11,7 +11,7 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/developers" component={Developers} />
+      <Route path="/developers" component={Developers} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component={Dashboard} isPrivate />

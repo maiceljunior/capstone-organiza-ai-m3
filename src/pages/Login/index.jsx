@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import ImageLoginMobile from "../../assets/img/ImageLoginMobile.png";
-import ImageLoginDesktop from "../../assets/img/ImageLoginDesktop.png";
+import { toast } from "react-toastify";
+import { MainWrapper, DivRegister, FigureLogin, DivImgs } from "./style";
+import ImageLoginMobile from "../../assets/imgs/ImageLoginMobile.png";
+import ImageLoginDesktop from "../../assets/imgs/ImageLoginDesktop.png";
+import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { MainWrapper, DivRegister, FigureLogin, DivImgs } from "./style";
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Header from "../../components/Header";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
-import { toast } from "react-toastify";
 import { useUser } from "../../providers/user";
 
 const Login = () => {

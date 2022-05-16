@@ -56,6 +56,6 @@ export default createGlobalStyle`
         font-weight:400;
     }
     p{
-        font-size: 14px;
+        font-size: 16px;
     }
 `;
