@@ -11,13 +11,42 @@ import XadrezIcon from "../../assets/imgs/Xadrez.jpg"
 import RpgIcon from "../../assets/imgs/Rpg.png"
 import TabuleiroIcon from "../../assets/imgs/Tabuleiro.png"
 import OnlineIcon from "../../assets/imgs/Online.png"
+import { Api } from "../../services/api";
+import { useUser } from "../../providers/user";
 
 const CardEvent = ({ event }) => {
-  const { nameEvent, description, type, userId } = event;
+  const { user } = useUser()
+  const { nameEvent, description, type, id, userId, guests, eventToken } = event;
   const userLogged = localStorage.getItem("UserID");
 
+
+  function joinEvent(usuario) {
+
+    if (guests.includes(usuario)) {
+      alert("ja existe esse usuario")
+    } else {
+      guests.push(usuario)
+      const newGuest = [...guests, usuario]
+
+      // joinEventApi(newGuest)
+
+    }
+
+  }
+
+  function joinEventApi(data) {
+    Api.patch(`eventsPublics/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${eventToken}`,
+      },
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+
+  };
+
   return (
-    <MainWrapper id={userId}>
+    <MainWrapper>
       <ImgEventWrapper>
         {
           type === "Futebol" ?
@@ -62,9 +91,9 @@ const CardEvent = ({ event }) => {
       </InfoEventWrapper>
       <ButtonEventWrapper>
         {parseInt(userLogged) === userId ?
-          <ButtonComponent redSchema>Editar</ButtonComponent>
+          <ButtonComponent onClick={() => console.log("editar")} redSchema>Editar</ButtonComponent>
           :
-          <ButtonComponent>Participar</ButtonComponent>
+          <ButtonComponent onClick={() => joinEvent(user)}>Participar</ButtonComponent>
         }
       </ButtonEventWrapper>
     </MainWrapper>
