@@ -108,17 +108,10 @@ const AvatarComponent = ({ userName, userAvatar = false }) => {
             <MenuItem>
               <Avatar /> Profile
             </MenuItem>
-            <MenuItem>
-              <Avatar /> My Events
-            </MenuItem>
+
             <Divider />
 
-            <MenuItem>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-              Settings
-            </MenuItem>
+
             <MenuItem onClick={() => handleLogout()}>
               <ListItemIcon>
                 <Logout fontSize="small" />

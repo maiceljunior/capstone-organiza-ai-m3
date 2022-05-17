@@ -49,6 +49,7 @@ const CreateEvents = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   const history = useHistory();
+  const handleClick = () => { }
 
   const schema = yup.object().shape({
     nameEvent: yup.string().required("Campo Obrigatório!"),
@@ -224,9 +225,6 @@ const CreateEvents = () => {
                 <h4>Categoria do evento</h4>
                 <EventCategory name="type" {...register("type")}>
                   <option value="Outros">Outros</option>
-
-              <div>
-                <select name="type" {...register("type")}>
                   <option value="Futebol">Futebol</option>
                   <option value="Tabuleiro">Tabuleiro</option>
                   <option value="Xadrez">Xadrez</option>
@@ -235,7 +233,7 @@ const CreateEvents = () => {
                 </EventCategory>
               </CategoryContainer>
 
-              
+
               <Controller
                 control={control}
                 name="dateEvent"
