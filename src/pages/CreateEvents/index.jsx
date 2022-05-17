@@ -57,13 +57,15 @@ const CreateEvents = () => {
     });
   });
 
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   function onSubmitFunction(data) {
     data.guests = guest;
     data.idEvento = parseInt(UserID);
     data.userId = parseInt(UserID);
     data.eventToken = Token;
+    data.requests = []
+    data.denied = []
 
     newEvent(data);
   }
