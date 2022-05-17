@@ -94,71 +94,73 @@ const AboutEventModal = ({ setModalOpen, event }) => {
 
     return (
         <ModalContainer>
-            <Modal>
-                <Header>
-                    <button className="exit" onClick={exitModal}>X</button>
-                </Header>
+            {user.name &&
+                <Modal>
+                    <Header>
+                        <button className="exit" onClick={exitModal}>X</button>
+                    </Header>
 
-                <DivInputs>
-                    <div>
-                        <label className="inp">
-                            <input disabled id="inp" value={nameEvent} />
-                            <span className="label">Nome do evento</span>
-                            <span className="focus-bg"></span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="inp">
-                            <input disabled id="inp" value={type} />
-                            <span className="label">Tipo de evento</span>
-                            <span className="focus-bg"></span>
-                        </label>
-                    </div>
+                    <DivInputs>
+                        <div>
+                            <label className="inp">
+                                <input disabled id="inp" value={nameEvent} />
+                                <span className="label">Nome do evento</span>
+                                <span className="focus-bg"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label className="inp">
+                                <input disabled id="inp" value={type} />
+                                <span className="label">Tipo de evento</span>
+                                <span className="focus-bg"></span>
+                            </label>
+                        </div>
 
-                    <div>
-                        <label className="inp">
-                            <input disabled id="inp" value={description} />
-                            <span className="label">Descrição do evento</span>
-                            <span className="focus-bg"></span>
-                        </label>
-                    </div>
+                        <div>
+                            <label className="inp">
+                                <input disabled id="inp" value={description} />
+                                <span className="label">Descrição do evento</span>
+                                <span className="focus-bg"></span>
+                            </label>
+                        </div>
 
 
 
-                    <div className="ulPosition">
-                        <span>Lista de Convidados</span>
+                        <div className="ulPosition">
+                            <span>Lista de Convidados</span>
 
-                        <ul>
-                            {guestRender.map(guest => {
-                                return (
-                                    <li key={guest.id}>{guest.name}</li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+                            <ul>
+                                {guestRender.map(guest => {
+                                    return (
+                                        <li key={guest.id}>{guest.name}</li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
 
-                    <div className="positionBtns">
-                        <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
+                        <div className="positionBtns">
+                            <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
 
-                        {isGuest(user) === undefined && isDenied(user) === undefined ?
+                            {isGuest(user) === undefined && isDenied(user) === undefined ?
 
-                            <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
-
-                            :
-
-                            isGuest(user) !== undefined ?
-
-                                <span>Chat do evento</span>
+                                <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
 
                                 :
 
-                                <span>VC N PODE PARTICIPAR DESSE EVENTO</span>
-                        }
-                    </div>
+                                isGuest(user) !== undefined ?
 
-                </DivInputs>
+                                    <span>Chat do evento</span>
 
-            </Modal>
+                                    :
+
+                                    <span>VC N PODE PARTICIPAR DESSE EVENTO</span>
+                            }
+                        </div>
+
+                    </DivInputs>
+
+                </Modal>
+            }
         </ModalContainer>
     )
 }
