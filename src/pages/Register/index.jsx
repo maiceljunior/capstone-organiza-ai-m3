@@ -26,8 +26,8 @@ const Register = () => {
       .string()
       .required("Campo Obrigatório!")
       .matches(
-        /^[a-z ,.'-]+$/i,
-        "O nome deve conter apenas letras"
+        /^((\b[A-ZÀ-Ú][a-zà-ú]{1,15})\s*){2,15}$/,
+        "Deve conter no mínimo seu nome e sobrenome, ambos sendo compostos apenas por letras e iniciando com letra maiúscula."
       ),
     email: yup.string().email("Email inválido").required("Campo Obrigatório!"),
     password: yup
@@ -36,7 +36,7 @@ const Register = () => {
       .required("Campo Obrigatório!")
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-        "Senha deve conter no minimo uma letra maiúscula, uma letra minúscula, números e ao menos um símbolo!"
+        "Deve conter no mínimo: uma letra maiúscula, uma letra minúscula, um número e ao menos um destes símbolos: #?!@$ %^&*-"
       ),
     passwordConfirm: yup
       .string()
@@ -103,17 +103,29 @@ const Register = () => {
           progress: undefined,
         });
       })
-      .catch(() =>
-        toast.error("Dados Incorretos!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-      );
+      .catch((err) => {
+        if (err.response.data === "Email already exists") {
+          toast.error("Email já cadastrado!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+          toast.error("Dados Inválidos!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      });
   }
 
   return (
@@ -134,8 +146,8 @@ const Register = () => {
               register={register}
               type="text"
               name="name"
-              label="Nome"
-              placeholder="Digite aqui seu nome"
+              label="Nome e Sobrenome"
+              placeholder="Digite aqui seu nome e sobrenome"
             />
             {errors.name && (
               <span className="error">{errors.name.message}</span>
