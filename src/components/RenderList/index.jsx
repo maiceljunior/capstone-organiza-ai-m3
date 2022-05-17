@@ -33,13 +33,18 @@ const RenderList = ({
 }) => {
   const { user } = useUser();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Search();
+  };
+
   return (
     <>
       {type === "Dashboard" && (
         <PositionContent>
           <MainRenderList>
             <h2>Eventos</h2>
-            <DivSearch>
+            <DivSearch onSubmit={handleSubmit}>
               <Input
                 id="Search"
                 register={register}
@@ -48,7 +53,7 @@ const RenderList = ({
                 onChange={(event) => setInput(event.target.value)}
                 placeholder="Pesquise um evento"
               />
-              <Button redSchema onClick={() => Search()}>
+              <Button type="submit" redSchema>
                 Buscar
               </Button>
             </DivSearch>
@@ -68,10 +73,7 @@ const RenderList = ({
               <ul>
                 {array.length > 0 ? (
                   array.map((event, index) => {
-
-                    return (
-                      <CardEvent event={event} key={index} />
-                    );
+                    return <CardEvent event={event} key={index} />;
                   })
                 ) : (
                   <DivNotEvents>
