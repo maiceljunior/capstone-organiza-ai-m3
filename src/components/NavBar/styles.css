@@ -71,7 +71,7 @@
   align-items: center;
 }
 
-span {
+.spanNavBar {
   margin-left: 16px;
 }
 
@@ -151,7 +151,7 @@ span {
     align-items: center;
   }
 
-  span {
+  .spanNavBar {
     margin-left: 16px;
   }
 }
