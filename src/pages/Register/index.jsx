@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
 import { useUser } from "../../providers/user";
+import { useRef } from "react";
 
 const Register = () => {
   const history = useHistory();
@@ -83,7 +84,7 @@ const Register = () => {
 
     postRegister(newData);
   }
-
+  const toastId = useRef(null);
   function postRegister(user) {
     Api.post("/register", user)
       .then((res) => {
@@ -104,26 +105,28 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        if (err.response.data === "Email already exists") {
-          toast.error("Email já cadastrado!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        } else {
-          toast.error("Dados Inválidos!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+        if (!toast.isActive(toastId.current)) {
+          if (err.response.data === "Email already exists") {
+            toastId.current = toast.error("Email já cadastrado!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else {
+            toastId.current = toast.error("Dados Inválidos!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
         }
       });
   }
