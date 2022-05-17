@@ -15,10 +15,13 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     const { type, nameEvent, description, guests, eventToken, id, requests, denied } = event
 
     useEffect(() => {
-        Api.get(`/eventsPublics/${id}`).then((res) => {
-            setGuestRender(res.data.guests)
-            setRequestRender(res.data.requests)
-        });
+        async function getEvent() {
+            await Api.get(`/eventsPublics/${id}`).then((res) => {
+                setGuestRender(res.data.guests)
+                setRequestRender(res.data.requests)
+            });
+        }
+        getEvent()
     }, []);
 
 
@@ -73,7 +76,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
 
 
     function isGuest(user) {
-        const listGuests = guests.find(guest => user.id === guest.id);
+        const listGuests = guestRender.find(guest => user.id === guest.id);
 
         return listGuests;
     }
@@ -154,8 +157,6 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                     </div>
 
                 </DivInputs>
-
-
 
             </Modal>
         </ModalContainer>
