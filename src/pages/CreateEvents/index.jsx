@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+
 import {
   Main,
   MainRenderListCreateEvent,
@@ -6,6 +7,12 @@ import {
   SearchPeople,
   Guests,
   FakeButton,
+  PessoasAdicionadas,
+  GuestCard,
+  GuestButton,
+  EventCategory,
+  CategoryContainer,
+  NoInvitesForNow,
 } from "./style";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -21,6 +28,8 @@ import { Loading } from "./loading";
 import { useForm } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { useGuest } from "../../providers/guests";
+import { useRef } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const CreateEvents = () => {
   const { user, setUser } = useUser();
@@ -36,9 +45,12 @@ const CreateEvents = () => {
     type: yup.string(),
   });
 
+  const toastId = useRef(null);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
@@ -57,17 +69,24 @@ const CreateEvents = () => {
     });
   });
 
-  const handleClick = () => { };
+  const history = useHistory();
+
+  const handleClick = () => {};
+
+  const { guest, setGuest } = useGuest();
 
   function onSubmitFunction(data) {
     data.guests = guest;
     data.idEvento = parseInt(UserID);
     data.userId = parseInt(UserID);
     data.eventToken = Token;
-    data.requests = []
-    data.denied = []
+    data.requests = [];
+    data.denied = [];
 
     newEvent(data);
+    reset();
+    setGuest([]);
+    history.push("/dashboard")
   }
 
   function newEvent(data) {
@@ -77,17 +96,20 @@ const CreateEvents = () => {
       },
     })
       .then((res) => {
-        toast.success("Evento criado com sucesso!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.success("Evento criado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         toast.error("Falha ao criar o evento!", {
           position: "top-right",
           autoClose: 5000,
@@ -104,7 +126,10 @@ const CreateEvents = () => {
     setModalOpen(true);
   }
 
-  const { guest } = useGuest();
+  const removeGuest = (guesst) => {
+    const newGuestList = guest.filter((gst) => gst.id !== guesst.id);
+    setGuest(newGuestList);
+  };
 
   return (
     <>
@@ -124,39 +149,61 @@ const CreateEvents = () => {
           <h2>Criar evento</h2>
           <ContentRenderListCreateEvent>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
+              {errors.nameEvent && (
+                <span className="error">{errors.nameEvent.message}</span>
+              )}
               <Input
                 label={"Nome do evento"}
                 register={register}
                 name="nameEvent"
                 placeholder="Nome do evento"
               />
+              {errors.description && (
+                <span className="error">{errors.description.message}</span>
+              )}
               <Input
                 label={"Descrição do evento"}
                 name="description"
                 placeholder={"Descrição do evento"}
                 register={register}
               />
-              <div>
-                <select name="type" {...register("type")}>
+
+              <CategoryContainer>
+                <h4>Categoria do evento</h4>
+                <EventCategory name="type" {...register("type")}>
+                  <option value="Outros">Outros</option>
                   <option value="Futebol">Futebol</option>
                   <option value="Tabuleiro">Tabuleiro</option>
                   <option value="Xadrez">Xadrez</option>
                   <option value="RPG">RPG</option>
                   <option value="Online">Online</option>
-                  <option value="Outros">Outros</option>
-                </select>
-              </div>
+                </EventCategory>
+              </CategoryContainer>
+
               <SearchPeople>
                 <h3>Buscar pessoas</h3>
                 <FakeButton onClick={searchPeople}>+</FakeButton>
               </SearchPeople>
               <Guests>
-                <h4>Pessoas adicionadas</h4>
+                <PessoasAdicionadas>Lista de Convidados</PessoasAdicionadas>
+
                 <ul>
-                  {guest.length > 0 &&
+                  {guest.length > 0 ? (
                     guest.map((convidados) => {
-                      return <li key={convidados.id}>{convidados.name}</li>;
-                    })}
+                      return (
+                        <GuestCard key={convidados.id}>
+                          {convidados.name}
+                          <GuestButton onClick={() => removeGuest(convidados)}>
+                            X
+                          </GuestButton>
+                        </GuestCard>
+                      );
+                    })
+                  ) : (
+                    <NoInvitesForNow>
+                      A lista de convidados está vazia.
+                    </NoInvitesForNow>
+                  )}
                 </ul>
               </Guests>
               <Button type="submit">Enviar</Button>
@@ -164,6 +211,7 @@ const CreateEvents = () => {
           </ContentRenderListCreateEvent>
         </MainRenderListCreateEvent>
       </Main>
+
       {modalOpen && (
         <SearchPeopleModal
           arrayPessoas={usuarios}
