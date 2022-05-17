@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+
 import {
   Main,
   MainRenderListCreateEvent,
@@ -6,6 +7,12 @@ import {
   SearchPeople,
   Guests,
   FakeButton,
+  PessoasAdicionadas,
+  GuestCard,
+  GuestButton,
+  EventCategory,
+  CategoryContainer,
+  NoInvitesForNow,
 } from "./style";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -21,18 +28,27 @@ import { Loading } from "./loading";
 import { useForm, Controller } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { useGuest } from "../../providers/guests";
+import { useRef } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
+
 const CreateEvents = () => {
   const { user, setUser } = useUser();
+  const { guest, setGuest } = useGuest();
+  const toastId = useRef(null);
+
   const UserID = localStorage.getItem("UserID");
   const Token = localStorage.getItem("TokenOrganizaAi");
+
   const [removeLoading, setRemoveLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
+
+  const history = useHistory();
 
   const schema = yup.object().shape({
     nameEvent: yup.string().required("Campo Obrigatório!"),
@@ -44,6 +60,7 @@ const CreateEvents = () => {
   const {
     register,
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -63,7 +80,6 @@ const CreateEvents = () => {
     });
   });
 
-  const handleClick = () => {};
 
   function treatDate(value) {
     const day = new Date(value).getDay();
@@ -106,6 +122,7 @@ const CreateEvents = () => {
     ];
   }
 
+
   function onSubmitFunction(data) {
     const dateEventArray = treatDate(data.dateEvent);
 
@@ -116,7 +133,11 @@ const CreateEvents = () => {
     data.requests = [];
     data.denied = [];
     data.dateEvent = dateEventArray;
+
     newEvent(data);
+    reset();
+    setGuest([]);
+    history.push("/dashboard")
   }
 
   function newEvent(data) {
@@ -126,17 +147,20 @@ const CreateEvents = () => {
       },
     })
       .then((res) => {
-        toast.success("Evento criado com sucesso!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.success("Evento criado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         toast.error("Falha ao criar o evento!", {
           position: "top-right",
           autoClose: 5000,
@@ -153,7 +177,10 @@ const CreateEvents = () => {
     setModalOpen(true);
   }
 
-  const { guest } = useGuest();
+  const removeGuest = (guesst) => {
+    const newGuestList = guest.filter((gst) => gst.id !== guesst.id);
+    setGuest(newGuestList);
+  };
 
   return (
     <>
@@ -174,12 +201,18 @@ const CreateEvents = () => {
           <h2>Criar evento</h2>
           <ContentRenderListCreateEvent>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
+              {errors.nameEvent && (
+                <span className="error">{errors.nameEvent.message}</span>
+              )}
               <Input
                 label={"Nome do evento"}
                 register={register}
                 name="nameEvent"
                 placeholder="Nome do evento"
               />
+              {errors.description && (
+                <span className="error">{errors.description.message}</span>
+              )}
               <Input
                 label={"Descrição do evento"}
                 name="description"
@@ -187,6 +220,22 @@ const CreateEvents = () => {
                 register={register}
               />
 
+              <CategoryContainer>
+                <h4>Categoria do evento</h4>
+                <EventCategory name="type" {...register("type")}>
+                  <option value="Outros">Outros</option>
+
+              <div>
+                <select name="type" {...register("type")}>
+                  <option value="Futebol">Futebol</option>
+                  <option value="Tabuleiro">Tabuleiro</option>
+                  <option value="Xadrez">Xadrez</option>
+                  <option value="RPG">RPG</option>
+                  <option value="Online">Online</option>
+                </EventCategory>
+              </CategoryContainer>
+
+              
               <Controller
                 control={control}
                 name="dateEvent"
@@ -202,27 +251,30 @@ const CreateEvents = () => {
                 )}
               />
 
-              <div>
-                <select name="type" {...register("type")}>
-                  <option value="Futebol">Futebol</option>
-                  <option value="Tabuleiro">Tabuleiro</option>
-                  <option value="Xadrez">Xadrez</option>
-                  <option value="RPG">RPG</option>
-                  <option value="Online">Online</option>
-                  <option value="Outros">Outros</option>
-                </select>
-              </div>
               <SearchPeople>
                 <h3>Buscar pessoas</h3>
                 <FakeButton onClick={searchPeople}>+</FakeButton>
               </SearchPeople>
               <Guests>
-                <h4>Pessoas adicionadas</h4>
+                <PessoasAdicionadas>Lista de Convidados</PessoasAdicionadas>
+
                 <ul>
-                  {guest.length > 0 &&
+                  {guest.length > 0 ? (
                     guest.map((convidados) => {
-                      return <li key={convidados.id}>{convidados.name}</li>;
-                    })}
+                      return (
+                        <GuestCard key={convidados.id}>
+                          {convidados.name}
+                          <GuestButton onClick={() => removeGuest(convidados)}>
+                            X
+                          </GuestButton>
+                        </GuestCard>
+                      );
+                    })
+                  ) : (
+                    <NoInvitesForNow>
+                      A lista de convidados está vazia.
+                    </NoInvitesForNow>
+                  )}
                 </ul>
               </Guests>
               <Button type="submit">Enviar</Button>
@@ -230,6 +282,7 @@ const CreateEvents = () => {
           </ContentRenderListCreateEvent>
         </MainRenderListCreateEvent>
       </Main>
+
       {modalOpen && (
         <SearchPeopleModal
           arrayPessoas={usuarios}

@@ -107,7 +107,8 @@ export const SectionOne = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--white-dark);
+  background-color: var(--white-dark
+    );
 
   div {
     display: flex;
