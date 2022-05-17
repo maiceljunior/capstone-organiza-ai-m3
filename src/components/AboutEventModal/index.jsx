@@ -3,13 +3,14 @@ import Header from "../../components/Header"
 import Button from "../../components/Button"
 import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const AboutEventModal = ({ setModalOpen, event }) => {
 
     const { user } = useUser();
+    const toastId = useRef(null);
     const [guestRender, setGuestRender] = useState([]);
     const [requestRender, setRequestRender] = useState([]);
     const { type, nameEvent, description, guests, eventToken, id, requests, denied } = event
@@ -34,15 +35,17 @@ const AboutEventModal = ({ setModalOpen, event }) => {
             joinEventApi(newRequest);
 
         } else {
-            toast.info('Você já solicitou a entrada no evento, aguarde pela aceitação do Host.', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            if (!toast.isActive(toastId.current)) {
+                toastId.current = toast.info('Você já solicitou a entrada no evento, aguarde pela aceitação do Host.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
     }
 
