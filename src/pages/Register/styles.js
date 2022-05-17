@@ -129,9 +129,28 @@ export const CheckBoxContainer = styled.div`
 
 export const DivLogin = styled.div`
   margin: 20px auto;
+  font-size: 15px;
+  display: flex;
   align-items: center;
 
   p {
     line-height: 25px;
+  }
+  .gologin {
+    width: 110px;
+    background-color: var(--yellow);
+    border-radius: 5px;
+    color: var(--white);
+    box-shadow: 10px 5px 5px grey;
+    text-align: center;
+
+    :hover {
+      cursor: pointer;
+      box-shadow: 10px 5px 5px var(--red);
+    }
+    a {
+      text-decoration: none;
+      color: var(--red);
+    }
   }
 `;

@@ -63,8 +63,25 @@ export const MainWrapper = styled.div`
 
 export const DivRegister = styled.div`
   margin: 20px auto;
+  font-size: 15px;
+  text-align: center;
   p {
     line-height: 25px;
+  }
+  .goregister {
+    background-color: var(--yellow);
+    border-radius: 5px;
+    color: var(--white);
+    box-shadow: 10px 5px 5px grey;
+
+    :hover {
+      cursor: pointer;
+      box-shadow: 10px 5px 5px var(--red);
+    }
+    a {
+      text-decoration: none;
+      color: var(--red);
+    }
   }
 `;
 

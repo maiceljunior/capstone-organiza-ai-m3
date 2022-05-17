@@ -92,7 +92,7 @@ const Login = () => {
             </form>
             <DivRegister>
               <p>Não possui uma conta?</p>
-              <p>
+              <p className="goregister">
                 Faça seu <Link to="/register">cadastro</Link>
               </p>
             </DivRegister>

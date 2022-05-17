@@ -19,9 +19,6 @@ import { useHistory } from "react-router-dom";
 import { Api } from "../../services/api";
 import { useUser } from "../../providers/user";
 
-
-
-
 const Register = () => {
   const history = useHistory();
   const schema = yup.object().shape({
@@ -30,14 +27,18 @@ const Register = () => {
     password: yup
       .string()
       .min(6, "Mínimo de 6 digitos")
-      .required("Campo Obrigatório!").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/, "Senha deve conter no minimo uma letra maiúscula, uma letra minúscula, números e ao menos um símbolo!"),
+      .required("Campo Obrigatório!")
+      .matches(
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+        "Senha deve conter no minimo uma letra maiúscula, uma letra minúscula, números e ao menos um símbolo!"
+      ),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password")], "Senhas diferentes.")
       .required("Campo Obrigatório!"),
   });
 
-  const { setUser } = useUser()
+  const { setUser } = useUser();
 
   const {
     register,
@@ -46,11 +47,35 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   function onSubmitFunction(data) {
-    const { name, email, Futebol, Tabuleiro, RPG, Xadrez, Online, Outros, password } = data
+    const {
+      name,
+      email,
+      Futebol,
+      Tabuleiro,
+      RPG,
+      Xadrez,
+      Online,
+      Outros,
+      password,
+    } = data;
 
-    const newData = { name: name, email: email, Preferencias: { futebol: Futebol, Tabuleiro: Tabuleiro, RPG: RPG, Xadrez: Xadrez, Online: Online, Outros: Outros }, password: password, events: [], friends: [] }
+    const newData = {
+      name: name,
+      email: email,
+      Preferencias: {
+        futebol: Futebol,
+        Tabuleiro: Tabuleiro,
+        RPG: RPG,
+        Xadrez: Xadrez,
+        Online: Online,
+        Outros: Outros,
+      },
+      password: password,
+      events: [],
+      friends: [],
+    };
 
-    postRegister(newData)
+    postRegister(newData);
   }
 
   function postRegister(user) {
@@ -84,8 +109,6 @@ const Register = () => {
         })
       );
   }
-
-
 
   return (
     <Container>
@@ -126,17 +149,42 @@ const Register = () => {
             <label>Preferências:</label>
 
             <CheckBoxContainer>
-              <Checkbox register={register} name="Futebol" label="Futebol" value="Futebol" />
+              <Checkbox
+                register={register}
+                name="Futebol"
+                label="Futebol"
+                value="Futebol"
+              />
               <Checkbox
                 register={register}
                 name="Tabuleiro"
                 label="Tabuleiro"
                 value="Tabuleiro"
               />
-              <Checkbox register={register} name="RPG" label="RPG" value="RPG" />
-              <Checkbox register={register} name="Online" label="Online" value="Online" />
-              <Checkbox register={register} name="Xadrez" label="Xadrez" value="Xadrez" />
-              <Checkbox register={register} name="Outros" label="Outros" value="Outros" />
+              <Checkbox
+                register={register}
+                name="RPG"
+                label="RPG"
+                value="RPG"
+              />
+              <Checkbox
+                register={register}
+                name="Online"
+                label="Online"
+                value="Online"
+              />
+              <Checkbox
+                register={register}
+                name="Xadrez"
+                label="Xadrez"
+                value="Xadrez"
+              />
+              <Checkbox
+                register={register}
+                name="Outros"
+                label="Outros"
+                value="Outros"
+              />
             </CheckBoxContainer>
             <Input
               label="Senha"
@@ -160,17 +208,14 @@ const Register = () => {
               <span className="error">{errors.passwordConfirm.message}</span>
             )}
 
-            <Button type="submit">
-              Cadastrar
-            </Button>
+            <Button type="submit">Cadastrar</Button>
 
             <DivLogin>
               <p>Já possui uma conta?</p>
-              <p>
+              <p className="gologin">
                 Faça seu <Link to="/login">login</Link>{" "}
               </p>
             </DivLogin>
-
           </form>
         </AnimationContainer>
       </Content>
