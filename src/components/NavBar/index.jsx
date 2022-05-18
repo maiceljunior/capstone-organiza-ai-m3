@@ -17,11 +17,11 @@ function Navbar() {
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
           <Link to="#" className="menu-bars">
-            <IoIcons.IoIosArrowForward onClick={showSidebar} />
+            <IoIcons.IoIosArrowForward onMouseEnter={showSidebar} />
           </Link>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
+          <ul className="nav-menu-items" onMouseLeave={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
                 <AiIcons.AiOutlineClose />

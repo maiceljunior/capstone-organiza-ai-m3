@@ -9,13 +9,13 @@ export const StyledHeaderOrange = styled.header`
   align-items: center;
 
   img {
-    width: 300px;
+    width: 50vw;
     height: 50px;
   }
 
   @media (max-width: 768px) {
     img {
-      width: 300px;
+      width: 50vw;
       height: 50px;
     }
   }

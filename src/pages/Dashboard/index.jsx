@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
 import { Loading } from "./loading";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Dashboard = () => {
   const { user, setUser } = useUser();
@@ -33,11 +34,15 @@ const Dashboard = () => {
     }, 2000);
   }
 
+  const history = useHistory()
+
   useEffect(() => {
     Api.get(`/eventsPublics`).then((res) => {
       setEvents(res.data);
+     
     });
   }, []);
+
 
   useEffect(() => {
     setTimeout(() => {

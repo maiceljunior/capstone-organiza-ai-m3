@@ -8,13 +8,13 @@ const Header = ({ children, onClick }) => {
       {children ? (
         <StyledHeaderOrange onClick={onClick}>
           <DivHeader>
-            <img src={logoWhite} alt="ORGANIZA AI" />
+            <img className="logo" src={logoWhite} alt="ORGANIZA AI" />
             {children}
           </DivHeader>
         </StyledHeaderOrange>
       ) : (
         <StyledHeaderWhite onClick={onClick}>
-          <img src={logoOrange} alt="ORGANIZA AI" />
+          <img className="logo" src={logoOrange} alt="ORGANIZA AI" />
         </StyledHeaderWhite>
       )}
     </>

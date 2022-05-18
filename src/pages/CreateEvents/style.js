@@ -85,8 +85,8 @@ export const ContentRenderList = styled.div`
   justify-content: center;
 
   ul {
-    overflow-y: auto;
-    height: 50vh;
+    overflow-y: scroll;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -144,11 +144,6 @@ export const ContentRenderListCreateEvent = styled(ContentRenderList)`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
-    ul {
-      justify-content: center;
-      min-height: 10%;
-    }
   }
   button {
     width: 90%;
@@ -189,9 +184,6 @@ export const Guests = styled.div`
   border-radius: 5px;
   width: 90%;
   margin: 10px 0;
-  ul {
-    height: 100%;
-  }
 `;
 
 export const FakeButton = styled.div`
@@ -242,6 +234,7 @@ export const GuestButton = styled.button`
 
 export const EventCategory = styled.select`
   width: 30%;
+  min-width: 79px;
   border-style: none;
   background-color: var(--yellow);
   height: 25px;
@@ -270,5 +263,20 @@ export const CategoryContainer = styled.div`
 `;
 
 export const NoInvitesForNow = styled.h4`
-margin-top:15px;
+  margin-top: 15px;
+`;
+export const HourAndDateContainer = styled.div`
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const GuestList = styled.ul`
+  overflow-y: scroll;
+  height: 200px;
+`;
+
+export const ContainerGuest = styled.div`
+width:100%;
 `
