@@ -58,7 +58,7 @@ const SearchPeopleModal = ({ setModalOpen, arrayPessoas }) => {
             
             {!!arrayPessoas &&
               arrayPessoas.map((pessoa) => (
-                <PeopleCard key={pessoa.name}>
+                <PeopleCard key={pessoa.id}>
                   <p>{pessoa.name}</p>
                   
                   <ButtonInvite onClick={() => addArray(pessoa)}>+</ButtonInvite>

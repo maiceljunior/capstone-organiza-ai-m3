@@ -13,6 +13,9 @@ import {
   EventCategory,
   CategoryContainer,
   NoInvitesForNow,
+  HourAndDateContainer,
+  GuestList,
+  ContainerGuest,
 } from "./style";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -35,7 +38,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
-
 const CreateEvents = () => {
   const { user, setUser } = useUser();
   const { guest, setGuest } = useGuest();
@@ -49,7 +51,7 @@ const CreateEvents = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   const history = useHistory();
-  const handleClick = () => { }
+  const handleClick = () => {};
 
   const schema = yup.object().shape({
     nameEvent: yup.string().required("Campo Obrigatório!"),
@@ -80,7 +82,6 @@ const CreateEvents = () => {
       setUsuarios(res.data);
     });
   });
-
 
   function treatDate(value) {
     const day = new Date(value).getDay();
@@ -123,10 +124,8 @@ const CreateEvents = () => {
     ];
   }
 
-
   function onSubmitFunction(data) {
     const dateEventArray = treatDate(data.dateEvent);
-
     data.guests = guest;
     data.idEvento = parseInt(UserID);
     data.userId = parseInt(UserID);
@@ -136,9 +135,9 @@ const CreateEvents = () => {
     data.dateEvent = dateEventArray;
 
     newEvent(data);
-    reset();
     setGuest([]);
-    history.push("/dashboard")
+    reset();
+    history.push("/dashboard");
   }
 
   function newEvent(data) {
@@ -233,48 +232,53 @@ const CreateEvents = () => {
                 </EventCategory>
               </CategoryContainer>
 
-
-              <Controller
-                control={control}
-                name="dateEvent"
-                render={({ field: { onChange, value } }) => (
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DateTimePicker
-                      renderInput={(props) => <TextField {...props} />}
-                      label="Horario"
-                      value={value}
-                      onChange={onChange}
-                    />
-                  </LocalizationProvider>
-                )}
-              />
-
-              <SearchPeople>
-                <h3>Buscar pessoas</h3>
-                <FakeButton onClick={searchPeople}>+</FakeButton>
-              </SearchPeople>
-              <Guests>
-                <PessoasAdicionadas>Lista de Convidados</PessoasAdicionadas>
-
-                <ul>
-                  {guest.length > 0 ? (
-                    guest.map((convidados) => {
-                      return (
-                        <GuestCard key={convidados.id}>
-                          {convidados.name}
-                          <GuestButton onClick={() => removeGuest(convidados)}>
-                            X
-                          </GuestButton>
-                        </GuestCard>
-                      );
-                    })
-                  ) : (
-                    <NoInvitesForNow>
-                      A lista de convidados está vazia.
-                    </NoInvitesForNow>
+              <HourAndDateContainer>
+                <h4>Data e Hora</h4>
+                <Controller
+                  control={control}
+                  name="dateEvent"
+                  render={({ field: { onChange, value } }) => (
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DateTimePicker
+                        renderInput={(props) => <TextField {...props} />}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    </LocalizationProvider>
                   )}
-                </ul>
-              </Guests>
+                />
+              </HourAndDateContainer>
+              <ContainerGuest>
+                <SearchPeople>
+                  <h3>Buscar pessoas</h3>
+                  <FakeButton onClick={searchPeople}>+</FakeButton>
+                </SearchPeople>
+                <Guests>
+                  <PessoasAdicionadas>Lista de Convidados</PessoasAdicionadas>
+
+                  <GuestList>
+                    {guest.length > 0 ? (
+                      guest.map((convidados) => {
+                        return (
+                          <GuestCard key={convidados.id}>
+                            {convidados.name}
+                            <GuestButton
+                              onClick={() => removeGuest(convidados)}
+                            >
+                              X
+                            </GuestButton>
+                          </GuestCard>
+                        );
+                      })
+                    ) : (
+                      <NoInvitesForNow>
+                        A lista de convidados está vazia.
+                      </NoInvitesForNow>
+                    )}
+                  </GuestList>
+                </Guests>
+              </ContainerGuest>
+
               <Button type="submit">Enviar</Button>
             </form>
           </ContentRenderListCreateEvent>
