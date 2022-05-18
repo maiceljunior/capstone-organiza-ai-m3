@@ -8,6 +8,9 @@ export const MainWrapper = styled.div`
   justify-content: space-between;
   border-radius: 5px;
   box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
 `;
 
 export const ImgEventWrapper = styled.div`
