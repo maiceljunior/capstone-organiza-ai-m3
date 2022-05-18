@@ -7,25 +7,22 @@ export const MainRenderList = styled.main`
   width: 80%;
   min-height: 490px;
   align-items: flex-start;
-  margin-top: 4vw;
+  margin-top: 40px;
 `;
 
 export const MainRenderListCreateEvent = styled(MainRenderList)`
   justify-content: flex-start;
-  margin-top: 30px;
+  margin-top: 10px;
   @media (min-width: 768px) {
-    margin: 30px auto;
     max-width: 630px;
   }
   @media (min-width: 1024px) {
-    margin: 30px auto;
     max-width: 800px;
   }
 `;
 
 export const MainRenderListFriends = styled(MainRenderList)`
   justify-content: flex-start;
-  margin-top: 30px;
 `;
 
 export const ContentRenderList = styled.div`
@@ -42,16 +39,15 @@ export const ContentRenderList = styled.div`
 
   ul {
     overflow-y: auto;
-    height: 50vh;
+    height: 51vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  transition: background-color 0.8s linear, color 0.5s linear;
-
+    color: ${(props) => props.theme.color};
+    transition: background-color 0.8s linear, color 0.5s linear;
   }
 
   ul::-webkit-scrollbar {
@@ -78,8 +74,8 @@ export const ContentRenderList = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  transition: background-color 0.8s linear, color 0.5s linear;
+    color: ${(props) => props.theme.color};
+    transition: background-color 0.8s linear, color 0.5s linear;
     border-radius: 10px;
     box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   }
@@ -182,7 +178,7 @@ export const DivSearch = styled.form`
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   margin-top: 10px;
 
   input {
@@ -236,12 +232,12 @@ export const PositionContent = styled.div`
 export const DivPref = styled.div`
   display: flex;
   width: 100%;
-  margin-right: 30px;
+
   align-items: center;
   justify-content: space-between;
 
   button {
-    font-size: 18px;
+    font-size: 1rem;
     width: 30%;
     color: grey;
     font-family: inherit;
@@ -279,6 +275,16 @@ export const DivPref = styled.div`
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: width, left;
+  }
+  @media (max-width: 475px) {
+    button {
+      font-size: 0.8rem;
+    }
+  }
+  @media (max-width: 390px) {
+    button {
+      font-size: 0.7rem;
+    }
   }
 `;
 

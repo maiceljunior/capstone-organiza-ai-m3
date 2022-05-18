@@ -98,6 +98,7 @@ const CardEvent = ({ event }) => {
           ownerOpen={ownerOpen}
         />
       )}
+
     </MainWrapper>
   );
 };
