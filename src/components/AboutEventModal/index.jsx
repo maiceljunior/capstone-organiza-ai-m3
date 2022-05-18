@@ -13,7 +13,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     const toastId = useRef(null);
     const [guestRender, setGuestRender] = useState([]);
     const [requestRender, setRequestRender] = useState([]);
-    const { type, nameEvent, description, guests, eventToken, id, requests, denied } = event
+    const { type, nameEvent, description, guests, eventToken, id, requests, denied, dateEvent } = event
 
     useEffect(() => {
         async function getEvent() {
@@ -94,6 +94,20 @@ const AboutEventModal = ({ setModalOpen, event }) => {
         setModalOpen(false)
     }
 
+    function chatEvent() {
+        if (!toast.isActive(toastId.current)) {
+            toastId.current = toast.info('Chat em construção...', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }
+
 
     return (
         <ModalContainer>
@@ -102,6 +116,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                     <Header>
                         <button className="exit" onClick={exitModal}>X</button>
                     </Header>
+
 
                     <DivInputs>
                         <div>
@@ -127,6 +142,14 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                             </label>
                         </div>
 
+                        <div>
+                            <label className="inp">
+                                <input disabled id="inp" value={`${dateEvent[2]}/${dateEvent[1]}/${dateEvent[3]} - ${dateEvent[4]}h`} />
+                                <span className="label">Data e Hora do Evento</span>
+                                <span className="focus-bg"></span>
+                            </label>
+                        </div>
+
 
 
                         <div className="ulPosition">
@@ -141,6 +164,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                             </ul>
                         </div>
 
+
                         <div className="positionBtns">
                             <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
 
@@ -152,15 +176,15 @@ const AboutEventModal = ({ setModalOpen, event }) => {
 
                                 isGuest(user) !== undefined ?
 
-                                    <span>Chat do evento</span>
+                                    <Button className="btnChat" onClick={chatEvent}>Chat do Evento</Button>
 
                                     :
 
-                                    <span>VC N PODE PARTICIPAR DESSE EVENTO</span>
+                                    <span className="notAuthorization">Sem autorização para participar do Evento.</span>
                             }
                         </div>
-
                     </DivInputs>
+
 
                 </Modal>
             }

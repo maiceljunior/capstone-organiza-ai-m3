@@ -14,9 +14,11 @@ import TabuleiroIcon from "../../assets/imgs/Tabuleiro.png";
 import OnlineIcon from "../../assets/imgs/Online.png";
 import { useState } from "react";
 import AboutEventModal from "../AboutEventModal";
+import AdminEventModal from "../AdminEventModal";
 
 const CardEvent = ({ event }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [ownerOpen, setOwnerOpen] = useState(false);
   const userLogged = localStorage.getItem("UserID");
 
   function aboutEvent() {
@@ -24,12 +26,10 @@ const CardEvent = ({ event }) => {
   }
 
   function ownerEvent() {
-
+    setOwnerOpen(true)
   }
 
   const { nameEvent, description, type, userId } = event;
-
-
 
   return (
     <MainWrapper>
@@ -75,8 +75,8 @@ const CardEvent = ({ event }) => {
 
       <ButtonEventWrapper>
         {parseInt(userLogged) === userId ? (
-          <ButtonComponent onClick={() => console.log("editar")} redSchema>
-            Edite seu evento
+          <ButtonComponent onClick={ownerEvent} redSchema>
+            Ver meu evento
           </ButtonComponent>
         ) : (
           <ButtonComponent onClick={aboutEvent}>
@@ -89,6 +89,9 @@ const CardEvent = ({ event }) => {
         <AboutEventModal event={event} setModalOpen={setModalOpen} />
       )}
 
+      {ownerOpen && (
+        <AdminEventModal event={event} setOwnerOpen={setOwnerOpen} ownerOpen={ownerOpen} />
+      )}
 
     </MainWrapper>
   );
