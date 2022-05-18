@@ -57,7 +57,7 @@ const CreateEvents = () => {
     nameEvent: yup.string().required("Campo Obrigatório!"),
     description: yup.string().required("Campo Obrigatório!"),
     type: yup.string(),
-    dateEvent: yup.string(),
+    dateEvent: yup.string().required("Data Obrigatória!"),
   });
 
   const {
@@ -240,6 +240,7 @@ const CreateEvents = () => {
                   render={({ field: { onChange, value } }) => (
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                       <DateTimePicker
+                        disablePast
                         renderInput={(props) => <TextField {...props} />}
                         value={value}
                         onChange={onChange}
