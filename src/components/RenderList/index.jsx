@@ -30,6 +30,7 @@ const RenderList = ({
   setInput,
   register,
   Search,
+  filteredRender,
 }) => {
   const { user } = useUser();
 
@@ -71,15 +72,16 @@ const RenderList = ({
 
             <ContentRenderList>
               <ul>
-                {array.length > 0 ? (
+                {filteredRender.length > 0 ? (
+                  filteredRender.map((event, index) => {
+                    return <CardEvent event={event} key={index} />;
+                  })
+                ) : array.length > 0 ? (
                   array.map((event, index) => {
                     return <CardEvent event={event} key={index} />;
                   })
                 ) : (
-                  <DivNotEvents>
-                    0 eventos encontrados.
-                  
-                  </DivNotEvents>
+                  <DivNotEvents>0 eventos encontrados.</DivNotEvents>
                 )}
               </ul>
             </ContentRenderList>

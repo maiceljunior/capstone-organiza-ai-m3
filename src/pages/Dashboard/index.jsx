@@ -9,6 +9,7 @@ import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
 import { Loading } from "./loading";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { user, setUser } = useUser();
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const [removePrefs, setRemovePrefs] = useState(true);
   const [events, setEvents] = useState([]);
   const [input, setInput] = useState("");
+  const [filteredRender, setFilteredRender] = useState([]);
   const { register } = useForm();
 
   function Search() {
@@ -34,15 +36,13 @@ const Dashboard = () => {
     }, 2000);
   }
 
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     Api.get(`/eventsPublics`).then((res) => {
       setEvents(res.data);
-     
     });
   }, []);
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -66,6 +66,7 @@ const Dashboard = () => {
 
       FilterPref(Data);
     }, 2000);
+    setFilteredRender([]);
   }
 
   function FilterPref(Data) {
@@ -73,6 +74,7 @@ const Dashboard = () => {
       setRemovePrefs(true);
       setEvents(res.data);
     });
+    setFilteredRender([]);
   }
 
   function AllEvents() {
@@ -83,9 +85,87 @@ const Dashboard = () => {
         setEvents(res.data);
       });
     }, 2000);
+    setFilteredRender([]);
   }
 
-  const handleClick = () => { };
+  const handleClick = () => {};
+
+  function eventsICreated(idUser) {
+    const eventsCreated = events.filter((event) => event.userId == idUser);
+    if (eventsCreated.length < 1) {
+      toast.error("Você ainda não criou evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(eventsCreated);
+      return eventsCreated;
+    }
+  }
+
+  function eventsIJoined(idUser) {
+    const arrEvents = [];
+    const eventsJoined = events.map((event) =>
+      event.guests.filter((personId) => {
+        return personId.id == idUser && event;
+      })
+    );
+    for (let i = 0; i < eventsJoined.length; i++) {
+      if (eventsJoined[i].length > 0) {
+        arrEvents.push(events[i]);
+      }
+    }
+    if (arrEvents.length < 1) {
+      toast.error("Você não entrou em evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(arrEvents);
+      return arrEvents;
+    }
+  }
+
+  function myEvents(idUser) {
+    const eventsCreated = events.filter((event) => event.userId == idUser);
+
+    const arrEvents = [];
+    const eventsJoined = events.map((event) =>
+      event.guests.filter((personId) => {
+        return personId.id == idUser && event;
+      })
+    );
+    for (let i = 0; i < eventsJoined.length; i++) {
+      if (eventsJoined[i].length > 0) {
+        arrEvents.push(events[i]);
+      }
+    }
+    const myEvents = [...eventsCreated, ...arrEvents];
+    if (myEvents.length < 1) {
+      toast.error("Você não possui eventos.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(myEvents);
+      return myEvents;
+    }
+  }
 
   return (
     <>
@@ -99,7 +179,12 @@ const Dashboard = () => {
           />
         )}
       </Header>
-        <Main>
+      <button onClick={() => eventsIJoined(UserID)}>
+        Eventos que participo
+      </button>
+      <button onClick={() => eventsICreated(UserID)}>Eventos que criei</button>
+      <button onClick={() => myEvents(UserID)}>Todos</button>
+      <Main>
         <Navbar />
         <RenderList
           type="Dashboard"
@@ -108,6 +193,7 @@ const Dashboard = () => {
           AllEvents={AllEvents}
           removePrefs={removePrefs}
           input={input}
+          filteredRender={filteredRender}
           setInput={setInput}
           register={register}
           Search={Search}
