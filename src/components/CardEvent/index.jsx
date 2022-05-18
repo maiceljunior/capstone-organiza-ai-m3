@@ -33,7 +33,7 @@ const CardEvent = ({ event }) => {
 
   const { dateEvent, nameEvent, description, type, userId } = event;
 
-  function eventFull() {
+  function fullEvent() {
     if (event.guests.length == Number(event.guestsQtd)) {
       return true;
     } else {
@@ -42,7 +42,7 @@ const CardEvent = ({ event }) => {
   }
 
   return (
-    <MainWrapper eventFull>
+    <MainWrapper fullEvent={fullEvent()}>
       <ImgEventWrapper>
         {type === "Futebol" ? (
           <img src={FutebolIcon} alt="Img Evento" />
@@ -98,7 +98,6 @@ const CardEvent = ({ event }) => {
           ownerOpen={ownerOpen}
         />
       )}
-
     </MainWrapper>
   );
 };
