@@ -26,6 +26,8 @@ background-color: ${(props) => props.theme.backgroundColor};
   }
 
   @media (min-width: 768px) {
+    width: 100%;
+
     h1 {
       display: flex;
     }
@@ -42,10 +44,10 @@ background-color: ${(props) => props.theme.backgroundColor};
       justify-content: space-evenly;
     }
     figure {
-      width: 50%;
+      width: 40%;
     }
     section {
-      width: 50%;
+      width: 40%;
     }
   }
   main {
