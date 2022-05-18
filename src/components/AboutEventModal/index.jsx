@@ -13,13 +13,16 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     const toastId = useRef(null);
     const [guestRender, setGuestRender] = useState([]);
     const [requestRender, setRequestRender] = useState([]);
-    const { type, nameEvent, description, guests, eventToken, id, requests, denied, dateEvent } = event
+    const [declineds, setDeclineds] = useState([]);
+
+    const { type, nameEvent, description, eventToken, id, requests, dateEvent } = event
 
     useEffect(() => {
         async function getEvent() {
             await Api.get(`/eventsPublics/${id}`).then((res) => {
                 setGuestRender(res.data.guests)
                 setRequestRender(res.data.requests)
+                setDeclineds(res.data.denied)
             });
         }
         getEvent()
@@ -85,9 +88,9 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     }
 
     function isDenied(user) {
-        const listDenied = denied.find(denied => user.id === denied.id);
+        const listDenied = declineds.find(denied => user.id === denied.id);
 
-        return listDenied;
+        return listDenied
     }
 
     function exitModal() {
@@ -181,6 +184,8 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                                     :
 
                                     <span className="notAuthorization">Sem autorização para participar do Evento.</span>
+
+
                             }
                         </div>
                     </DivInputs>
