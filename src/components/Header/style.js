@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeaderOrange = styled.header`
-  width: 100vw;
+  width: 100%;
   height: 69px;
   background-color: var(--orange);
   display: flex;
@@ -26,7 +26,7 @@ export const StyledHeaderOrange = styled.header`
 `;
 
 export const StyledHeaderWhite = styled.header`
-  width: 100vw;
+  width: 100%;
   height: 115px;
   background-color: var(--white-dark);
   display: flex;
