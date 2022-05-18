@@ -54,7 +54,10 @@ const CreateEvents = () => {
   const handleClick = () => {};
 
   const schema = yup.object().shape({
-    nameEvent: yup.string().required("Seu evento precisa de um nome!").max(30, "máximo de 30 caracteres!"),
+    nameEvent: yup
+      .string()
+      .required("Seu evento precisa de um nome!")
+      .max(30, "máximo de 30 caracteres!"),
     description: yup.string().required("Campo Obrigatório!"),
     type: yup.string(),
     dateEvent: yup.string().required("Informe a data e o horário!"),
@@ -127,13 +130,13 @@ const CreateEvents = () => {
 
   function onSubmitFunction(data) {
     const dateEventArray = treatDate(data.dateEvent);
-    data.guests = guest;
     data.idEvento = parseInt(UserID);
     data.userId = parseInt(UserID);
     data.eventToken = Token;
     data.requests = [];
     data.denied = [];
     data.dateEvent = dateEventArray;
+    data.guests = [user];
 
     newEvent(data);
     setGuest([]);
