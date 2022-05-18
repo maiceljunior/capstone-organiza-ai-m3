@@ -4,7 +4,7 @@ import {
   ImgEventWrapper,
   InfoEventWrapper,
   ButtonEventWrapper,
-  NewInfoWrapper
+  NewInfoWrapper,
 } from "./style";
 import EventoIcon from "../../assets/imgs/EventoIcon.png";
 import FutebolIcon from "../../assets/imgs/Futebol.jpg";
@@ -22,77 +22,71 @@ const CardEvent = ({ event }) => {
   const userLogged = localStorage.getItem("UserID");
 
   function aboutEvent() {
-    setModalOpen(true)
+    console.log(event);
+    setModalOpen(true);
   }
 
   function ownerEvent() {
-    setOwnerOpen(true)
+    setOwnerOpen(true);
   }
 
-  const { nameEvent, description, type, userId } = event;
+  const { dateEvent, nameEvent, description, type, userId } = event;
 
   return (
     <MainWrapper>
       <ImgEventWrapper>
         {type === "Futebol" ? (
-          <figure>
-            <img src={FutebolIcon} alt="Img Evento" />
-          </figure>
+          <img src={FutebolIcon} alt="Img Evento" />
         ) : type === "Xadrez" ? (
-          <figure>
-            <img src={XadrezIcon} alt="Img Evento" />
-          </figure>
+          <img src={XadrezIcon} alt="Img Evento" />
         ) : type === "RPG" ? (
-          <figure>
-            <img src={RpgIcon} alt="Img Evento" />
-          </figure>
+          <img src={RpgIcon} alt="Img Evento" />
         ) : type === "Tabuleiro" ? (
-          <figure>
-            <img src={TabuleiroIcon} alt="Img Evento" />
-          </figure>
+          <img src={TabuleiroIcon} alt="Img Evento" />
         ) : type === "Online" ? (
-          <figure>
-            <img src={OnlineIcon} alt="Img Evento" />
-          </figure>
+          <img src={OnlineIcon} alt="Img Evento" />
         ) : type === "Outros" ? (
-          <figure>
-            <img className="Outros" src={EventoIcon} alt="Img Evento" />
-          </figure>
+          <img className="Outros" src={EventoIcon} alt="Img Evento" />
         ) : (
-          <figure>
-            <img className="Outros" src={EventoIcon} alt="Img Evento" />
-          </figure>
+          <img className="Outros" src={EventoIcon} alt="Img Evento" />
         )}
       </ImgEventWrapper>
 
       <NewInfoWrapper>
         <InfoEventWrapper>
           <h2>{nameEvent}</h2>
-          <h3>{type}</h3>
-          <h4>{description}</h4>
+          <h3>
+            {dateEvent[2]}/{dateEvent[1]}/{dateEvent[3]}
+          </h3>
+          <h3>
+            {dateEvent[0]} {dateEvent[4]}h
+          </h3>
+
+          <h3>Categoria: {type}</h3>
         </InfoEventWrapper>
       </NewInfoWrapper>
 
-      <ButtonEventWrapper>
+      
         {parseInt(userLogged) === userId ? (
           <ButtonComponent onClick={ownerEvent} redSchema>
             Ver meu evento
           </ButtonComponent>
         ) : (
-          <ButtonComponent onClick={aboutEvent}>
-            Saiba mais
-          </ButtonComponent>
+          <ButtonComponent onClick={aboutEvent}>Saiba mais</ButtonComponent>
         )}
-      </ButtonEventWrapper>
+      
 
       {modalOpen && (
         <AboutEventModal event={event} setModalOpen={setModalOpen} />
       )}
 
       {ownerOpen && (
-        <AdminEventModal event={event} setOwnerOpen={setOwnerOpen} ownerOpen={ownerOpen} />
+        <AdminEventModal
+          event={event}
+          setOwnerOpen={setOwnerOpen}
+          ownerOpen={ownerOpen}
+        />
       )}
-
     </MainWrapper>
   );
 };

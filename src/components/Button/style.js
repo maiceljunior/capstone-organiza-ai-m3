@@ -6,9 +6,12 @@ export const ButtonComponent = styled.button`
   height: 45px;
   border-radius: 8px;
   border: none;
-  width: 100%;
+  width: 150px;
   font-size: 1rem;
   :hover {
     border: 2px solid var(--white);
+  }
+  @media (max-width:868px){
+   width:90px;
   }
 `;
