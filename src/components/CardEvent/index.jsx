@@ -23,7 +23,6 @@ const CardEvent = ({ event }) => {
   const userLogged = localStorage.getItem("UserID");
 
   function aboutEvent() {
-    console.log(event);
     setModalOpen(true);
   }
 
