@@ -4,6 +4,7 @@ import {
   ImgEventWrapper,
   InfoEventWrapper,
   ButtonEventWrapper,
+  NewInfoWrapper
 } from "./style";
 import EventoIcon from "../../assets/imgs/EventoIcon.png";
 import FutebolIcon from "../../assets/imgs/Futebol.jpg";
@@ -11,39 +12,24 @@ import XadrezIcon from "../../assets/imgs/Xadrez.jpg";
 import RpgIcon from "../../assets/imgs/Rpg.png";
 import TabuleiroIcon from "../../assets/imgs/Tabuleiro.png";
 import OnlineIcon from "../../assets/imgs/Online.png";
-import { Api } from "../../services/api";
-import { useUser } from "../../providers/user";
+import { useState } from "react";
+import AboutEventModal from "../AboutEventModal";
+import AdminEventModal from "../AdminEventModal";
 
 const CardEvent = ({ event }) => {
-  const { user } = useUser();
-  const { nameEvent, description, type, id, userId, guests, eventToken } =
-    event;
+  const [modalOpen, setModalOpen] = useState(false);
+  const [ownerOpen, setOwnerOpen] = useState(false);
   const userLogged = localStorage.getItem("UserID");
 
-  function joinEvent(usuario) {
-    if (guests.includes(usuario)) {
-      alert("ja existe esse usuario");
-    } else {
-      const newGuest = [...guests, usuario];
-
-      console.log(event);
-      joinEventApi(newGuest);
-    }
+  function aboutEvent() {
+    setModalOpen(true)
   }
 
-  function joinEventApi(data) {
-    Api.patch(
-      `eventsPublics/${id}`,
-      { guests: data },
-      {
-        headers: {
-          Authorization: `Bearer ${eventToken}`,
-        },
-      }
-    )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+  function ownerEvent() {
+    setOwnerOpen(true)
   }
+
+  const { nameEvent, description, type, userId } = event;
 
   return (
     <MainWrapper>
@@ -78,22 +64,35 @@ const CardEvent = ({ event }) => {
           </figure>
         )}
       </ImgEventWrapper>
-      <InfoEventWrapper>
-        <h2>{nameEvent}</h2>
-        <h3>{type}</h3>
-        <p>{description}</p>
-      </InfoEventWrapper>
+
+      <NewInfoWrapper>
+        <InfoEventWrapper>
+          <h2>{nameEvent}</h2>
+          <h3>{type}</h3>
+          <h4>{description}</h4>
+        </InfoEventWrapper>
+      </NewInfoWrapper>
+
       <ButtonEventWrapper>
         {parseInt(userLogged) === userId ? (
-          <ButtonComponent onClick={() => console.log("editar")} redSchema>
-            Editar
+          <ButtonComponent onClick={ownerEvent} redSchema>
+            Ver meu evento
           </ButtonComponent>
         ) : (
-          <ButtonComponent onClick={() => joinEvent(user)}>
-            Participar
+          <ButtonComponent onClick={aboutEvent}>
+            Saiba mais
           </ButtonComponent>
         )}
       </ButtonEventWrapper>
+
+      {modalOpen && (
+        <AboutEventModal event={event} setModalOpen={setModalOpen} />
+      )}
+
+      {ownerOpen && (
+        <AdminEventModal event={event} setOwnerOpen={setOwnerOpen} ownerOpen={ownerOpen} />
+      )}
+
     </MainWrapper>
   );
 };

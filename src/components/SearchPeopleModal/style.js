@@ -3,9 +3,13 @@ import styled from "styled-components";
 export const ModalContainer = styled.div`
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   backdrop-filter: blur(2px);
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items :center;
 `;
 
 export const Container = styled.div`
@@ -49,10 +53,6 @@ export const MainStyled = styled.main`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  button {
-    margin: 10px 0;
-    width: 90%;
-  }
 `;
 export const Cards = styled.div`
   width: 90%;
@@ -65,10 +65,39 @@ export const PeopleCard = styled.section`
   margin: 8px 0;
   border-radius: 5px;
   padding: 0 10px;
+  height:43px;
   p {
     width: 100%;
   }
   button {
     max-width: 25%;
   }
+`;
+
+export const PessoasEncontradas = styled.h4`
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bolder;
+`;
+
+export const ButtonCloseModal = styled.button`
+  background-color: var(--yellow);
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 25px;
+  color: #fff;
+  height: 25px;
+`;
+export const ButtonInvite = styled.button`
+  border-style: none;
+  background-color: var(--yellow);
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0;
+  width: 30px;
+  border-radius:5px;
 `;

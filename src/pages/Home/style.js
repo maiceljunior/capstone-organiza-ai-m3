@@ -11,7 +11,7 @@ background-color: ${(props) => props.theme.backgroundColor};
   }
 
   header > div > img {
-    width: 60%;
+    width: 50vw;
   }
 
   img {
@@ -37,9 +37,7 @@ background-color: ${(props) => props.theme.backgroundColor};
       width: auto;
       justify-content: center;
       align-items: center;
-      background-color: var(--red);
       border-radius: 5px;
-      font-family: "Nunito", sans-serif;
       box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       border: none;
@@ -102,7 +100,7 @@ background-color: ${(props) => props.theme.backgroundColor};
     }
 
     header > div > img {
-      width: auto;
+      width: 30%;
     }
   }
 `;
@@ -113,10 +111,15 @@ export const SectionOne = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+<<<<<<< HEAD
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
   box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+=======
+  background-color: var(--white-dark
+    );
+>>>>>>> 28899ffd78800a0d81eda9316b0dbad306d5074e
 
   div {
     display: flex;
@@ -131,7 +134,6 @@ export const SectionOne = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -175,7 +177,6 @@ export const SectionOne = styled.section`
     }
 
     div > h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;
@@ -215,7 +216,6 @@ export const SectionOne = styled.section`
       background-color: var(--red);
       border-radius: 12px;
       overflow: hidden;
-      font-family: "Nunito";
       font-style: normal;
       font-weight: 500;
       font-size: 23px;
@@ -357,7 +357,6 @@ export const SectionTwo = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -386,7 +385,6 @@ export const SectionTwo = styled.section`
     justify-content: space-evenly;
 
     h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;
@@ -426,7 +424,6 @@ export const SectionThree = styled.section`
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -458,7 +455,6 @@ export const SectionThree = styled.section`
     justify-content: space-evenly;
 
     h2 {
-      font-family: "Nunito", sans-serif;
       text-align: center;
       width: 422px;
       align-items: center;
@@ -485,4 +481,9 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .team {
+    text-decoration: none;
+    font-weight: bold;
+  }
 `;

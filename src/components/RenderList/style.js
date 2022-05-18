@@ -175,7 +175,7 @@ export const Guests = styled.div`
   }
 `;
 
-export const DivSearch = styled.div`
+export const DivSearch = styled.form`
   width: 100%;
   height: 7%;
   display: flex;

@@ -32,7 +32,6 @@ export const Main = styled.main`
 
   .nav-text > a > span {
     color: var(--white);
-    font-family: "Nunito", sans-serif;
     font-weight: bold;
   }
 
@@ -42,6 +41,12 @@ export const Main = styled.main`
     align-items: center;
     align-self: center;
     margin: 0;
+  }
+
+  .error {
+    color: var(--red);
+    max-width: 80%;
+    text-align: justify;
   }
 
   p {
@@ -85,8 +90,8 @@ export const ContentRenderList = styled.div`
   justify-content: center;
 
   ul {
-    overflow-y: auto;
-    height: 50vh;
+    overflow-y: scroll;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -147,11 +152,6 @@ export const ContentRenderListCreateEvent = styled(ContentRenderList)`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
-    ul {
-      justify-content: center;
-      min-height: 10%;
-    }
   }
   button {
     width: 90%;
@@ -172,6 +172,7 @@ export const SearchPeople = styled.div`
   background-color: var(--grey-light);
   border-radius: 5px;
   align-items: center;
+  margin-top: 20px;
 
   button {
     width: 30px;
@@ -186,19 +187,108 @@ export const Guests = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   background-color: var(--white-dark);
+=======
+  background-color: var(--grey-light);
+>>>>>>> 28899ffd78800a0d81eda9316b0dbad306d5074e
   padding: 10px;
   border-radius: 5px;
   width: 90%;
   margin: 10px 0;
-  ul {
-    height: 100%;
-  }
 `;
 
 export const FakeButton = styled.div`
-  width: 50px;
+  width: 40px;
   background-color: var(--yellow);
   cursor: pointer;
   text-align: center;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 1.3rem;
 `;
+
+export const PessoasAdicionadas = styled.h4`
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 53px;
+  min-height: 53px;
+  border: 2px solid var(--yellow);
+  font-size: 1.1rem;
+  font-weight: 500;
+`;
+
+export const GuestCard = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+`;
+
+export const GuestButton = styled.button`
+  border-style: none;
+  color: var(--white);
+  max-width: 20px;
+  border-radius: 15%;
+  background-color: var(--yellow);
+`;
+
+export const EventCategory = styled.select`
+  width: 30%;
+  min-width: 79px;
+  border-style: none;
+  background-color: var(--yellow);
+  height: 25px;
+  padding-left: 10px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1rem;
+`;
+
+export const CategoryContainer = styled.div`
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #fff;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+`;
+
+export const NoInvitesForNow = styled.h4`
+  margin-top: 15px;
+`;
+export const HourAndDateContainer = styled.div`
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const GuestList = styled.ul`
+  overflow-y: scroll;
+  height: 200px;
+`;
+
+export const ContainerGuest = styled.div`
+width:100%;
+`

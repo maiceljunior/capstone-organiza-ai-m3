@@ -41,7 +41,6 @@ export const Content = styled.div`
     margin-bottom: 8px;
     text-align: center;
     font-size: 20px;
-    font-family: "Nunito";
     font-style: normal;
     font-weight: 400;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -77,7 +76,6 @@ export const AnimationContainer = styled.div`
     background-color: var(--white-dark);
     border-radius: 5px;
     align-items: left;
-    font-family: "Nunito";
 
     > div {
       margin-top: 16px;
@@ -89,7 +87,6 @@ export const AnimationContainer = styled.div`
       margin: 10px;
       margin-bottom: 0;
       margin-left: 5%;
-      font-family: "Nunito", sans-serif;
     }
     button {
       margin-left: 10%;

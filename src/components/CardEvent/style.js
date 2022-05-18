@@ -5,6 +5,7 @@ export const MainWrapper = styled.div`
   width: 95%;
   height: 100px;
   display: flex;
+  justify-content: space-between;
   border-radius: 5px;
   box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => props.theme.backgroundColor};
@@ -43,14 +44,22 @@ export const InfoEventWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   h2 {
-    font-size: 18px;
-  }
-  p {
-    font-size: 14px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
   }
   h2,
   p {
     text-align: center;
+  }
+  h3 {
+    font-weight: bold;
+    color: var(--grey);
+  }
+  h4 {
+    color: var(--red);
+    background-color: aliceblue;
   }
   @media (min-width: 768px) {
     justify-content: space-evenly;
@@ -75,4 +84,10 @@ export const ButtonEventWrapper = styled.div`
     max-width: 185px;
     margin: 0 auto;
   }
+`;
+
+export const NewInfoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
