@@ -56,25 +56,63 @@ export const Modal = styled.div`
 
   ul {
     display: flex;
-    flex-direction: row;
-    padding: 5px;
+    flex-direction: column;
+    padding: 10px;
     justify-content: flex-start;
     align-items: center;
-    overflow-x: scroll;
-    border: 1px solid black;
-    height: 90px;
+    overflow-y: scroll;
+    border: 2px solid black;
+    height: 120px;
     max-width: 90%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .notPerson {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: 3px 3px 14px black;
+  }
+
+  .notAuthorization {
+    padding: 11px 30px;
+    height: 45px;
+    width: 100vw;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background: red;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid red;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 red;
   }
 
   ul > li {
-    border: 1px solid black;
-    width: 10%;
-    margin-right: 10px;
-    text-align: center;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    height: 45px;
+    background-color: #f8f9fa;
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.66);
+    text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
   }
 
   .exit {
@@ -110,6 +148,33 @@ export const Modal = styled.div`
   }
 
   .btnExit:active {
+    transform: scale(0.9);
+  }
+
+  .btnChat {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    padding: 11px 30px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: blue;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid blue;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 blue;
+  }
+
+  .btnChat:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 blue;
+  }
+
+  .btnChat:active {
     transform: scale(0.9);
   }
 
@@ -158,7 +223,7 @@ export const DivInputs = styled.div`
   .inp .label {
     position: absolute;
     top: 17px;
-    left: 0px;
+    left: 14px;
     font-size: 20px;
     color: var(--yellow);
     font-weight: bold;

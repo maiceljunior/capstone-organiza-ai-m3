@@ -85,7 +85,7 @@ const Dashboard = () => {
     }, 2000);
   }
 
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   return (
     <>
