@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   display: flex;
-  background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  transition: background-color 0.8s linear, color 0.5s linear;
+  justify-content:center;
 
   .nav-menu {
     height: 50vh;
@@ -22,6 +20,7 @@ export const Main = styled.main`
   }
 
   .navbar {
+    /* margin-right: 400px; */
     background-color: var(--black);
     margin-top: 30vh;
   }
@@ -187,11 +186,7 @@ export const Guests = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  background-color: var(--white-dark);
-=======
   background-color: var(--grey-light);
->>>>>>> 28899ffd78800a0d81eda9316b0dbad306d5074e
   padding: 10px;
   border-radius: 5px;
   width: 90%;
@@ -290,5 +285,5 @@ export const GuestList = styled.ul`
 `;
 
 export const ContainerGuest = styled.div`
-width:100%;
-`
+  width: 100%;
+`;
