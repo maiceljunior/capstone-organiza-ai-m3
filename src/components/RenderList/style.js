@@ -7,25 +7,22 @@ export const MainRenderList = styled.main`
   width: 80%;
   min-height: 490px;
   align-items: flex-start;
-  margin-top: 4vw;
+  margin-top:40px;
 `;
 
 export const MainRenderListCreateEvent = styled(MainRenderList)`
   justify-content: flex-start;
-  margin-top: 30px;
-  @media (min-width: 768px) {
-    margin: 30px auto;
+  margin-top: 10px;
+   @media (min-width: 768px) {
     max-width: 630px;
   }
   @media (min-width: 1024px) {
-    margin: 30px auto;
     max-width: 800px;
   }
 `;
 
 export const MainRenderListFriends = styled(MainRenderList)`
   justify-content: flex-start;
-  margin-top: 30px;
 `;
 
 export const ContentRenderList = styled.div`
@@ -49,9 +46,8 @@ export const ContentRenderList = styled.div`
     align-items: center;
     justify-content: flex-start;
     background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  transition: background-color 0.8s linear, color 0.5s linear;
-
+    color: ${(props) => props.theme.color};
+    transition: background-color 0.8s linear, color 0.5s linear;
   }
 
   ul::-webkit-scrollbar {
@@ -78,8 +74,8 @@ export const ContentRenderList = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  transition: background-color 0.8s linear, color 0.5s linear;
+    color: ${(props) => props.theme.color};
+    transition: background-color 0.8s linear, color 0.5s linear;
     border-radius: 10px;
     box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   }

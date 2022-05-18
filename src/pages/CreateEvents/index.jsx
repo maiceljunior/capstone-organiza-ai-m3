@@ -138,7 +138,7 @@ const CreateEvents = () => {
     newEvent(data);
     setGuest([]);
     reset();
-    history.push("/dashboard");
+   
   }
 
   function newEvent(data) {
