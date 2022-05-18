@@ -99,7 +99,7 @@ const Dashboard = () => {
           />
         )}
       </Header>
-      <Main>
+        <Main>
         <Navbar />
         <RenderList
           type="Dashboard"

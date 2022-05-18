@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   display: flex;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
 
   .nav-menu {
     height: 50vh;
@@ -77,8 +80,10 @@ export const MainRenderListCreateEvent = styled(MainRenderList)`
 export const ContentRenderList = styled.div`
   width: 100%;
   padding: 5px;
-  background: var(--white-dark);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   display: flex;
   align-items: flex-start;
@@ -117,8 +122,11 @@ export const ContentRenderList = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f8f9fa;
+    background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
     border-radius: 10px;
+    box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   }
 
   #CardsTeste:hover {
@@ -179,7 +187,11 @@ export const Guests = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
+  background-color: var(--white-dark);
+=======
   background-color: var(--grey-light);
+>>>>>>> 28899ffd78800a0d81eda9316b0dbad306d5074e
   padding: 10px;
   border-radius: 5px;
   width: 90%;
