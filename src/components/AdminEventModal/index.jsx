@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
-
 const AdminEventModal = ({ event, setOwnerOpen, ownerOpen }) => {
 
     const [requests, setRequests] = useState([]);
@@ -141,6 +140,8 @@ const AdminEventModal = ({ event, setOwnerOpen, ownerOpen }) => {
             })
             .catch((err) => console.log(err))
     }
+
+
 
 
     function exitModal() {

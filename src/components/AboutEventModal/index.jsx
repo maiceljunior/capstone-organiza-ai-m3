@@ -13,13 +13,18 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     const toastId = useRef(null);
     const [guestRender, setGuestRender] = useState([]);
     const [requestRender, setRequestRender] = useState([]);
-    const { type, nameEvent, description, guests, eventToken, id, requests, denied, dateEvent } = event
+    const [declineds, setDeclineds] = useState([]);
+    const [trueButtons, setTrueButtons] = useState(false);
+
+    const { type, nameEvent, description, eventToken, id, requests, dateEvent } = event
 
     useEffect(() => {
         async function getEvent() {
             await Api.get(`/eventsPublics/${id}`).then((res) => {
                 setGuestRender(res.data.guests)
                 setRequestRender(res.data.requests)
+                setDeclineds(res.data.denied)
+                setTrueButtons(true)
             });
         }
         getEvent()
@@ -85,9 +90,9 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     }
 
     function isDenied(user) {
-        const listDenied = denied.find(denied => user.id === denied.id);
+        const listDenied = declineds.find(denied => user.id === denied.id);
 
-        return listDenied;
+        return listDenied
     }
 
     function exitModal() {
@@ -164,25 +169,26 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                             </ul>
                         </div>
 
+                        {trueButtons &&
+                            <div className="positionBtns">
+                                <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
 
-                        <div className="positionBtns">
-                            <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
-
-                            {isGuest(user) === undefined && isDenied(user) === undefined ?
-
-                                <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
-
-                                :
-
-                                isGuest(user) !== undefined ?
+                                {isGuest(user) !== undefined && isDenied(user) === undefined ?
 
                                     <Button className="btnChat" onClick={chatEvent}>Chat do Evento</Button>
 
                                     :
 
-                                    <span className="notAuthorization">Sem autorização para participar do Evento.</span>
-                            }
-                        </div>
+                                    isGuest(user) === undefined && isDenied(user) !== undefined ?
+
+                                        <span className="notAuthorization">Sem autorização para participar do Evento.</span>
+
+                                        :
+
+                                        <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
+                                }
+                            </div>
+                        }
                     </DivInputs>
 
 

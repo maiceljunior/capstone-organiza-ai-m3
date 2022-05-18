@@ -51,13 +51,13 @@ const CreateEvents = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   const history = useHistory();
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   const schema = yup.object().shape({
     nameEvent: yup.string().required("Campo Obrigatório!"),
     description: yup.string().required("Campo Obrigatório!"),
     type: yup.string(),
-    dateEvent: yup.string(),
+    dateEvent: yup.string().required("Data Obrigatória!"),
   });
 
   const {
@@ -201,17 +201,14 @@ const CreateEvents = () => {
           <h2>Criar evento</h2>
           <ContentRenderListCreateEvent>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-              {errors.nameEvent && (
-                <span className="error">{errors.nameEvent.message}</span>
-              )}
               <Input
                 label={"Nome do evento"}
                 register={register}
                 name="nameEvent"
                 placeholder="Nome do evento"
               />
-              {errors.description && (
-                <span className="error">{errors.description.message}</span>
+              {errors.nameEvent && (
+                <span className="error">{errors.nameEvent.message}</span>
               )}
               <Input
                 label={"Descrição do evento"}
@@ -219,6 +216,9 @@ const CreateEvents = () => {
                 placeholder={"Descrição do evento"}
                 register={register}
               />
+              {errors.description && (
+                <span className="error">{errors.description.message}</span>
+              )}
 
               <CategoryContainer>
                 <h4>Categoria do evento</h4>
@@ -240,6 +240,7 @@ const CreateEvents = () => {
                   render={({ field: { onChange, value } }) => (
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                       <DateTimePicker
+                        disablePast
                         renderInput={(props) => <TextField {...props} />}
                         value={value}
                         onChange={onChange}
@@ -248,6 +249,9 @@ const CreateEvents = () => {
                   )}
                 />
               </HourAndDateContainer>
+              {errors.dateEvent && (
+                <span className="error">{errors.dateEvent.message}</span>
+              )}
               <ContainerGuest>
                 <SearchPeople>
                   <h3>Buscar pessoas</h3>
