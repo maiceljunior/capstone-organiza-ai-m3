@@ -14,6 +14,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     const [guestRender, setGuestRender] = useState([]);
     const [requestRender, setRequestRender] = useState([]);
     const [declineds, setDeclineds] = useState([]);
+    const [trueButtons, setTrueButtons] = useState(false);
 
     const { type, nameEvent, description, eventToken, id, requests, dateEvent } = event
 
@@ -23,6 +24,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                 setGuestRender(res.data.guests)
                 setRequestRender(res.data.requests)
                 setDeclineds(res.data.denied)
+                setTrueButtons(true)
             });
         }
         getEvent()
@@ -167,27 +169,26 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                             </ul>
                         </div>
 
+                        {trueButtons &&
+                            <div className="positionBtns">
+                                <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
 
-                        <div className="positionBtns">
-                            <Button className="btnExit" onClick={() => setModalOpen(false)}>Sair</Button>
-
-                            {isGuest(user) === undefined && isDenied(user) === undefined ?
-
-                                <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
-
-                                :
-
-                                isGuest(user) !== undefined ?
+                                {isGuest(user) !== undefined && isDenied(user) === undefined ?
 
                                     <Button className="btnChat" onClick={chatEvent}>Chat do Evento</Button>
 
                                     :
 
-                                    <span className="notAuthorization">Sem autorização para participar do Evento.</span>
+                                    isGuest(user) === undefined && isDenied(user) !== undefined ?
 
+                                        <span className="notAuthorization">Sem autorização para participar do Evento.</span>
 
-                            }
-                        </div>
+                                        :
+
+                                        <Button className="btnEnter" onClick={() => joinEvent(user)}>Solicitar Entrada</Button>
+                                }
+                            </div>
+                        }
                     </DivInputs>
 
 
