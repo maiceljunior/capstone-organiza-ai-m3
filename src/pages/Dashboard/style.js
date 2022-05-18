@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   display: flex;
-
+  flex-direction: column;
   .nav-menu {
     height: 50vh;
     margin-left: 2vw;

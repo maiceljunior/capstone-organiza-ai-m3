@@ -194,9 +194,9 @@ const CreateEvents = () => {
           />
         )}
       </Header>
-
+      <Navbar />
       <Main>
-        <Navbar />
+        
         <MainRenderListCreateEvent>
           <h2>Criar evento</h2>
           <ContentRenderListCreateEvent>
@@ -258,7 +258,7 @@ const CreateEvents = () => {
                   <FakeButton onClick={searchPeople}>+</FakeButton>
                 </SearchPeople>
                 <Guests>
-                  <PessoasAdicionadas>Lista de Convidados</PessoasAdicionadas>
+                  <PessoasAdicionadas>Lista de Participantes</PessoasAdicionadas>
 
                   <GuestList>
                     {guest.length > 0 ? (
@@ -276,7 +276,7 @@ const CreateEvents = () => {
                       })
                     ) : (
                       <NoInvitesForNow>
-                        A lista de convidados está vazia.
+                        A lista de participantes está vazia.
                       </NoInvitesForNow>
                     )}
                   </GuestList>

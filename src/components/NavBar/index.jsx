@@ -1,47 +1,27 @@
-import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
+import { AiOutlineHome } from "react-icons/ai";
+import { BsFillCalendar2PlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { SidebarData } from "./sidebarData";
-import "./styles.css";
-import { IconContext } from "react-icons";
+import { ContainerGeral, FakeButtonLink } from "./style";
 
-function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => setSidebar(!sidebar);
-
+const Navbar = () => {
   return (
-    <>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <IoIcons.IoIosArrowForward onMouseEnter={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onMouseLeave={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span className="spanNavBar">{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </IconContext.Provider>
-    </>
+    
+    <ContainerGeral>
+      <FakeButtonLink>
+        
+        <Link className="link" to="/dashboard">
+          <AiOutlineHome />
+          <h4 className="newH4">Dashboard</h4>
+        </Link>
+      </FakeButtonLink>
+      <FakeButtonLink>
+        <Link className="link" to="/createEvents">
+          <BsFillCalendar2PlusFill />
+          <h4 className="newH4">Criar Evento</h4>
+        </Link>
+      </FakeButtonLink>
+    </ContainerGeral>
   );
-}
+};
 
 export default Navbar;

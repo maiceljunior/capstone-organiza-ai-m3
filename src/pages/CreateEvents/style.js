@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   display: flex;
-
+justify-content:center;
   .nav-menu {
     height: 50vh;
     margin-left: 2vw;
@@ -19,6 +19,7 @@ export const Main = styled.main`
   }
 
   .navbar {
+    /* margin-right: 400px; */
     background-color: var(--black);
     margin-top: 30vh;
   }
@@ -278,5 +279,5 @@ export const GuestList = styled.ul`
 `;
 
 export const ContainerGuest = styled.div`
-width:100%;
-`
+  width: 100%;
+`;

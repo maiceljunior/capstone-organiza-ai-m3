@@ -8,15 +8,19 @@ export const StyledHeaderOrange = styled.header`
   justify-content: space-around;
   align-items: center;
 
-  img {
-    width: 50vw;
-    height: 50px;
+  .logo {
+    width: 400px;
   }
 
-  @media (max-width: 768px) {
-    img {
-      width: 50vw;
-      height: 50px;
+  @media (max-width: 606px) {
+    .logo {
+      width: 300px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .logo {
+      width: 200px;
     }
   }
 `;
@@ -28,11 +32,6 @@ export const StyledHeaderWhite = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  div > img {
-    width: 200px;
-    height: 80px;
-  }
 `;
 
 export const DivHeader = styled.div`
