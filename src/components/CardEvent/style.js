@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
+  border: ${(props) =>
+    props.fullEvent ? "1.5px solid green" : "1px solid yellow"};
   margin: 10px 0px;
   width: 95%;
   height: 100px;
@@ -34,10 +36,9 @@ export const ImgEventWrapper = styled.div`
     height: 90%;
     border-radius: 60px;
 
-    @media (max-width:868px){
-   width:50%;
-   
-  }
+    @media (max-width: 868px) {
+      width: 50%;
+    }
   }
 
   .Outros {
@@ -53,7 +54,6 @@ export const InfoEventWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   h2 {
-    
     font-size: 16px;
     color: black;
     font-weight: bold;
@@ -61,37 +61,37 @@ export const InfoEventWrapper = styled.div`
   }
   h2,
   p {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
   }
   h3 {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
     color: var(--grey);
   }
   h4 {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--red);
     background-color: aliceblue;
   }
 
-  @media (max-width:785px){
-    h2,h3{
-      font-size:0.8rem;
+  @media (max-width: 785px) {
+    h2,
+    h3 {
+      font-size: 0.8rem;
     }
-    
   }
-  @media (max-width:450px){
-    h2,h3{
-      font-size:0.6rem;
+  @media (max-width: 450px) {
+    h2,
+    h3 {
+      font-size: 0.6rem;
     }
-    
   }
 `;
 
@@ -99,10 +99,10 @@ export const ButtonEventWrapper = styled.div`
   /* min-width: 30%; */
   height: 100%;
   display: flex;
-  width:150px;
+  width: 150px;
   align-items: center;
-  justify-content:center;
-  background-color:var(--orange);
+  justify-content: center;
+  background-color: var(--orange);
   /* button {
     max-width: 90%;
     max-width: 185px;
@@ -114,4 +114,8 @@ export const NewInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const GuestsInfoWrapper = styled.div`
+  text-align: center;
 `;

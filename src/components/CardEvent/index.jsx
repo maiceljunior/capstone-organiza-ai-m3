@@ -5,6 +5,7 @@ import {
   InfoEventWrapper,
   ButtonEventWrapper,
   NewInfoWrapper,
+  GuestsInfoWrapper,
 } from "./style";
 import EventoIcon from "../../assets/imgs/EventoIcon.png";
 import FutebolIcon from "../../assets/imgs/Futebol.jpg";
@@ -32,8 +33,16 @@ const CardEvent = ({ event }) => {
 
   const { dateEvent, nameEvent, description, type, userId } = event;
 
+  function eventFull() {
+    if (event.guests.length == Number(event.guestsQtd)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
-    <MainWrapper>
+    <MainWrapper eventFull>
       <ImgEventWrapper>
         {type === "Futebol" ? (
           <img src={FutebolIcon} alt="Img Evento" />
@@ -65,16 +74,18 @@ const CardEvent = ({ event }) => {
           <h3>Categoria: {type}</h3>
         </InfoEventWrapper>
       </NewInfoWrapper>
+      <GuestsInfoWrapper>
+        <h4>Participantes</h4>
+        <span>{event.guests.length}</span>/<span>{event.guestsQtd}</span>
+      </GuestsInfoWrapper>
 
-      
-        {parseInt(userLogged) === userId ? (
-          <ButtonComponent onClick={ownerEvent} redSchema>
-            Ver meu evento
-          </ButtonComponent>
-        ) : (
-          <ButtonComponent onClick={aboutEvent}>Saiba mais</ButtonComponent>
-        )}
-      
+      {parseInt(userLogged) === userId ? (
+        <ButtonComponent onClick={ownerEvent} redSchema>
+          Ver meu evento
+        </ButtonComponent>
+      ) : (
+        <ButtonComponent onClick={aboutEvent}>Saiba mais</ButtonComponent>
+      )}
 
       {modalOpen && (
         <AboutEventModal event={event} setModalOpen={setModalOpen} />
