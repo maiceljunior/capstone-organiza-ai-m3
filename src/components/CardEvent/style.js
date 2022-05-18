@@ -12,6 +12,9 @@ export const MainWrapper = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
+  @media (max-width: 480px) {
+    height: 80px;
+  }
 `;
 
 export const ImgEventWrapper = styled.div`
@@ -22,7 +25,7 @@ export const ImgEventWrapper = styled.div`
   img {
     object-fit: cover;
     width: 100px;
-    height: 100px;
+    height: 80px;
     border-radius: 60px;
   }
 
@@ -30,10 +33,16 @@ export const ImgEventWrapper = styled.div`
     background-color: var(--black);
   }
 
-  @media (max-width: 868px) {
+  @media (max-width: 800px) {
     img {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 60px;
+    }
+  }
+  @media (max-width: 500px) {
+    img {
+      width: 50px;
+      height: 40px;
     }
   }
 `;
@@ -46,11 +55,10 @@ export const InfoEventWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   h2 {
-    
-    font-size: 16px;
+    font-size: 1rem;
     color: black;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: lowercase;
   }
   h2,
   p {
@@ -76,11 +84,9 @@ export const InfoEventWrapper = styled.div`
 
   @media (max-width: 785px) {
     h2 {
-      max-width: 120px;
+      max-width: 200px;
     }
   }
-  
-  
 
   @media (max-width: 785px) {
     h2,
@@ -88,10 +94,16 @@ export const InfoEventWrapper = styled.div`
       font-size: 0.8rem;
     }
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     h2,
     h3 {
       font-size: 0.6rem;
+    }
+  }
+  @media (max-width: 375px) {
+    h2,
+    h3 {
+      font-size: 0.5rem;
     }
   }
 `;
@@ -115,4 +127,5 @@ export const NewInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 33%;
 `;

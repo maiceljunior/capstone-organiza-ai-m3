@@ -51,7 +51,7 @@ const RenderList = ({
                 value={input}
                 name={"Search"}
                 onChange={(event) => setInput(event.target.value)}
-                placeholder="Pesquise um evento"
+                placeholder="Buscar evento"
               />
               <Button type="submit" redSchema>
                 Buscar
@@ -64,7 +64,7 @@ const RenderList = ({
                 </Button>
                 {!removePrefs && <ListPref />}
                 <Button id="Pref" redSchema onClick={() => getPreferences()}>
-                  Minhas Preferências
+                  Categorias Favoritas
                 </Button>
               </DivPref>
             )}
@@ -76,10 +76,7 @@ const RenderList = ({
                     return <CardEvent event={event} key={index} />;
                   })
                 ) : (
-                  <DivNotEvents>
-                    0 eventos encontrados.
-                  
-                  </DivNotEvents>
+                  <DivNotEvents>0 eventos encontrados.</DivNotEvents>
                 )}
               </ul>
             </ContentRenderList>
