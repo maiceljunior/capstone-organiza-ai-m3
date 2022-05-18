@@ -30,11 +30,9 @@ export const ImgEventWrapper = styled.div`
     height: 80px;
     border-radius: 60px;
 
-
     @media (max-width: 868px) {
       width: 50%;
     }
-
   }
 
   .Outros {
@@ -91,7 +89,6 @@ export const InfoEventWrapper = styled.div`
   }
 
   @media (max-width: 785px) {
-
     h2 {
       max-width: 200px;
     }
@@ -113,6 +110,7 @@ export const InfoEventWrapper = styled.div`
     h2,
     h3 {
       font-size: 0.5rem;
+    }
     h2,
     h3 {
       font-size: 0.8rem;
