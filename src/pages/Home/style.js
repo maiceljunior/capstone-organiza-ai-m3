@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Home = styled.div`
+background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
+  
   header {
     margin-bottom: 16px;
     height: 77px;
@@ -109,7 +113,10 @@ export const SectionOne = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--white-dark);
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
 
   div {
     display: flex;
@@ -148,7 +155,9 @@ export const SectionOne = styled.section`
 
   @media (min-width: 760px) {
     border-radius: 4px;
-    background-color: var(--white-dark);
+    background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
     height: 300px;
     width: 92vw;
     padding: 10px;
@@ -333,11 +342,14 @@ export const SectionOne = styled.section`
 
 export const SectionTwo = styled.section`
   margin-top: 47vw;
-  background-color: var(--white-dark);
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
   height: 114px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
 
   h2 {
     width: 300px;
@@ -360,7 +372,9 @@ export const SectionTwo = styled.section`
 
   @media (min-width: 760px) {
     border-radius: 4px;
-    background-color: var(--white-dark);
+    background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
     height: 300px;
     width: 92vw;
     padding: 10px;
@@ -397,11 +411,14 @@ export const SectionThree = styled.section`
   margin-top: 47vw;
   margin-bottom: 25vw;
   height: 130px;
-  background-color: var(--white-dark);
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
 
   h2 {
     width: 300px;
@@ -426,7 +443,9 @@ export const SectionThree = styled.section`
 
   @media (min-width: 760px) {
     border-radius: 4px;
-    background-color: var(--white-dark);
+    background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: background-color 0.8s linear, color 0.5s linear;
     height: 239px;
     width: 92vw;
     padding: 10px;

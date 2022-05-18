@@ -96,13 +96,12 @@ const Dashboard = () => {
             userAvatar
           />
         )}
-
       </Header>
-      <Main>
-        <Navbar />
-        <RenderList type="Dashboard" array={events} getPreferences={getPreferences} AllEvents={AllEvents} removePrefs={removePrefs} input={input} setInput={setInput} register={register} Search={Search} />
-      </Main>
-    </>
+        <Main>
+          <Navbar />
+          <RenderList type="Dashboard" array={events} getPreferences={getPreferences} AllEvents={AllEvents} removePrefs={removePrefs} input={input} setInput={setInput} register={register} Search={Search} />
+        </Main>
+      </>
   );
 };
 
