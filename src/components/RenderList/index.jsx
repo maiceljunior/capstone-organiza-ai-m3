@@ -77,7 +77,8 @@ const RenderList = ({
                   })
                 ) : (
                   <DivNotEvents>
-                    Não existem eventos com este nome ou tipo!
+                    0 eventos encontrados.
+                  
                   </DivNotEvents>
                 )}
               </ul>

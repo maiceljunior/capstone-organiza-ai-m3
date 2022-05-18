@@ -1,10 +1,10 @@
 import { ContainerInput } from "./style";
 
-const Input = ({ label, register, errors, name, ...rest }) => {
+const Input = ({inputType, label, register, errors, name, ...rest }) => {
   return (
     <ContainerInput>
       <p>{label}:</p>
-      <input {...register(name)} {...rest} />
+      <input {...register(name)} {...rest} type={inputType} />
     </ContainerInput>
   );
 };

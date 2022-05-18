@@ -73,25 +73,27 @@ const Login = () => {
           <Header onClick={() => history.push("/")} />
           <main>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
+            {errors.email && (
+                <span className="error">{errors.email.message}</span>
+              )}
               <Input
                 label={"Email"}
                 placeholder={"Digite seu email"}
                 name="email"
-                register={register}
-              />
-              {errors.email && (
-                <span className="error">{errors.email.message}</span>
-              )}
-              <Input
-                label={"Senha"}
-                placeholder={"Digite sua senha"}
-                name="password"
-                type="password"
+                inputType="email"
                 register={register}
               />
               {errors.password && (
                 <span className="error">{errors.password.message}</span>
               )}
+              <Input
+                label={"Senha"}
+                placeholder={"Digite sua senha"}
+                name="password"
+                inputType="password"
+                register={register}
+              />
+              
               <Button type="submit">ENTRAR</Button>
             </form>
             <DivRegister>

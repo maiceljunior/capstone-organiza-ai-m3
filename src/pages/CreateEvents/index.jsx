@@ -51,13 +51,14 @@ const CreateEvents = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   const history = useHistory();
-  const handleClick = () => { };
+  const handleClick = () => {};
 
   const schema = yup.object().shape({
-    nameEvent: yup.string().required("Campo Obrigatório!"),
+    nameEvent: yup.string().required("Seu evento precisa de um nome!").max(30, "máximo de 30 caracteres!"),
     description: yup.string().required("Campo Obrigatório!"),
     type: yup.string(),
-    dateEvent: yup.string().required("Data Obrigatória!"),
+    dateEvent: yup.string().required("Informe a data e o horário!"),
+    guestsQtd: yup.string().required("Campo obrigatório!"),
   });
 
   const {
@@ -196,19 +197,21 @@ const CreateEvents = () => {
       </Header>
       <Navbar />
       <Main>
-        
         <MainRenderListCreateEvent>
           <h2>Criar evento</h2>
           <ContentRenderListCreateEvent>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
+              {errors.nameEvent && (
+                <span className="error">{errors.nameEvent.message}</span>
+              )}
               <Input
                 label={"Nome do evento"}
                 register={register}
                 name="nameEvent"
                 placeholder="Nome do evento"
               />
-              {errors.nameEvent && (
-                <span className="error">{errors.nameEvent.message}</span>
+              {errors.description && (
+                <span className="error">{errors.description.message}</span>
               )}
               <Input
                 label={"Descrição do evento"}
@@ -216,9 +219,16 @@ const CreateEvents = () => {
                 placeholder={"Descrição do evento"}
                 register={register}
               />
-              {errors.description && (
-                <span className="error">{errors.description.message}</span>
+              {errors.guestsQtd && (
+                <span className="error">{errors.guestsQtd.message}</span>
               )}
+              <Input
+                inputType="number"
+                label={"Quantidade de participantes necessária"}
+                name="guestsQtd"
+                placeholder={"Quantidade de participantes"}
+                register={register}
+              />
 
               <CategoryContainer>
                 <h4>Categoria do evento</h4>
@@ -231,7 +241,9 @@ const CreateEvents = () => {
                   <option value="Online">Online</option>
                 </EventCategory>
               </CategoryContainer>
-
+              {errors.dateEvent && (
+                <span className="error">{errors.dateEvent.message}</span>
+              )}
               <HourAndDateContainer>
                 <h4>Data e Hora</h4>
                 <Controller
@@ -249,39 +261,6 @@ const CreateEvents = () => {
                   )}
                 />
               </HourAndDateContainer>
-              {errors.dateEvent && (
-                <span className="error">{errors.dateEvent.message}</span>
-              )}
-              <ContainerGuest>
-                <SearchPeople>
-                  <h3>Buscar pessoas</h3>
-                  <FakeButton onClick={searchPeople}>+</FakeButton>
-                </SearchPeople>
-                <Guests>
-                  <PessoasAdicionadas>Lista de Participantes</PessoasAdicionadas>
-
-                  <GuestList>
-                    {guest.length > 0 ? (
-                      guest.map((convidados) => {
-                        return (
-                          <GuestCard key={convidados.id}>
-                            {convidados.name}
-                            <GuestButton
-                              onClick={() => removeGuest(convidados)}
-                            >
-                              X
-                            </GuestButton>
-                          </GuestCard>
-                        );
-                      })
-                    ) : (
-                      <NoInvitesForNow>
-                        A lista de participantes está vazia.
-                      </NoInvitesForNow>
-                    )}
-                  </GuestList>
-                </Guests>
-              </ContainerGuest>
 
               <Button type="submit">Enviar</Button>
             </form>

@@ -273,10 +273,29 @@ export const NoInvitesForNow = styled.h4`
   margin-top: 15px;
 `;
 export const HourAndDateContainer = styled.div`
+
+  font-size: 1rem;
   display: flex;
-  width: 90%;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #fff;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+
+  @media (max-width: 500px) {
+    flex-direction:column;
+    width:205px;
+    height: 100px;
+    padding-bottom:10px;
+  }
 `;
 
 export const GuestList = styled.ul`
@@ -287,3 +306,4 @@ export const GuestList = styled.ul`
 export const ContainerGuest = styled.div`
   width: 100%;
 `;
+

@@ -147,7 +147,7 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
               register={register}
-              type="text"
+              inputType="text"
               name="name"
               label="Nome e Sobrenome"
               placeholder="Digite aqui seu nome e sobrenome"
@@ -158,7 +158,7 @@ const Register = () => {
 
             <Input
               register={register}
-              type="email"
+              inputType="email"
               name="email"
               label={"Email"}
               placeholder={"Digite aqui seu email"}
@@ -211,7 +211,7 @@ const Register = () => {
               label="Senha"
               placeholder="Crie uma senha forte"
               name="password"
-              type="password"
+              inputType="password"
               register={register}
             />
             {errors.password && (
@@ -222,7 +222,7 @@ const Register = () => {
               label="Confirmar senha"
               placeholder="Confirme a senha"
               name="passwordConfirm"
-              type="password"
+              inputType="password"
               register={register}
             />
             {errors.passwordConfirm && (
