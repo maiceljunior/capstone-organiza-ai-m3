@@ -37,6 +37,7 @@ export default createGlobalStyle`
         --orange: #E85D04;
         --gold: #F48C06;
         --yellow: #FAA307;
+        --green:rgb(21, 192, 5);
     }
 
     h1{
