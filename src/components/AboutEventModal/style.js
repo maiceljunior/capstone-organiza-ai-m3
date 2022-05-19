@@ -24,6 +24,26 @@ export const Modal = styled.div`
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
+  .notAuthorization {
+    margin: 0px 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    height: 35px;
+    font-weight: bolder;
+    font-size: 0.7rem;
+    background: transparent;
+    transition: ease-out 0.5s;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    box-shadow: inset 0 -100px 0 0 black;
+  }
+
   .refreshList {
     display: flex;
     justify-content: space-between;
@@ -89,16 +109,42 @@ export const Modal = styled.div`
     font-weight: bold;
   }
 
+  .btnChat {
+    margin: 0px 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    letter-spacing: 1px;
+    text-decoration: none;
+    height: 35px;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid blue;
+    border-radius: 10px;
+    color: white;
+    box-shadow: inset 0 -100px 0 0 blue;
+  }
+  .btnChat:hover {
+    box-shadow: inset 0 0 0 0 blue;
+    color: blue;
+  }
+
   .btnExit {
     margin: 0px 30px;
     width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
     letter-spacing: 1px;
     text-decoration: none;
-    height: 40px;
+    height: 35px;
+    font-weight: bolder;
+    font-size: 0.8rem;
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
@@ -120,11 +166,12 @@ export const Modal = styled.div`
   .btnEnter {
     margin: 0px 30px;
     width: 100px;
-    height: 40px;
+    height: 35px;
+    font-weight: bolder;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     letter-spacing: 1px;
     text-decoration: none;
     color: white;

@@ -6,7 +6,7 @@ export const ContainerInput = styled.div`
   font-family: "Nunito", sans-serif;
   input {
     width: 100%;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     padding: 10px;
     border: none;
     border-radius: 5px;

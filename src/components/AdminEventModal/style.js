@@ -23,6 +23,72 @@ export const Modal = styled.div`
   background-color: rgb(221, 221, 221);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+.rejectUser{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: red;
+    border: none;
+    padding: 10px;
+    color: white;
+    width: 20px;
+    height:20px;
+    font-weight: bolder;
+    border-radius: 8px;
+  }
+
+  .rejectUser:hover {
+    background-color: #c90000;
+  }
+
+  .AdminButtonEdit {
+    margin: 0px 30px;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid blue;
+    border-radius: 10px;
+    box-shadow: inset 0 -100px 0 0 blue;
+  }
+  .AdminButtonEdit:hover {
+    color: blue;
+    border: 2px solid blue;
+    box-shadow: inset 0 0 0 0 blue;
+  }
+
+  .AdminButtonRemove {
+    margin: 0px 30px;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid red;
+    border-radius: 10px;
+    box-shadow: inset 0 -100px 0 0 red;
+  }
+  .AdminButtonRemove:hover {
+    color: red;
+    border: 2px solid red;
+    box-shadow: inset 0 0 0 0 red;
+  }
 
   .refreshList {
     display: flex;
@@ -155,9 +221,12 @@ export const DivInputs = styled.div`
     margin: auto;
     width: 95%;
     max-width: 90%;
+    min-width: 90%;
+    text-align: start;
     border-radius: 3px;
     overflow: hidden;
     background-color: #fff;
+    height: auto;
   }
 
   .inp .label {
@@ -253,15 +322,22 @@ export const DivInputs = styled.div`
 
 export const DivBtnRequest = styled.span`
   margin-right: 10px;
+  display:flex;
+  justify-content:space-between;
+  
+  width:50px;
 
   .acceptUser {
+    display:flex;
+    justify-content:center;
+    align-items:center;
     background-color: green;
     border: none;
     padding: 10px;
     color: white;
-    width: 70px;
-    font-weight: bold;
-    margin-left: 20px;
+    width: 20px;
+    height:20px;
+    font-weight: bolder;
     border-radius: 8px;
   }
 
@@ -270,12 +346,16 @@ export const DivBtnRequest = styled.span`
   }
 
   .rejectUser {
+    display:flex;
+    justify-content:center;
+    align-items:center;
     background-color: red;
     border: none;
     padding: 10px;
     color: white;
-    width: 70px;
-    font-weight: bold;
+    width: 20px;
+    height:20px;
+    font-weight: bolder;
     border-radius: 8px;
   }
 

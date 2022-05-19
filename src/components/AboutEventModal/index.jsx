@@ -186,10 +186,11 @@ const AboutEventModal = ({ setModalOpen, event, setRefreshPage }) => {
             </button>
           </AdminHeader>
           {trueButtons && (
-            <div className="positionBtns">
-              <Button className="btnExit" onClick={() => setModalOpen(false)}>
-                Sair do Evento
-              </Button>
+
+              <div className="positionBtns">
+                <Button className="btnExit" onClick={() => setModalOpen(false)}>
+                  Fechar
+                </Button>
 
               {isGuest(user) !== undefined && isDenied(user) === undefined ? (
                 <Button className="btnChat" onClick={chatEvent}>

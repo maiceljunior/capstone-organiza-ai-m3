@@ -9,12 +9,15 @@ import {
   ButtonsContainer,
   AdminHeader,
   ButtonRemoveGuest,
+  AdminButtonRemove,
+  AdminButtonEdit,
   SpanOwner,
 } from "./style";
 import { Api } from "../../services/api";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import Button from "../Button";
 import { useUser } from "../../providers/user";
 
 const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
@@ -248,9 +251,11 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
             X
           </button>
         </AdminHeader>
+        
         <ButtonsContainer>
-          <AdminButton>Editar</AdminButton>
-          <AdminButton onClick={DeleteEvent}>Excluir </AdminButton>
+          
+          <Button className="AdminButtonEdit">Editar</Button>
+          <Button className="AdminButtonRemove"  onClick={DeleteEvent}>Excluir </Button>
         </ButtonsContainer>
         <DivInputs>
           <div>
@@ -299,8 +304,9 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
                       {guest.id === user.id ?
                         <SpanOwner />
                         :
-                        <ButtonRemoveGuest onClick={() => removeGuest(guest.id)}>X</ButtonRemoveGuest>
+                        <button className="rejectUser" onClick={() => removeGuest(guest.id)}>X</button>
                       }
+
                     </CardGuests>
                   );
                 })
@@ -323,13 +329,13 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
                           className="rejectUser"
                           onClick={() => recuseRequest(person)}
                         >
-                          Recusar
+                          X
                         </button>
                         <button
                           className="acceptUser"
                           onClick={() => acceptRequest(person)}
                         >
-                          Aceitar
+                          V
                         </button>
                       </DivBtnRequest>
                     </CardRequests>
