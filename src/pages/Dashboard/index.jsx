@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { Api } from "../../services/api";
 import { Loading } from "./loading";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { user, setUser } = useUser();
@@ -84,7 +85,53 @@ const Dashboard = () => {
     setFilteredRender([]);
   }
 
-  const handleClick = () => {};
+  function eventsICreated(idUser) {
+    const eventsCreated = events.filter((event) => event.userId == idUser);
+    if (eventsCreated.length < 1) {
+      toast.error("Você ainda não criou evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(eventsCreated);
+      return eventsCreated;
+    }
+  }
+
+  function eventsIJoined(idUser) {
+    const arrEvents = [];
+    const eventsJoined = events.map((event) =>
+      event.guests.filter((personId) => {
+        return personId.id == idUser && event;
+      })
+    );
+    for (let i = 0; i < eventsJoined.length; i++) {
+      if (eventsJoined[i].length > 0) {
+        arrEvents.push(events[i]);
+      }
+    }
+    if (arrEvents.length < 1) {
+      toast.error("Você não entrou em evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(arrEvents);
+      return arrEvents;
+    }
+  }
+
+  const handleClick = () => { };
 
   return (
     <>
@@ -114,6 +161,8 @@ const Dashboard = () => {
           setInput={setInput}
           register={register}
           Search={Search}
+          eventsICreated={eventsICreated}
+          eventsIJoined={eventsIJoined}
         />
       </Main>
     </>
