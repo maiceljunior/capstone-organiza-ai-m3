@@ -4,10 +4,10 @@ export const Home = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
-display:flex;
-flex-direction:column;
-align-items:center;
-width:100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   header {
     margin-bottom: 16px;
@@ -163,7 +163,7 @@ export const SectionOne = styled.section`
     height: 300px;
     width: 92vw;
     padding: 10px;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -341,6 +341,7 @@ export const SectionOne = styled.section`
 `;
 
 export const SectionTwo = styled.section`
+  width: 100vw;
   margin-top: 47vw;
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
@@ -377,7 +378,7 @@ export const SectionTwo = styled.section`
     height: 300px;
     width: 92vw;
     padding: 10px;
-    
+
     margin-top: 27px;
     margin-bottom: 17px;
     display: flex;
@@ -406,6 +407,7 @@ export const SectionTwo = styled.section`
 `;
 
 export const SectionThree = styled.section`
+  width: 100vw;
   margin-top: 47vw;
   margin-bottom: 25vw;
   height: 130px;
@@ -446,7 +448,7 @@ export const SectionThree = styled.section`
     height: 239px;
     width: 92vw;
     padding: 10px;
-    
+
     margin-top: 27px;
     margin-bottom: 17px;
     display: flex;
@@ -481,7 +483,7 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-width:100vw;
+  width: 100%;
   .team {
     text-decoration: none;
     font-weight: bold;
