@@ -374,3 +374,12 @@ export const ButtonRemoveGuest = styled.button`
 
   border-style: none;
 `;
+
+export const SpanOwner = styled.span`
+  color: var(--orange);
+  font-weight: bold;
+
+  ::before {
+    content: "Host";
+  }
+`;
