@@ -141,7 +141,7 @@ const Developers = () => {
                 alt="Rachel"
               />
               <DivInfo>
-                <h3> Paulo Victor de Souza </h3>
+                <h3> Paulo Victor Guerra </h3>
                 <span>Quality Assurance </span>
 
                 <ContainerIcons>
