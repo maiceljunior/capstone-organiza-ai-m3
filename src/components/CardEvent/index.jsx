@@ -29,7 +29,7 @@ const CardEvent = ({ event }) => {
     setOwnerOpen(true);
   }
 
-  const { dateEvent, nameEvent, description, type, userId } = event;
+  const { dateEvent, nameEvent, type, userId } = event;
 
 
   function fullEvent() {

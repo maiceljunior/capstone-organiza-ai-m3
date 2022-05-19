@@ -43,7 +43,7 @@ const RenderList = ({
     Search();
   };
   function eventsICreated(idUser) {
-    const eventsCreated = events.filter((event) => event.userId === idUser);
+    const eventsCreated = events.filter((event) => event.userId == idUser);
     if (eventsCreated.length < 1) {
       toast.error("Você ainda não criou evento!", {
         position: "top-right",
@@ -64,7 +64,7 @@ const RenderList = ({
     const arrEvents = [];
     const eventsJoined = events.map((event) =>
       event.guests.filter((personId) => {
-        return personId.id === idUser && event;
+        return personId.id == idUser && event;
       })
     );
     for (let i = 0; i < eventsJoined.length; i++) {

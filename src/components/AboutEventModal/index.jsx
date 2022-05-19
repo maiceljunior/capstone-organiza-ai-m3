@@ -8,7 +8,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const AboutEventModal = ({ setModalOpen, event }) => {
-
+    
     const { user } = useUser();
     const toastId = useRef(null);
     const [guestRender, setGuestRender] = useState([]);
