@@ -39,7 +39,6 @@ export const Modal = styled.div`
   .positionBtns {
     display: flex;
     margin: 10px 0px;
-
   }
 
   .ulPosition {
@@ -99,7 +98,7 @@ export const Modal = styled.div`
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-decoration: none;
-height:40px;
+    height: 40px;
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
@@ -121,7 +120,7 @@ height:40px;
   .btnEnter {
     margin: 0px 30px;
     width: 100px;
-    height:40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -376,4 +375,17 @@ export const ButtonRemoveGuest = styled.button`
   background-color: var(--orange);
 
   border-style: none;
+`;
+
+export const ExitUser = styled.button`
+  border: none;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  border: 1px solid red;
+  padding: 2px;
+
+  ::before {
+    content: "SAIR";
+  }
 `;
