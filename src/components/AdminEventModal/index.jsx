@@ -251,11 +251,11 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
             X
           </button>
         </AdminHeader>
-        
+
         <ButtonsContainer>
-          
-          <Button className="AdminButtonEdit">Editar</Button>
-          <Button className="AdminButtonRemove"  onClick={DeleteEvent}>Excluir </Button>
+
+          <Button className="AdminButtonEdit" onClick={exitModal}>Fechar</Button>
+          <Button className="AdminButtonRemove" onClick={DeleteEvent}>Excluir </Button>
         </ButtonsContainer>
         <DivInputs>
           <div>

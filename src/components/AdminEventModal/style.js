@@ -23,16 +23,20 @@ export const Modal = styled.div`
   background-color: rgb(221, 221, 221);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-.rejectUser{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
+  @media (min-width: 768px) {
+    width: 540px;
+  }
+  .rejectUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: red;
     border: none;
     padding: 10px;
     color: white;
     width: 20px;
-    height:20px;
+    height: 20px;
     font-weight: bolder;
     border-radius: 8px;
   }
@@ -322,21 +326,21 @@ export const DivInputs = styled.div`
 
 export const DivBtnRequest = styled.span`
   margin-right: 10px;
-  display:flex;
-  justify-content:space-between;
-  
-  width:50px;
+  display: flex;
+  justify-content: space-between;
+
+  width: 50px;
 
   .acceptUser {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: green;
     border: none;
     padding: 10px;
     color: white;
     width: 20px;
-    height:20px;
+    height: 20px;
     font-weight: bolder;
     border-radius: 8px;
   }
@@ -346,15 +350,15 @@ export const DivBtnRequest = styled.span`
   }
 
   .rejectUser {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: red;
     border: none;
     padding: 10px;
     color: white;
     width: 20px;
-    height:20px;
+    height: 20px;
     font-weight: bolder;
     border-radius: 8px;
   }

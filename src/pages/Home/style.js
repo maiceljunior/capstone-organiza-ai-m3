@@ -479,6 +479,7 @@ export const SectionThree = styled.section`
 
 export const Footer = styled.footer`
   background-color: var(--orange);
+  color: black;
   height: 87px;
   display: flex;
   justify-content: center;
