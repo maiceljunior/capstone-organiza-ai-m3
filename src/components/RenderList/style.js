@@ -305,7 +305,7 @@ margin-bottom:10px;
 
   button:focus,
   button:hover {
-    color: black;
+    color: ${(props) => props.theme.color};
   }
 
   button:focus:after,

@@ -11,18 +11,21 @@ import {
   ButtonRemoveGuest,
   AdminButtonRemove,
   AdminButtonEdit,
+  SpanOwner,
 } from "./style";
 import { Api } from "../../services/api";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import Button from "../Button";
+import { useUser } from "../../providers/user";
 
 const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
   const [requests, setRequests] = useState([]);
   const [guests, setGuests] = useState([]);
   const [declineds, setDeclineds] = useState([]);
   const toastId = useRef(null);
+  const { user } = useUser()
 
   const { dateEvent, type, description, nameEvent, id, eventToken } = event;
 
@@ -75,6 +78,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
         );
 
         setRequests(newRequests);
+        setRefreshPage((state) => !state);
 
         if (!toast.isActive(toastId.current)) {
           toastId.current = toast.success("Removido com sucesso!", {
@@ -133,6 +137,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
         );
 
         setRequests(newRequests);
+        setRefreshPage((state) => !state);
         exitModal();
 
         if (!toast.isActive(toastId.current)) {
@@ -187,6 +192,50 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       }
 
     })
+  }
+
+  function removeGuest(id) {
+
+    const newData = guests.filter(guest => guest.id !== id)
+    removeApiGuest(newData)
+  }
+
+  function removeApiGuest(data) {
+    Api.patch(`eventsPublics/${id}`, { guests: data },
+      {
+        headers: {
+          Authorization: `Bearer ${eventToken}`
+        }
+      })
+      .then((res) => {
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.success("Usuario removido com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+        setRefreshPage((state) => !state);
+        setOwnerOpen(false);
+      })
+      .catch(() => {
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.error("Erro ao remover o usuario!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+
+      })
   }
 
   function exitModal() {
@@ -252,7 +301,12 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
                   return (
                     <CardGuests key={guest.id}>
                       <span>{guest.name}</span>
-                      <button className="rejectUser">X</button>
+                      {guest.id === user.id ?
+                        <SpanOwner />
+                        :
+                        <button className="rejectUser" onClick={() => removeGuest(guest.id)}>X</button>
+                      }
+
                     </CardGuests>
                   );
                 })

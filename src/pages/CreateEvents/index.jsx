@@ -38,7 +38,7 @@ const CreateEvents = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
 
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   const schema = yup.object().shape({
     nameEvent: yup
@@ -49,9 +49,9 @@ const CreateEvents = () => {
     type: yup.string(),
     dateEvent: yup.string().required("Informe a data e o horário!"),
     guestsQtd: yup
-      .string()
+      .number("Campo obrigatório!")
       .required("Campo obrigatório!")
-      .max(3, "Máximo de 3 caracteres!"),
+      .max(999, "Máximo de 3 caracteres!").min(2, "Minimo de 2 pessoas para criar o evento!"),
   });
 
   const {
@@ -129,7 +129,7 @@ const CreateEvents = () => {
     data.guests = [user];
 
     newEvent(data);
-    
+
     reset();
   }
 
@@ -203,7 +203,7 @@ const CreateEvents = () => {
                 register={register}
               />
               {errors.guestsQtd && (
-                <span className="error">{errors.guestsQtd.message}</span>
+                <span className="error">Quantidade minima de 2 participantes e maxima de 999 participantes!</span>
               )}
               <Input
                 inputType="number"

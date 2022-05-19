@@ -140,7 +140,6 @@ export const Modal = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     letter-spacing: 1px;
     text-decoration: none;
     height: 35px;
@@ -169,7 +168,6 @@ export const Modal = styled.div`
     width: 100px;
     height: 35px;
     font-weight: bolder;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -424,4 +422,17 @@ export const ButtonRemoveGuest = styled.button`
   background-color: var(--orange);
 
   border-style: none;
+`;
+
+export const ExitUser = styled.button`
+  border: none;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  border: 1px solid red;
+  padding: 2px;
+
+  ::before {
+    content: "SAIR";
+  }
 `;

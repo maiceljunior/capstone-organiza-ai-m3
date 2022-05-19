@@ -96,11 +96,11 @@ const Developers = () => {
                 <span>Product Owner </span>
 
                 <ContainerIcons>
-                  <a href="https://www.linkedin.com" target="blank">
+                  <a href="https://www.linkedin.com/in/danilo-val%C3%A9rio-495804a5/" target="blank">
                     {" "}
                     <BsLinkedin />
                   </a>
-                  <a href="https://github.com/LoadedHippo88" target="blank">
+                  <a href="https://github.com/danilovalerio89" target="blank">
                     {" "}
                     <BsGithub />
                   </a>
@@ -145,7 +145,7 @@ const Developers = () => {
                 <span>Quality Assurance </span>
 
                 <ContainerIcons>
-                  <a href="https://www.linkedin.com" target="blank">
+                  <a href="https://www.linkedin.com/in/paulo-victor-6a4b81228/" target="blank">
                     {" "}
                     <BsLinkedin />
                   </a>
@@ -168,7 +168,7 @@ const Developers = () => {
                 <span>Quality Assurance </span>
 
                 <ContainerIcons>
-                  <a href="https://www.linkedin.com" target="blank">
+                  <a href="https://www.linkedin.com/in/kefren-kennedy-015763239/" target="blank">
                     {" "}
                     <BsLinkedin />
                   </a>

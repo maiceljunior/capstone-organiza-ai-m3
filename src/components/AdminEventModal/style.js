@@ -427,3 +427,39 @@ export const ButtonsContainer = styled.div`
     border: 2px solid var(--orange);
   }
 `;
+
+export const AdminButton = styled.button`
+  width: 120px;
+  height: 25px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: var(--yellow);
+
+  border-style: none;
+`;
+
+export const ButtonRemoveGuest = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: var(--orange);
+
+  border-style: none;
+`;
+
+export const SpanOwner = styled.span`
+  color: var(--orange);
+  font-weight: bold;
+
+  ::before {
+    content: "Host";
+  }
+`;

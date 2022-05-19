@@ -71,7 +71,7 @@ export const InfoEventWrapper = styled.div`
   justify-content: center;
   h2 {
     font-size: 1.4rem;
-    color: black;
+    color: ${(props) => props.theme.color};
     font-weight: bold;
     text-transform: lowercase;
   }

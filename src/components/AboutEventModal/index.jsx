@@ -4,6 +4,7 @@ import {
   ButtonsContainer,
   CardGuests,
   DivInputs,
+  ExitUser,
   HeaderContainer,
   Modal,
   ModalContainer,
@@ -17,13 +18,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { AdminHeader } from "../AdminEventModal/style";
 
-const AboutEventModal = ({ setModalOpen, event }) => {
+const AboutEventModal = ({ setModalOpen, event, setRefreshPage }) => {
   const { user } = useUser();
   const toastId = useRef(null);
   const [guestRender, setGuestRender] = useState([]);
   const [requestRender, setRequestRender] = useState([]);
   const [declineds, setDeclineds] = useState([]);
   const [trueButtons, setTrueButtons] = useState(false);
+
 
   const { type, nameEvent, description, eventToken, id, requests, dateEvent } =
     event;
@@ -94,6 +96,54 @@ const AboutEventModal = ({ setModalOpen, event }) => {
       .catch((err) => console.log(err));
   }
 
+  function userExit(id) {
+
+    console.log(id)
+    const newData = guestRender.filter(guest => guest.id !== id)
+    console.log(newData)
+    removeApiUser(newData)
+
+  }
+
+  function removeApiUser(data) {
+    Api.patch(`eventsPublics/${id}`, { guests: data },
+      {
+        headers: {
+          Authorization: `Bearer ${eventToken}`
+        }
+      })
+      .then((res) => {
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.info("Você saiu do evento!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+        setRefreshPage(state => !state);
+        setModalOpen(false);
+      })
+      .catch(() => {
+        if (!toast.isActive(toastId.current)) {
+          toastId.current = toast.error("Erro ao sair do evento!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+  }
+
+
+
   function isGuest(user) {
     const listGuests = guestRender.find((guest) => user.id === guest.id);
 
@@ -124,6 +174,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
     }
   }
 
+
   return (
     <ModalContainer>
       {user.name && (
@@ -135,27 +186,28 @@ const AboutEventModal = ({ setModalOpen, event }) => {
             </button>
           </AdminHeader>
           {trueButtons && (
+
               <div className="positionBtns">
                 <Button className="btnExit" onClick={() => setModalOpen(false)}>
                   Fechar
                 </Button>
 
-                {isGuest(user) !== undefined && isDenied(user) === undefined ? (
-                  <Button className="btnChat" onClick={chatEvent}>
-                    Chat do Evento
-                  </Button>
-                ) : isGuest(user) === undefined &&
-                  isDenied(user) !== undefined ? (
-                  <span className="notAuthorization">
-                    Participação Recusada.
-                  </span>
-                ) : (
-                  <Button className="btnEnter" onClick={() => joinEvent(user)}>
-                    Solicitar Participação
-                  </Button>
-                )}
-              </div>
-            )}
+              {isGuest(user) !== undefined && isDenied(user) === undefined ? (
+                <Button className="btnChat" onClick={chatEvent}>
+                  Chat do Evento
+                </Button>
+              ) : isGuest(user) === undefined &&
+                isDenied(user) !== undefined ? (
+                <span className="notAuthorization">
+                  Participação Recusada.
+                </span>
+              ) : (
+                <Button className="btnEnter" onClick={() => joinEvent(user)}>
+                  Solicitar Participação
+                </Button>
+              )}
+            </div>
+          )}
           <DivInputs>
             <div>
               <label className="inp">
@@ -200,13 +252,18 @@ const AboutEventModal = ({ setModalOpen, event }) => {
                   return (
                     <CardGuests key={guest.id}>
                       <span>{guest.name}</span>
+                      {guest.id === user.id ?
+                        <ExitUser onClick={() => userExit(guest.id)} />
+                        :
+                        null
+                      }
                     </CardGuests>
                   );
                 })}
               </ul>
             </div>
 
-           
+
           </DivInputs>
         </Modal>
       )}

@@ -88,7 +88,7 @@ const CardEvent = ({ event, setRefreshPage }) => {
       )}
 
       {modalOpen && (
-        <AboutEventModal event={event} setModalOpen={setModalOpen} />
+        <AboutEventModal setRefreshPage={setRefreshPage} event={event} setModalOpen={setModalOpen} />
       )}
 
       {ownerOpen && (
