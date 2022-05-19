@@ -13,12 +13,14 @@ import {
   PositionContent,
   DivPref,
   DivNotEvents,
+  ContainerEventos,
 } from "./style";
 import Button from "../Button";
 import Input from "../Input";
 import { ListPref } from "../../pages/Dashboard/loading";
 import { useUser } from "../../providers/user";
 import CardEvent from "../CardEvent";
+import { toast } from "react-toastify";
 
 const RenderList = ({
   type,
@@ -31,20 +33,71 @@ const RenderList = ({
   register,
   Search,
   filteredRender,
+  events,
+  setFilteredRender,
 }) => {
   const { user } = useUser();
-
+  const UserID = localStorage.getItem("UserID");
   const handleSubmit = (e) => {
     e.preventDefault();
     Search();
   };
+  function eventsICreated(idUser) {
+    const eventsCreated = events.filter((event) => event.userId === idUser);
+    if (eventsCreated.length < 1) {
+      toast.error("Você ainda não criou evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(eventsCreated);
+      return eventsCreated;
+    }
+  }
+
+  function eventsIJoined(idUser) {
+    const arrEvents = [];
+    const eventsJoined = events.map((event) =>
+      event.guests.filter((personId) => {
+        return personId.id === idUser && event;
+      })
+    );
+    for (let i = 0; i < eventsJoined.length; i++) {
+      if (eventsJoined[i].length > 0) {
+        arrEvents.push(events[i]);
+      }
+    }
+    if (arrEvents.length < 1) {
+      toast.error("Você não entrou em evento!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      setFilteredRender(arrEvents);
+      return arrEvents;
+    }
+  }
 
   return (
     <>
       {type === "Dashboard" && (
         <PositionContent>
           <MainRenderList>
-            <h2>Eventos</h2>
+            <ContainerEventos>
+              <h2>Eventos</h2>
+              {!removePrefs && <ListPref />}
+            </ContainerEventos>
+
             <DivSearch onSubmit={handleSubmit}>
               <Input
                 id="Search"
@@ -63,9 +116,15 @@ const RenderList = ({
                 <Button id="All" redSchema onClick={() => AllEvents()}>
                   Listar Todos
                 </Button>
-                {!removePrefs && <ListPref />}
+
                 <Button id="Pref" redSchema onClick={() => getPreferences()}>
                   Categorias Favoritas
+                </Button>
+                <Button onClick={() => eventsIJoined(UserID)}>
+                  Eventos que participo
+                </Button>
+                <Button onClick={() => eventsICreated(UserID)}>
+                  Eventos que criei
                 </Button>
               </DivPref>
             )}
@@ -81,7 +140,7 @@ const RenderList = ({
                     return <CardEvent event={event} key={index} />;
                   })
                 ) : (
-                  <DivNotEvents>0 eventos encontrados.</DivNotEvents>
+                  <DivNotEvents>Nenhum evento encontrado.</DivNotEvents>
                 )}
               </ul>
             </ContentRenderList>

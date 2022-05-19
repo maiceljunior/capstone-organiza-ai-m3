@@ -7,18 +7,27 @@ export const ButtonComponent = styled.button`
   border-radius: 8px;
   border: none;
   width: 150px;
-  min-width:55px;
+  min-width: 45px;
   font-size: 1rem;
   :hover {
     border: 2px solid var(--white);
   }
-  @media (max-width:800px){
-   width:90px;
+  @media (max-width: 1027px) {
+    width: 90px;
   }
-  @media (max-width:500px){
-   width:70px;
+  @media (max-width: 687px) {
+    width: 70px;
   }
-  @media (max-width:500px){
-   font-size:0.9rem;
+  @media (max-width: 554px) {
+    font-size: 0.7rem;
+    width:45px;
+  }
+  @media (max-width: 602px) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: 440px) {
+    width: 20px;
+    height:25px;
+    font-size:0.5rem;
   }
 `;
