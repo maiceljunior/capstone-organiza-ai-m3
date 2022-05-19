@@ -9,6 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AvatarComponent = ({ userName, userAvatar = false }) => {
   const history = useHistory();
@@ -106,11 +107,11 @@ const AvatarComponent = ({ userName, userAvatar = false }) => {
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
             <MenuItem>
-              <Avatar /> Profile
+              {" "}
+              <Link to="/profile:id">Profile</Link>
             </MenuItem>
 
             <Divider />
-
 
             <MenuItem onClick={() => handleLogout()}>
               <ListItemIcon>

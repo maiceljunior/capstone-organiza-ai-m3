@@ -59,4 +59,8 @@ export default createGlobalStyle`
     p{
         font-size: 16px;
     }
+    a{
+        text-decoration:none;
+        color:var(--black);
+    }
 `;
