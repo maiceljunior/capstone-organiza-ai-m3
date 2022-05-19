@@ -81,7 +81,7 @@ const AboutEventModal = ({ setModalOpen, event, setRefreshPage }) => {
     )
       .then((res) => {
         setRequestRender([res.data]);
-        toast.success("Você solicitou a entrada no evento com sucesso!", {
+        toast.success("Solicitação enviada!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -93,7 +93,7 @@ const AboutEventModal = ({ setModalOpen, event, setRefreshPage }) => {
 
         exitModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("O token expirou!!"));
   }
 
   function userExit(id) {
@@ -187,10 +187,10 @@ const AboutEventModal = ({ setModalOpen, event, setRefreshPage }) => {
           </AdminHeader>
           {trueButtons && (
 
-              <div className="positionBtns">
-                <Button className="btnExit" onClick={() => setModalOpen(false)}>
-                  Fechar
-                </Button>
+            <div className="positionBtns">
+              <Button className="btnExit" onClick={() => setModalOpen(false)}>
+                Fechar
+              </Button>
 
               {isGuest(user) !== undefined && isDenied(user) === undefined ? (
                 <Button className="btnChat" onClick={chatEvent}>

@@ -245,7 +245,7 @@ const CreateEvents = () => {
                 />
               </HourAndDateContainer>
 
-              <Button type="submit">Enviar</Button>
+              <Button type="submit">Criar</Button>
             </form>
           </ContentRenderListCreateEvent>
         </MainRenderListCreateEvent>

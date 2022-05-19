@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: var(--white-dark);
+  height: 100%;
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
 
@@ -95,11 +96,14 @@ export const AnimationContainer = styled.div`
     }
     .error {
       color: var(--red);
-      max-width: 90%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 10px;
       text-align: justify;
-      display: block;
     }
+
     @media (min-width: 900px) {
       form {
         width: 380px;

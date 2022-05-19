@@ -5,13 +5,13 @@ import { ContainerGeral, FakeButtonLink } from "./style";
 
 const Navbar = () => {
   return (
-    
+
     <ContainerGeral>
       <FakeButtonLink>
-        
+
         <Link className="link" to="/dashboard">
           <AiOutlineHome />
-          <h4 className="newH4">Dashboard</h4>
+          <h4 className="newH4">Dashboard </h4>
         </Link>
       </FakeButtonLink>
       <FakeButtonLink>

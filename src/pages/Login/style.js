@@ -107,3 +107,7 @@ export const FigureLogin = styled.figure`
     }
   }
 `;
+
+export const Div = styled.div`
+  background-color: var(--white-dark);
+`;

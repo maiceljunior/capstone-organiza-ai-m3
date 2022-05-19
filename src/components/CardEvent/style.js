@@ -14,17 +14,6 @@ export const MainWrapper = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
-  @media (max-width: 1020px) {
-     height:100px;
-  }
-
-  @media (max-width: 777px) {
-    height: 80px;
-  }
-
-  @media (max-width: 480px) {
-    height: 50px;
-  }
 `;
 
 export const ImgEventWrapper = styled.div`
@@ -66,7 +55,7 @@ export const InfoEventWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  margin:15px 0px;
+  margin: 15px 0px;
   flex-direction: column;
   justify-content: center;
   h2 {
@@ -76,7 +65,9 @@ export const InfoEventWrapper = styled.div`
     text-transform: lowercase;
   }
   h2,
-  p,h3,h4 {
+  p,
+  h3,
+  h4 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,7 +83,7 @@ export const InfoEventWrapper = styled.div`
   }
 
   @media (max-width: 1027px) {
-    h2{
+    h2 {
       font-size: 1.1rem;
     }
 
@@ -102,20 +93,19 @@ export const InfoEventWrapper = styled.div`
   }
 
   @media (max-width: 775px) {
-    h2{
-      font-size:0.9rem;
+    h2 {
+      font-size: 0.9rem;
     }
     h3 {
       font-size: 0.6rem;
     }
   }
   @media (max-width: 442px) {
-      h2,
-      h3 {
-        font-size: 0.5rem;
-      }
+    h2,
+    h3 {
+      font-size: 0.5rem;
     }
- 
+  }
 `;
 
 export const ButtonEventWrapper = styled.div`
@@ -136,25 +126,25 @@ export const NewInfoWrapper = styled.div`
 
 export const GuestsInfoWrapper = styled.div`
   text-align: center;
-  font-size:1.1rem;
-  h4{
-    font-size:1.1rem;
-    font-weight:bolder;
+  font-size: 1.1rem;
+  h4 {
+    font-size: 1.1rem;
+    font-weight: bolder;
   }
   @media (max-width: 785px) {
     span {
-      font-size:0.8rem;
+      font-size: 0.8rem;
     }
-    h4{
-      font-size:0.8rem;
+    h4 {
+      font-size: 0.8rem;
     }
   }
   @media (max-width: 442px) {
     h4 {
-      font-size:0.5rem;
+      font-size: 0.5rem;
     }
-    span{
-      font-size:0.5rem
+    span {
+      font-size: 0.5rem;
     }
   }
 `;

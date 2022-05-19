@@ -60,14 +60,14 @@ export const Modal = styled.div`
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
-    border: 2px solid blue;
+    border: 2px solid var(--yellow);
     border-radius: 10px;
-    box-shadow: inset 0 -100px 0 0 blue;
+    box-shadow: inset 0 -100px 0 0 var(--yellow);
   }
   .AdminButtonEdit:hover {
-    color: blue;
-    border: 2px solid blue;
-    box-shadow: inset 0 0 0 0 blue;
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+    box-shadow: inset 0 0 0 0 var(--yellow);
   }
 
   .AdminButtonRemove {

@@ -150,7 +150,7 @@ const Register = () => {
               inputType="text"
               name="name"
               label="Nome e Sobrenome"
-              placeholder="Digite aqui seu nome e sobrenome"
+              placeholder="Digite seu nome e sobrenome"
             />
             {errors.name && (
               <span className="error">{errors.name.message}</span>
@@ -161,7 +161,7 @@ const Register = () => {
               inputType="email"
               name="email"
               label={"Email"}
-              placeholder={"Digite aqui seu email"}
+              placeholder={"Digite aqui seu melhor email"}
             />
             {errors.email && (
               <span className="error">{errors.email.message}</span>

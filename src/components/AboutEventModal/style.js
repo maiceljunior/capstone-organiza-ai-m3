@@ -20,6 +20,10 @@ export const Modal = styled.div`
   width: 300px;
   height: 450px;
 
+  @media (min-width: 768px) {
+    width: 540px;
+  }
+
   background-color: rgb(221, 221, 221);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -58,7 +62,11 @@ export const Modal = styled.div`
 
   .positionBtns {
     display: flex;
-    margin: 10px 0px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--white);
+    height: 40px;
+    margin: 4px 0px;
   }
 
   .ulPosition {
@@ -148,15 +156,15 @@ export const Modal = styled.div`
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
-    border: 2px solid red;
+    border: 2px solid var(--yellow);
     border-radius: 10px;
     color: white;
-    box-shadow: inset 0 -100px 0 0 red;
+    box-shadow: inset 0 -100px 0 0 var(--yellow);
   }
 
   .btnExit:hover {
-    box-shadow: inset 0 0 0 0 red;
-    color: red;
+    box-shadow: inset 0 0 0 0 var(--yellow);
+    color: var(--yellow);
   }
 
   .btnExit:active {
@@ -430,9 +438,10 @@ export const ExitUser = styled.button`
   background-color: red;
   font-weight: bold;
   border: 1px solid red;
-  padding: 2px;
+  padding: 4px;
+  border-radius: 5px;
 
   ::before {
-    content: "SAIR";
+    content: "Sair do evento";
   }
 `;

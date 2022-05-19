@@ -48,7 +48,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.info("Essa pessoa já está no evento!", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -81,9 +81,9 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
         setRefreshPage((state) => !state);
 
         if (!toast.isActive(toastId.current)) {
-          toastId.current = toast.success("Removido com sucesso!", {
+          toastId.current = toast.info("Solicitação negada!", {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -107,7 +107,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.info("Essa pessoa já está no evento!", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -141,9 +141,9 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
         exitModal();
 
         if (!toast.isActive(toastId.current)) {
-          toastId.current = toast.success("Usuario adicionado no evento!", {
+          toastId.current = toast.success("Usuário adicionado no evento!", {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -167,7 +167,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success("Evento removido com sucesso!", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -182,7 +182,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.error("Erro ao remover o evento!", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -209,9 +209,9 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
       })
       .then((res) => {
         if (!toast.isActive(toastId.current)) {
-          toastId.current = toast.success("Usuario removido com sucesso!", {
+          toastId.current = toast.success("Usuário removido com sucesso!", {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

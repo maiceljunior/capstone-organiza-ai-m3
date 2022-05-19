@@ -89,7 +89,7 @@ const Dashboard = () => {
   function eventsICreated(idUser) {
     const eventsCreated = events.filter((event) => event.userId == idUser);
     if (eventsCreated.length < 1) {
-      toast.error("Você ainda não criou evento!", {
+      toast.error("Você ainda não criou eventos!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { MainWrapper, DivRegister, FigureLogin, DivImgs } from "./style";
+import { MainWrapper, DivRegister, FigureLogin, DivImgs, Div } from "./style";
 import ImageLoginMobile from "../../assets/imgs/ImageLoginMobile.png";
 import ImageLoginDesktop from "../../assets/imgs/ImageLoginDesktop.png";
 import Header from "../../components/Header";
@@ -19,7 +19,7 @@ const Login = () => {
   const history = useHistory();
 
   const schema = yup.object().shape({
-    email: yup.string().email("Email Invalido").required("Campo obrigatório"),
+    email: yup.string().email("Email Inválido").required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
   });
 
@@ -67,13 +67,13 @@ const Login = () => {
   }
 
   return (
-    <>
+    <Div>
       <MainWrapper>
         <section>
           <Header onClick={() => history.push("/")} />
           <main>
             <form onSubmit={handleSubmit(onSubmitFunction)}>
-            {errors.email && (
+              {errors.email && (
                 <span className="error">{errors.email.message}</span>
               )}
               <Input
@@ -93,7 +93,7 @@ const Login = () => {
                 inputType="password"
                 register={register}
               />
-              
+
               <Button type="submit">ENTRAR</Button>
             </form>
             <DivRegister>
@@ -111,7 +111,7 @@ const Login = () => {
           </FigureLogin>
         </DivImgs>
       </MainWrapper>
-    </>
+    </Div>
   );
 };
 export default Login;
