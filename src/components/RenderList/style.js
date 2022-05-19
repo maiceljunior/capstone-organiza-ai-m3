@@ -258,7 +258,7 @@ export const DivPref = styled.div`
 
   button:focus,
   button:hover {
-    color: black;
+    color: ${(props) => props.theme.color};
   }
 
   button:focus:after,
