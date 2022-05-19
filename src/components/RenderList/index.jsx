@@ -57,7 +57,7 @@ const RenderList = ({
 
             <DivSearch onSubmit={handleSubmit}>
               <Input
-                id="Search"
+                className="Search"
                 register={register}
                 value={input}
                 name={"Search"}

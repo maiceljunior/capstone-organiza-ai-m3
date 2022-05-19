@@ -137,7 +137,7 @@ const AboutEventModal = ({ setModalOpen, event }) => {
           {trueButtons && (
               <div className="positionBtns">
                 <Button className="btnExit" onClick={() => setModalOpen(false)}>
-                  Sair do Evento
+                  Fechar
                 </Button>
 
                 {isGuest(user) !== undefined && isDenied(user) === undefined ? (

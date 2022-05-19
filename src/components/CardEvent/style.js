@@ -14,8 +14,16 @@ export const MainWrapper = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   transition: background-color 0.8s linear, color 0.5s linear;
-  @media (max-width: 480px) {
+  @media (max-width: 1020px) {
+     height:100px;
+  }
+
+  @media (max-width: 777px) {
     height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 50px;
   }
 `;
 

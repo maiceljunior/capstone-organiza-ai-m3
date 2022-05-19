@@ -211,6 +211,53 @@ export const DivSearch = styled.form`
       margin-left: 0px;
     }
   }
+  @media (max-width: 777px) {
+    flex-direction: column;
+    align-items: center;
+    input {
+      margin-left: 2px;
+      width: 98%;
+      font-size: 0.8rem;
+      height: 30px;
+      padding: 0px 10px;
+    }
+    button {
+      width: 90%;
+      height: 20px;
+      margin-left: 0px;
+    }
+  }
+  @media (max-width: 475px) {
+    align-items: center;
+    input {
+      margin-left: 2px;
+      width: 98%;
+      font-size: 0.8rem;
+      height: 20px;
+      padding: 0px 10px;
+    }
+    button {
+      width: 90%;
+      height: 20px;
+      margin-left: 0px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    align-items: center;
+    input {
+      margin-left: 2px;
+      width: 98%;
+      font-size: 0.8rem;
+      height: 20px;
+      padding: 0px 10px;
+    }
+    button {
+      width: 90%;
+      height: 20px;
+      margin-left: 0px;
+    }
+  }
 `;
 export const FiltButtons = styled.div`
   height: 50px;
@@ -235,7 +282,7 @@ export const PositionContent = styled.div`
 export const DivPref = styled.div`
   display: flex;
   width: 100%;
-
+margin-bottom:10px;
   align-items: center;
   justify-content: space-between;
 
@@ -270,7 +317,7 @@ export const DivPref = styled.div`
   button:after {
     content: "";
     pointer-events: none;
-    bottom: 22px;
+    bottom: 100%;
     left: 50%;
     position: absolute;
     width: 0%;
@@ -301,7 +348,7 @@ export const DivPref = styled.div`
 export const DivNotEvents = styled.div`
   display: flex;
   color: black;
-  margin:0px 100px;
+  margin: 0px 100px;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
   font-size: 1rem;
@@ -315,7 +362,7 @@ export const ContainerEventos = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width:320px) {
-    width:95%;
+  @media (max-width: 320px) {
+    width: 95%;
   }
 `;

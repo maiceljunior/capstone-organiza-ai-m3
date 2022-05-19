@@ -9,11 +9,14 @@ import {
   ButtonsContainer,
   AdminHeader,
   ButtonRemoveGuest,
+  AdminButtonRemove,
+  AdminButtonEdit,
 } from "./style";
 import { Api } from "../../services/api";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import Button from "../Button";
 
 const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
   const [requests, setRequests] = useState([]);
@@ -199,9 +202,11 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
             X
           </button>
         </AdminHeader>
+        
         <ButtonsContainer>
-          <AdminButton>Editar</AdminButton>
-          <AdminButton onClick={DeleteEvent}>Excluir </AdminButton>
+          
+          <Button className="AdminButtonEdit">Editar</Button>
+          <Button className="AdminButtonRemove"  onClick={DeleteEvent}>Excluir </Button>
         </ButtonsContainer>
         <DivInputs>
           <div>
@@ -247,7 +252,7 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
                   return (
                     <CardGuests key={guest.id}>
                       <span>{guest.name}</span>
-                      <ButtonRemoveGuest>X</ButtonRemoveGuest>
+                      <button className="rejectUser">X</button>
                     </CardGuests>
                   );
                 })
@@ -270,13 +275,13 @@ const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
                           className="rejectUser"
                           onClick={() => recuseRequest(person)}
                         >
-                          Recusar
+                          X
                         </button>
                         <button
                           className="acceptUser"
                           onClick={() => acceptRequest(person)}
                         >
-                          Aceitar
+                          V
                         </button>
                       </DivBtnRequest>
                     </CardRequests>
