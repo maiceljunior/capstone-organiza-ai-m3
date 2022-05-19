@@ -5,7 +5,7 @@ export const MainWrapper = styled.div`
     props.fullEvent ? "1.5px solid green" : "1px solid yellow"};
   margin: 10px 0px;
   width: 95%;
-  height: 120px;
+  height: 150px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -30,11 +30,9 @@ export const ImgEventWrapper = styled.div`
     height: 80px;
     border-radius: 60px;
 
-
     @media (max-width: 868px) {
       width: 50%;
     }
-
   }
 
   .Outros {
@@ -63,82 +61,71 @@ export const InfoEventWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   h2 {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: black;
     font-weight: bold;
     text-transform: lowercase;
   }
   h2,
-  p {
+  p,h3,h4 {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
   h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: bold;
     color: var(--grey);
   }
   h4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: var(--red);
     background-color: aliceblue;
   }
 
-  @media (max-width: 785px) {
 
-    h2 {
+  @media (max-width: 1027px) {
+    h2{
+      font-size: 1.1rem;
       max-width: 200px;
     }
-  }
-
-  @media (max-width: 785px) {
-    h2,
     h3 {
       font-size: 0.8rem;
     }
   }
-  @media (max-width: 500px) {
-    h2,
+  @media (max-width: 775px) {
+    h2{
+      font-size:0.9rem;
+    }
     h3 {
       font-size: 0.6rem;
     }
   }
+  @media (max-width: 442px) {
+      h2,
+      h3 {
+        font-size: 0.5rem;
+      }
+    }
   @media (max-width: 375px) {
     h2,
     h3 {
       font-size: 0.5rem;
-    h2,
-    h3 {
-      font-size: 0.8rem;
+      h2,
+      h3 {
+        font-size: 0.8rem;
+      }
     }
-  }
-  @media (max-width: 450px) {
-    h2,
-    h3 {
-      font-size: 0.6rem;
-    }
+    
   }
 `;
 
 export const ButtonEventWrapper = styled.div`
-  /* min-width: 30%; */
   height: 100%;
   display: flex;
   width: 150px;
   align-items: center;
   justify-content: center;
   background-color: var(--orange);
-  /* button {
-    max-width: 90%;
-    max-width: 185px;
-    margin: 0;
-  } */
 `;
 
 export const NewInfoWrapper = styled.div`
@@ -150,4 +137,25 @@ export const NewInfoWrapper = styled.div`
 
 export const GuestsInfoWrapper = styled.div`
   text-align: center;
+  font-size:1.1rem;
+  h4{
+    font-size:1.1rem;
+    font-weight:bolder;
+  }
+  @media (max-width: 785px) {
+    span {
+      font-size:0.8rem;
+    }
+    h4{
+      font-size:0.8rem;
+    }
+  }
+  @media (max-width: 442px) {
+    h4 {
+      font-size:0.5rem;
+    }
+    span{
+      font-size:0.5rem
+    }
+  }
 `;

@@ -4,18 +4,9 @@ import {
   Main,
   MainRenderListCreateEvent,
   ContentRenderListCreateEvent,
-  SearchPeople,
-  Guests,
-  FakeButton,
-  PessoasAdicionadas,
-  GuestCard,
-  GuestButton,
   EventCategory,
   CategoryContainer,
-  NoInvitesForNow,
   HourAndDateContainer,
-  GuestList,
-  ContainerGuest,
 } from "./style";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -32,7 +23,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useUser } from "../../providers/user";
 import { useGuest } from "../../providers/guests";
 import { useRef } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -50,18 +40,20 @@ const CreateEvents = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
 
-  const history = useHistory();
   const handleClick = () => {};
 
   const schema = yup.object().shape({
     nameEvent: yup
       .string()
       .required("Seu evento precisa de um nome!")
-      .max(30, "máximo de 30 caracteres!"),
+      .max(30, "Máximo de 30 caracteres!"),
     description: yup.string().required("Campo Obrigatório!"),
     type: yup.string(),
     dateEvent: yup.string().required("Informe a data e o horário!"),
-    guestsQtd: yup.string().required("Campo obrigatório!"),
+    guestsQtd: yup
+      .string()
+      .required("Campo obrigatório!")
+      .max(3, "Máximo de 3 caracteres!"),
   });
 
   const {
@@ -141,7 +133,6 @@ const CreateEvents = () => {
     newEvent(data);
     setGuest([]);
     reset();
-   
   }
 
   function newEvent(data) {
@@ -176,15 +167,6 @@ const CreateEvents = () => {
         });
       });
   }
-
-  function searchPeople() {
-    setModalOpen(true);
-  }
-
-  const removeGuest = (guesst) => {
-    const newGuestList = guest.filter((gst) => gst.id !== guesst.id);
-    setGuest(newGuestList);
-  };
 
   return (
     <>

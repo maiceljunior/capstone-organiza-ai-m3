@@ -3,7 +3,6 @@ import {
   MainWrapper,
   ImgEventWrapper,
   InfoEventWrapper,
-  ButtonEventWrapper,
   NewInfoWrapper,
   GuestsInfoWrapper,
 } from "./style";
@@ -34,7 +33,7 @@ const CardEvent = ({ event }) => {
   const { dateEvent, nameEvent, description, type, userId } = event;
 
   function eventFull() {
-    if (event.guests.length == Number(event.guestsQtd)) {
+    if (event.guests.length === Number(event.guestsQtd)) {
       return true;
     } else {
       return false;
@@ -76,7 +75,8 @@ const CardEvent = ({ event }) => {
       </NewInfoWrapper>
       <GuestsInfoWrapper>
         <h4>Participantes</h4>
-        <span>{event.guests.length}</span>/<span>{event.guestsQtd}</span>
+        <span>{event.guests.length} / {event.guestsQtd}</span>
+        
       </GuestsInfoWrapper>
 
       {parseInt(userLogged) === userId ? (

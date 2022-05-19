@@ -177,7 +177,7 @@ export const DivSearch = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  flex-direction: row;
   margin-bottom: 5px;
   margin-top: 10px;
 
@@ -195,17 +195,20 @@ export const DivSearch = styled.form`
   button {
     width: 15%;
     font-weight: bold;
+    margin-left: 15px;
   }
 
   button:hover {
     background-color: var(--yellow);
   }
 
-  @media (min-width: 425px) {
-    justify-content: flex-start;
+  @media (max-width: 425px) {
+    flex-direction: column;
 
     button {
-      margin-left: 30px;
+      width: 90%;
+      height: 20px;
+      margin-left: 0px;
     }
   }
 `;
@@ -250,6 +253,7 @@ export const DivPref = styled.div`
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: color;
+    margin: 0px 20px;
   }
 
   button:focus,
@@ -276,14 +280,20 @@ export const DivPref = styled.div`
     transition-duration: 400ms;
     transition-property: width, left;
   }
-  @media (max-width: 475px) {
-    button {
-      font-size: 0.8rem;
-    }
-  }
-  @media (max-width: 390px) {
+  @media (max-width: 777px) {
     button {
       font-size: 0.7rem;
+    }
+  }
+  @media (max-width: 475px) {
+    button {
+      font-size: 0.6rem;
+    }
+  }
+  @media (max-width: 400px) {
+    button {
+      font-size: 0.5rem;
+      margin: 0px 5px;
     }
   }
 `;
@@ -296,4 +306,11 @@ export const DivNotEvents = styled.div`
   font-size: 20px;
   height: 100%;
   align-items: center;
+`;
+
+export const ContainerEventos = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
