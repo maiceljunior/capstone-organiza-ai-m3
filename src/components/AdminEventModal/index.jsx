@@ -15,7 +15,7 @@ import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
-const AdminEventModal = ({ event, setOwnerOpen, ownerOpen }) => {
+const AdminEventModal = ({ event, setOwnerOpen, setRefreshPage }) => {
   const [requests, setRequests] = useState([]);
   const [guests, setGuests] = useState([]);
   const [declineds, setDeclineds] = useState([]);
@@ -147,6 +147,45 @@ const AdminEventModal = ({ event, setOwnerOpen, ownerOpen }) => {
       .catch((err) => console.log(err));
   }
 
+  function DeleteEvent() {
+    Api.delete(
+      `eventsPublics/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${eventToken}`,
+        },
+      }
+    ).then(() => {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success("Evento removido com sucesso!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      setOwnerOpen(false);
+      setRefreshPage((state) => !state);
+
+    }).catch(() => {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error("Erro ao remover o evento!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+
+    })
+  }
+
   function exitModal() {
     setOwnerOpen(false);
   }
@@ -162,7 +201,7 @@ const AdminEventModal = ({ event, setOwnerOpen, ownerOpen }) => {
         </AdminHeader>
         <ButtonsContainer>
           <AdminButton>Editar</AdminButton>
-          <AdminButton>Excluir </AdminButton>
+          <AdminButton onClick={DeleteEvent}>Excluir </AdminButton>
         </ButtonsContainer>
         <DivInputs>
           <div>
