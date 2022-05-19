@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +17,6 @@ export const Container = styled.div`
   }
 
   @media (min-width: 900px) {
-    height: 100%;
     .logo {
       width: 600px;
     }
@@ -83,6 +81,7 @@ export const AnimationContainer = styled.div`
       flex-direction: column;
       align-items: right;
     }
+
     label {
       margin: 10px;
       margin-bottom: 0;
@@ -133,5 +132,10 @@ export const DivLogin = styled.div`
 
   p {
     line-height: 25px;
+  }
+
+  a {
+    color: var(--orange);
+    font-weight: bold;
   }
 `;

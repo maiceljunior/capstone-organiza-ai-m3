@@ -3,9 +3,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState, useCallback } from "react";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
-import { ThemeProvider } from "styled-components"
-import { themes } from "./themes"
-import { DarkLightButton } from "./pages/Dashboard/style"
+import { ThemeProvider } from "styled-components";
+import { themes } from "./themes";
+import { DarkLightButton } from "./pages/Dashboard/style";
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -30,9 +30,9 @@ function App() {
         pauseOnHover
       />
       <ThemeProvider theme={themes[currentTheme]}>
-      <DarkLightButton onClick={() => setCurrentTheme(getOpositeTheme())}>
+        {/* <DarkLightButton onClick={() => setCurrentTheme(getOpositeTheme())}>
             {getOpositeTheme()}
-          </DarkLightButton>
+          </DarkLightButton> */}
         <Routes />
       </ThemeProvider>
     </>

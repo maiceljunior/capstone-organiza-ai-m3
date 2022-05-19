@@ -106,10 +106,10 @@ const AvatarComponent = ({ userName, userAvatar = false }) => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <MenuItem>
+            {/* <MenuItem>
               {" "}
               <Link to="/profile:id">Profile</Link>
-            </MenuItem>
+            </MenuItem> */}
 
             <Divider />
 
