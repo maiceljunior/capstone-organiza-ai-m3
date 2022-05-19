@@ -34,7 +34,8 @@ const RenderList = ({
   Search,
   filteredRender,
   eventsIJoined,
-  eventsICreated
+  eventsICreated,
+  setRefreshPage
 }) => {
   const { user } = useUser();
   const UserID = localStorage.getItem("UserID");
@@ -89,11 +90,11 @@ const RenderList = ({
               <ul>
                 {filteredRender.length > 0 ? (
                   filteredRender.map((event, index) => {
-                    return <CardEvent event={event} key={index} />;
+                    return <CardEvent setRefreshPage={setRefreshPage} event={event} key={index} />;
                   })
                 ) : array.length > 0 ? (
                   array.map((event, index) => {
-                    return <CardEvent event={event} key={index} />;
+                    return <CardEvent setRefreshPage={setRefreshPage} event={event} key={index} />;
                   })
                 ) : (
                   <DivNotEvents>Nenhum evento encontrado.</DivNotEvents>

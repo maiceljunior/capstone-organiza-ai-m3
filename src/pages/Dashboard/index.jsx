@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [input, setInput] = useState("");
   const [filteredRender, setFilteredRender] = useState([]);
+  const [refreshPage, setRefreshPage] = useState(false);
   const { register } = useForm();
 
   function Search() {
@@ -39,7 +40,7 @@ const Dashboard = () => {
     Api.get(`/eventsPublics`).then((res) => {
       setEvents(res.data);
     });
-  }, []);
+  }, [refreshPage]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -163,6 +164,7 @@ const Dashboard = () => {
           Search={Search}
           eventsICreated={eventsICreated}
           eventsIJoined={eventsIJoined}
+          setRefreshPage={setRefreshPage}
         />
       </Main>
     </>

@@ -16,7 +16,7 @@ import { useState } from "react";
 import AboutEventModal from "../AboutEventModal";
 import AdminEventModal from "../AdminEventModal";
 
-const CardEvent = ({ event }) => {
+const CardEvent = ({ event, setRefreshPage }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [ownerOpen, setOwnerOpen] = useState(false);
   const userLogged = localStorage.getItem("UserID");
@@ -76,7 +76,7 @@ const CardEvent = ({ event }) => {
       <GuestsInfoWrapper>
         <h4>Participantes</h4>
         <span>{event.guests.length} / {event.guestsQtd}</span>
-        
+
       </GuestsInfoWrapper>
 
       {parseInt(userLogged) === userId ? (
@@ -93,6 +93,7 @@ const CardEvent = ({ event }) => {
 
       {ownerOpen && (
         <AdminEventModal
+          setRefreshPage={setRefreshPage}
           event={event}
           setOwnerOpen={setOwnerOpen}
           ownerOpen={ownerOpen}
