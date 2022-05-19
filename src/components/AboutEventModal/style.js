@@ -17,9 +17,10 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50vw;
-  height: auto;
-  background: rgb(236, 236, 236);
+  width: 300px;
+  height: 450px;
+
+  background-color: rgb(221, 221, 221);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
@@ -37,7 +38,8 @@ export const Modal = styled.div`
 
   .positionBtns {
     display: flex;
-    margin-top: 20px;
+    margin: 10px 0px;
+
   }
 
   .ulPosition {
@@ -62,7 +64,7 @@ export const Modal = styled.div`
     align-items: center;
     overflow-y: scroll;
     border: 2px solid black;
-    height: 120px;
+    height: 150px;
     max-width: 90%;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -79,42 +81,6 @@ export const Modal = styled.div`
     text-shadow: 3px 3px 14px black;
   }
 
-  .notAuthorization {
-    padding: 11px 30px;
-    height: 45px;
-    width: 100vw;
-    margin: 10px;
-    text-transform: uppercase;
-    font-size: 13px;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    background: red;
-    cursor: pointer;
-    transition: ease-out 0.5s;
-    border: 2px solid red;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 0 red;
-  }
-
-  ul > li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    width: 100%;
-    height: 50px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.66);
-    text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
-  }
-
   .exit {
     z-index: 3000;
     border: none;
@@ -125,80 +91,55 @@ export const Modal = styled.div`
   }
 
   .btnExit {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
-    padding: 11px 30px;
-    text-align: center;
-    font-size: 18px;
+    margin: 0px 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
     letter-spacing: 1px;
     text-decoration: none;
-    color: red;
+height:40px;
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
     border: 2px solid red;
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 red;
+    color: white;
+    box-shadow: inset 0 -100px 0 0 red;
   }
 
   .btnExit:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 red;
+    box-shadow: inset 0 0 0 0 red;
+    color: red;
   }
 
   .btnExit:active {
     transform: scale(0.9);
   }
 
-  .btnChat {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
-    padding: 11px 30px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: blue;
-    background: transparent;
-    cursor: pointer;
-    transition: ease-out 0.5s;
-    border: 2px solid blue;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 0 blue;
-  }
-
-  .btnChat:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 blue;
-  }
-
-  .btnChat:active {
-    transform: scale(0.9);
-  }
-
   .btnEnter {
-    position: relative;
-    display: inline-block;
-    margin: 10px;
-    padding: 11px 30px;
-    text-align: center;
-    font-size: 18px;
+    margin: 0px 30px;
+    width: 100px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
     letter-spacing: 1px;
     text-decoration: none;
-    color: green;
+    color: white;
     background: transparent;
     cursor: pointer;
     transition: ease-out 0.5s;
     border: 2px solid green;
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 green;
+    box-shadow: inset 0 -100px 0 0 green;
   }
 
   .btnEnter:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 green;
+    color: green;
+    box-shadow: inset 0 0 0 0 green;
   }
 
   .btnEnter:active {
@@ -210,7 +151,8 @@ export const DivInputs = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  overflow-y: scroll;
+  height: 360px;
   .inp {
     position: relative;
     margin: auto;
@@ -218,6 +160,7 @@ export const DivInputs = styled.div`
     max-width: 90%;
     border-radius: 3px;
     overflow: hidden;
+    background-color: #fff;
   }
 
   .inp .label {
@@ -226,6 +169,7 @@ export const DivInputs = styled.div`
     left: 14px;
     font-size: 20px;
     color: var(--yellow);
+
     font-weight: bold;
     transform-origin: 0 0;
     transform: translate3d(0, 0, 0);
@@ -308,4 +252,128 @@ export const DivInputs = styled.div`
   div > h2 {
     margin-right: 10px;
   }
+`;
+
+export const DivBtnRequest = styled.span`
+  margin-right: 10px;
+
+  .acceptUser {
+    background-color: green;
+    border: none;
+    padding: 10px;
+    color: white;
+    width: 70px;
+    font-weight: bold;
+    margin-left: 20px;
+    border-radius: 8px;
+  }
+
+  .acceptUser:hover {
+    background-color: #39d32e;
+  }
+
+  .rejectUser {
+    background-color: red;
+    border: none;
+    padding: 10px;
+    color: white;
+    width: 70px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .rejectUser:hover {
+    background-color: #c90000;
+  }
+`;
+
+export const CardGuests = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.66);
+  text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+`;
+
+export const CardRequests = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.66);
+  text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+`;
+
+export const AdminHeader = styled.div`
+  width: 100%;
+  height: 43px;
+  background-color: var(--orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin-left: 15px;
+    color: #fff;
+  }
+  button {
+    margin-right: 15px;
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 60px;
+  margin-top: 0;
+  button:hover {
+    background-color: #fff;
+    color: var(--orange);
+    border: 2px solid var(--orange);
+  }
+`;
+
+export const AdminButton = styled.button`
+  width: 120px;
+  height: 25px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 0.6rem;
+  background-color: var(--yellow);
+
+  border-style: none;
+`;
+
+export const ButtonRemoveGuest = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: var(--orange);
+
+  border-style: none;
 `;

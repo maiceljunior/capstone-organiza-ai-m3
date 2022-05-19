@@ -270,7 +270,7 @@ export const DivPref = styled.div`
   button:after {
     content: "";
     pointer-events: none;
-    bottom: -2px;
+    bottom: 22px;
     left: 50%;
     position: absolute;
     width: 0%;
@@ -301,9 +301,10 @@ export const DivPref = styled.div`
 export const DivNotEvents = styled.div`
   display: flex;
   color: black;
+  margin:0px 100px;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1rem;
   height: 100%;
   align-items: center;
 `;
@@ -313,4 +314,8 @@ export const ContainerEventos = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width:320px) {
+    width:95%;
+  }
 `;

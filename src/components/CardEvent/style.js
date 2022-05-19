@@ -58,6 +58,7 @@ export const InfoEventWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  margin:15px 0px;
   flex-direction: column;
   justify-content: center;
   h2 {

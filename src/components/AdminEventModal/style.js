@@ -17,9 +17,10 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50vw;
-  height: auto;
-  background: rgb(236, 236, 236);
+  width: 300px;
+  height: 450px;
+
+  background-color: rgb(221, 221, 221);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
@@ -147,7 +148,8 @@ export const DivInputs = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  overflow-y: scroll;
+  height: 360px;
   .inp {
     position: relative;
     margin: auto;
@@ -155,6 +157,7 @@ export const DivInputs = styled.div`
     max-width: 90%;
     border-radius: 3px;
     overflow: hidden;
+    background-color: #fff;
   }
 
   .inp .label {
@@ -163,6 +166,7 @@ export const DivInputs = styled.div`
     left: 14px;
     font-size: 20px;
     color: var(--yellow);
+
     font-weight: bold;
     transform-origin: 0 0;
     transform: translate3d(0, 0, 0);
@@ -312,4 +316,61 @@ export const CardRequests = styled.li`
   border-radius: 10px;
   box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.66);
   text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+`;
+
+export const AdminHeader = styled.div`
+  width: 100%;
+  height: 43px;
+  background-color: var(--orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin-left: 15px;
+    color: #fff;
+  }
+  button {
+    margin-right: 15px;
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  height: 40px;
+
+  button:hover {
+    background-color: #fff;
+    color: var(--orange);
+    border: 2px solid var(--orange);
+  }
+`;
+
+export const AdminButton = styled.button`
+  width: 120px;
+  height: 25px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: var(--yellow);
+
+  border-style: none;
+`;
+
+export const ButtonRemoveGuest = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: var(--orange);
+
+  border-style: none;
 `;
