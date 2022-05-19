@@ -21,7 +21,6 @@ import { Api } from "../../services/api";
 import { Loading } from "./loading";
 import { useForm, Controller } from "react-hook-form";
 import { useUser } from "../../providers/user";
-import { useGuest } from "../../providers/guests";
 import { useRef } from "react";
 import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -30,7 +29,6 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 const CreateEvents = () => {
   const { user, setUser } = useUser();
-  const { guest, setGuest } = useGuest();
   const toastId = useRef(null);
 
   const UserID = localStorage.getItem("UserID");
@@ -131,7 +129,7 @@ const CreateEvents = () => {
     data.guests = [user];
 
     newEvent(data);
-    setGuest([]);
+    
     reset();
   }
 
