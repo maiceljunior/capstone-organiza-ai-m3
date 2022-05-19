@@ -82,16 +82,16 @@ export const InfoEventWrapper = styled.div`
     background-color: aliceblue;
   }
 
-
   @media (max-width: 1027px) {
     h2{
       font-size: 1.1rem;
-      max-width: 200px;
     }
+
     h3 {
       font-size: 0.8rem;
     }
   }
+
   @media (max-width: 775px) {
     h2{
       font-size:0.9rem;
@@ -106,17 +106,7 @@ export const InfoEventWrapper = styled.div`
         font-size: 0.5rem;
       }
     }
-  @media (max-width: 375px) {
-    h2,
-    h3 {
-      font-size: 0.5rem;
-      h2,
-      h3 {
-        font-size: 0.8rem;
-      }
-    }
-    
-  }
+ 
 `;
 
 export const ButtonEventWrapper = styled.div`
